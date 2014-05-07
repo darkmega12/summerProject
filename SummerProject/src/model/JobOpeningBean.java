@@ -10,6 +10,8 @@ Description: Job Opening Bean with their columns as their attribute and their ge
 Date: 5/7/14
 ************/
 
+//if this works
+
 public class JobOpeningBean {
 	private int pIdJobOpening;
 	private Date pRequestDate;
