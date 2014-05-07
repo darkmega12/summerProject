@@ -27,6 +27,8 @@ public class AgentBean {
 	private int pZipCode;
 	private String pCity;
 	
+	//whaaat
+	
 	public int getpIdAgent() {
 		return pIdAgent;
 	}
