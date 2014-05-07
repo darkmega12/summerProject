@@ -1,3 +1,4 @@
+package model; 
 /************
 
 Author: Patricia Anne Eugenio
@@ -16,10 +17,10 @@ public class GradeBean {
 	public void setpIdGrade(int pIdGrade) {
 		this.pIdGrade = pIdGrade;
 	}
-	public int getpGrade() {
+	public float getpGrade() {
 		return pGrade;
 	}
-	public void setpGrade(int pGrade) {
+	public void setpGrade(float pGrade) {
 		this.pGrade = pGrade;
 	}
 }

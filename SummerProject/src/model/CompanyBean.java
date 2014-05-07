@@ -1,3 +1,7 @@
+package model;  
+
+import java.sql.Date;
+
 /************
 
 Author: Patricia Anne Eugenio

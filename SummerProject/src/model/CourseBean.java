@@ -1,3 +1,5 @@
+package model;  
+
 /************
 
 Author: Patricia Anne Eugenio
@@ -43,12 +45,6 @@ public class CourseBean {
 	}
 	public void setpHourCount(int pHourCount) {
 		this.pHourCount = pHourCount;
-	}
-	public int getpIdListCourses() {
-		return pIdListCourses;
-	}
-	public void setpIdListCourses(int pIdListCourses) {
-		this.pIdListCourses = pIdListCourses;
 	}
 	public int getpIdAgent() {
 		return pIdAgent;
