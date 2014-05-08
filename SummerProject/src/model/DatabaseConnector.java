@@ -1,7 +1,7 @@
-// This class sets the connection to the database
-// This class simply loads the queries from the text file "INTRODB-queryScript.txt"
-// ResultSet = table 
-
+/*
+ * Author: Patricia Anne Eugenio
+ * Description: It will connect the program to the database. 
+ */
 package model;
 
 import java.sql.*;
@@ -16,7 +16,7 @@ public class DatabaseConnector
 		  Connection conn = null;
 		  String user = "root";
 		  String pass = "root";
-		  String URL= "jdbc:mysql://localhost:3306/Ecall";
+		  String URL= "jdbc:mysql://localhost:3306/ecall";
 		  try 
 		  {
 		      Class.forName("com.mysql.jdbc.Driver");
@@ -27,6 +27,5 @@ public class DatabaseConnector
 		    System.out.println(e.getMessage());
 		  }
 		  return conn;
-		}
-
+	}
 }
