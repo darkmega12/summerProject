@@ -10,7 +10,9 @@ Date: 5/7/14
 public class GradeBean 
 {
 	private int pIdGrade;
+	private int pIdClass;
 	private float pGrade;
+	private int pIdAgent;
 	
 	public int getpIdGrade() 
 	{
@@ -27,5 +29,19 @@ public class GradeBean
 	public void setpGrade(float pGrade) 
 	{
 		this.pGrade = pGrade;
+	}
+	public int getpIdAgent() 
+	{
+		return pIdAgent;
+	}
+	public void setpIdAgent(int pIdAgent) 
+	{
+		this.pIdAgent = pIdAgent;
+	}
+	public int getpIdClass() {
+		return pIdClass;
+	}
+	public void setpIdClass(int pIdClass) {
+		this.pIdClass = pIdClass;
 	}
 }

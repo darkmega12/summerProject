@@ -20,7 +20,7 @@ public class ClassBean
 	private String pVenue;
 	private String pClassStatus;
 	private int pIdCourse;
-	private int pIdAgent;
+	
 	private int pIdGrade;
 	
 	public int getpIdClass() 
@@ -86,14 +86,6 @@ public class ClassBean
 	public void setpIdCourse(int pIdCourse) 
 	{
 		this.pIdCourse = pIdCourse;
-	}
-	public int getpIdAgent() 
-	{
-		return pIdAgent;
-	}
-	public void setpIdAgent(int pIdAgent) 
-	{
-		this.pIdAgent = pIdAgent;
 	}
 	public int getpIdGrade() 
 	{

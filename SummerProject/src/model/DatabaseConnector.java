@@ -1,7 +1,9 @@
-/*
- * Author: Patricia Anne Eugenio
- * Description: It will connect the program to the database. 
- */
+/************
+Author: Patricia Anne Eugenio
+
+Description: It will connect the program to the database.
+Date: 5/7/2014 
+************/
 package model;
 
 import java.sql.*;

@@ -15,7 +15,6 @@ public class CourseBean
 	private String pCourseCode;
 	private String pCourseName;
 	private int pHourCount;
-	private int pIdAgent;
 	
 	public int getpIdCourse() 
 	{
@@ -56,13 +55,5 @@ public class CourseBean
 	public void setpHourCount(int pHourCount) 
 	{
 		this.pHourCount = pHourCount;
-	}
-	public int getpIdAgent() 
-	{
-		return pIdAgent;
-	}
-	public void setpIdAgent(int pIdAgent) 
-	{
-		this.pIdAgent = pIdAgent;
 	}
 }
