@@ -11,6 +11,7 @@ import java.util.Iterator;
  * Description: Handles all queries regarding the User table in the database
  * 
 *****/
+
 public class UserImplementation 
 {
 	private UserBean pUserBean;
@@ -30,6 +31,12 @@ public class UserImplementation
 			System.out.println("SQL ERROR: "+ e.getMessage());
 		}
 	}
+	
+	
+	/******
+	 * Function Name: getAllUsers
+	 * Description: stores all users from the databases in pUserBean
+	******/
 	
 	public void getAllUsers()
 	{
@@ -53,10 +60,22 @@ public class UserImplementation
 		}
 	}
 	
+	/******
+	 * Function Name: getUser
+	 * Description: add
+	******/
+	
 	public void addUser(UserBean newUser)
 	{
 		pUserList.add(newUser);
 	}
+	
+	
+	/******
+	 * Function Name: getUser
+	 * Description: returns a user bean that matches the username and password with the parameter uBean
+	 * uBean- contains the username and password to verify
+	******/
 	
 	public UserBean getUser(UserBean uBean)
 	{
@@ -67,6 +86,5 @@ public class UserImplementation
 			if(pUserBean.getpUserName().equals(uBean.getpUserName()) && pUserBean.getpUserPassword().equals(uBean.getpUserPassword()))
 				return pUserBean;
 		}
-		return uBean;
 	}
 }

@@ -18,6 +18,13 @@ import javax.swing.JPasswordField;
 
 import controller.UserController;
 
+/*****
+ * 
+ * Author: Christian Kiel Abejuro
+ * 
+ * Description: Login screen design
+*****/
+
 public class LoginScreen extends JFrame 
 {
 
@@ -25,12 +32,14 @@ public class LoginScreen extends JFrame
 	private JTextField userField;
 	private JPasswordField passwordField;
 	private JButton btnLogin;
-
+	private UserController pUserControl;
 	/**
 	 * Create the frame.
 	 */
-	public LoginScreen(UserController uControl) 
+	public LoginScreen() 
 	{
+		pUserControl= new UserController(Driver.mUser, this);
+		
 		setTitle("E-CALL PLACEMENT SYSTEM");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 600, 490);
@@ -66,7 +75,7 @@ public class LoginScreen extends JFrame
 		
 		JButton btnLogin = new JButton("LOGIN");
 		btnLogin.setBounds(187, 300, 251, 50);
-		btnLogin.addActionListener(uControl);
+		btnLogin.addActionListener(pUserControl);
 		panel.add(btnLogin);
 		
 		JButton btnCreate = new JButton("CREATE ACCOUNT");
