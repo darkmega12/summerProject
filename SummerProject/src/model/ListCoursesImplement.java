@@ -1,10 +1,11 @@
 /************
- 
+
 Author: Patricia Anne Eugenio
- 
-Description: Education Background related queries and it is accessible through its methods.
-Date: 5/9/2014
+
+Description: List of Courses related queries and it can be accessed through its methods
+Date: 5/9/14
 ************/
+
 package model;
 
 import java.sql.Connection;
@@ -12,35 +13,34 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class EducationBGImplement {
+public class ListCoursesImplement {
 	private DatabaseConnector pDatabase;
 	private Connection pConnection;
 	private PreparedStatement pStatement;
 	private ResultSet pResult;
+	private CourseBean pCourseBean;
 	private AgentBean pAgentBean;
-	private EducationBGBean pEducationBG;
 	
-	public EducationBGImplement()
+	public ListCoursesImplement()
 	{
 		pDatabase = new DatabaseConnector();
 		pConnection = pDatabase.connectToDatabase();
 		pStatement  = null;
-		pResult = null;
+		pResult = null;	
 	}
 	
-	public void insertEducationBG(AgentBean agentBean, EducationBGBean educationBG)
+	public void insertListCourses(AgentBean agentBean, CourseBean courseBean)
 	{
-		pEducationBG = educationBG;
 		pAgentBean = agentBean;
+		pCourseBean = courseBean;
 		
-		String query = "INSERT IGNORE into educationbg (degree, yearCompletion, university, idAgent) VALUES(?,?,?,?)";
+		String query = "INSERT IGNORE into listcourses (idCourse, idAgent) VALUES(?,?)";
+		
 		try 
 		{
 			pStatement = pConnection.prepareStatement(query);
-			pStatement.setString(1, pEducationBG.getpDegree());
-			pStatement.setInt(2, pEducationBG.getpYear());
-			pStatement.setString(3, pEducationBG.getpUniversity());
-			pStatement.setInt(4, pAgentBean.getpIdAgent());
+			pStatement.setInt(1, pCourseBean.getpIdCourse());
+			pStatement.setInt(2, pAgentBean.getpIdAgent());
 			pStatement.executeUpdate();
 		} 
 		catch (SQLException e) 
@@ -50,7 +50,7 @@ public class EducationBGImplement {
 		}
 		finally
 		{
-			try 
+			try
 			{
 				pStatement.close();
 			} 
@@ -63,7 +63,7 @@ public class EducationBGImplement {
 			{
 				pConnection.close();
 			} 
-			catch (SQLException e)
+			catch (SQLException e) 
 			{
 				// TODO Auto-generated catch block
 				e.printStackTrace();

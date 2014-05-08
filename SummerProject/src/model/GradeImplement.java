@@ -1,9 +1,9 @@
 /************
- 
+
 Author: Patricia Anne Eugenio
- 
-Description: Education Background related queries and it is accessible through its methods.
-Date: 5/9/2014
+
+Description: Grade related queries and it can be accessed through its methods
+Date: 5/9/14
 ************/
 package model;
 
@@ -12,35 +12,38 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class EducationBGImplement {
+public class GradeImplement 
+{
 	private DatabaseConnector pDatabase;
 	private Connection pConnection;
 	private PreparedStatement pStatement;
 	private ResultSet pResult;
 	private AgentBean pAgentBean;
-	private EducationBGBean pEducationBG;
+	private ClassBean pClassBean;
+	private GradeBean pGradeBean;
 	
-	public EducationBGImplement()
+	public GradeImplement()
 	{
 		pDatabase = new DatabaseConnector();
 		pConnection = pDatabase.connectToDatabase();
 		pStatement  = null;
 		pResult = null;
-	}
+	}	
 	
-	public void insertEducationBG(AgentBean agentBean, EducationBGBean educationBG)
+	public void insertGrade(AgentBean agentBean, ClassBean classBean, GradeBean gradeBean)
 	{
-		pEducationBG = educationBG;
 		pAgentBean = agentBean;
+		pClassBean = classBean;
+		pGradeBean = gradeBean;
 		
-		String query = "INSERT IGNORE into educationbg (degree, yearCompletion, university, idAgent) VALUES(?,?,?,?)";
+		String query = "INSERT IGNORE into grade (grade, idClass, idAgent) VALUES(?,?,?)";
+		
 		try 
 		{
 			pStatement = pConnection.prepareStatement(query);
-			pStatement.setString(1, pEducationBG.getpDegree());
-			pStatement.setInt(2, pEducationBG.getpYear());
-			pStatement.setString(3, pEducationBG.getpUniversity());
-			pStatement.setInt(4, pAgentBean.getpIdAgent());
+			pStatement.setFloat(1, pGradeBean.getpGrade());
+			pStatement.setInt(2, pClassBean.getpIdClass());
+			pStatement.setInt(3, pAgentBean.getpIdAgent());
 			pStatement.executeUpdate();
 		} 
 		catch (SQLException e) 
@@ -48,7 +51,7 @@ public class EducationBGImplement {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		finally
+		finally 
 		{
 			try 
 			{
@@ -63,11 +66,12 @@ public class EducationBGImplement {
 			{
 				pConnection.close();
 			} 
-			catch (SQLException e)
+			catch (SQLException e) 
 			{
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
+		
 	}
 }
