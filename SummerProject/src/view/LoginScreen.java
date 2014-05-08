@@ -14,43 +14,26 @@ import javax.swing.UIManager;
 import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JPasswordField;
+
+import controller.UserController;
 
 public class LoginScreen extends JFrame 
 {
 
 	private JPanel contentPane;
 	private JTextField userField;
-	private JTextField passField;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) 
-	{
-		EventQueue.invokeLater(new Runnable() 
-		{
-			public void run() 
-			{
-				try 
-				{
-					LoginScreen frame = new LoginScreen();
-					frame.setVisible(true);
-				} catch (Exception e) 
-				{
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	private JPasswordField passwordField;
+	private JButton btnLogin;
 
 	/**
 	 * Create the frame.
 	 */
-	public LoginScreen() 
+	public LoginScreen(UserController uControl) 
 	{
 		setTitle("E-CALL PLACEMENT SYSTEM");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 605, 487);
+		setBounds(100, 100, 600, 490);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -77,20 +60,13 @@ public class LoginScreen extends JFrame
 		panel.add(userField);
 		userField.setColumns(10);
 		
-		passField = new JTextField();
-		passField.setBounds(249, 234, 242, 28);
-		panel.add(passField);
-		passField.setColumns(10);
+		passwordField = new JPasswordField();
+		passwordField.setBounds(249, 234, 242, 28);
+		panel.add(passwordField);
 		
 		JButton btnLogin = new JButton("LOGIN");
-		btnLogin.addActionListener(new ActionListener() 
-		{
-			public void actionPerformed(ActionEvent e) 
-			{
-
-			}
-		});
 		btnLogin.setBounds(187, 300, 251, 50);
+		btnLogin.addActionListener(uControl);
 		panel.add(btnLogin);
 		
 		JButton btnCreate = new JButton("CREATE ACCOUNT");
@@ -105,5 +81,19 @@ public class LoginScreen extends JFrame
 		lblDontHaveAn.setFont(new Font("SansSerif", Font.PLAIN, 15));
 		lblDontHaveAn.setBounds(139, 405, 164, 31);
 		panel.add(lblDontHaveAn);
+	}
+	
+	public Object getLogbtn()
+	{
+		return btnLogin;
+	}
+	
+	public String getUserField()
+	{
+		return userField.getText();
+	}
+	public String getPassField()
+	{
+		return new String(passwordField.getPassword());
 	}
 }

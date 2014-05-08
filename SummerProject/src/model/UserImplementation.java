@@ -14,7 +14,7 @@ import java.util.Iterator;
 public class UserImplementation 
 {
 	private UserBean pUserBean;
-	private ArrayList<UserBean> pUserList;
+	private ArrayList<UserBean> pUserList= new ArrayList<UserBean>();
 	private ResultSet pRset;
 	private Statement pStatement;
 	
@@ -23,7 +23,7 @@ public class UserImplementation
 	{
 		try
 		{
-			db.connectToDatabase().createStatement();
+			pStatement=db.connectToDatabase().createStatement();
 		}
 		catch(SQLException e)
 		{
@@ -31,9 +31,42 @@ public class UserImplementation
 		}
 	}
 	
-	public void searchUser(String user, String pass)
+	public void getAllUsers()
 	{
-		
+		try
+		{
+			pRset= pStatement.executeQuery("Select * from User");
+			
+			while(pRset.next())
+			{
+				pUserBean.setpIdUser(pRset.getInt("idUser"));
+				pUserBean.setpUserName(pRset.getString("userName"));
+				pUserBean.setpUserPassword(pRset.getString("userPassword"));
+				pUserBean.setpUserType(pRset.getString("userType"));
+				pUserList.add(pUserBean);
+			}
+			
+		} 
+		catch(SQLException e)
+		{
+			System.err.println(e);
+		}
 	}
 	
+	public void addUser(UserBean newUser)
+	{
+		pUserList.add(newUser);
+	}
+	
+	public UserBean getUser(UserBean uBean)
+	{
+		Iterator<UserBean> i = pUserList.iterator();
+		while(i.hasNext())
+		{
+			pUserBean= i.next();
+			if(pUserBean.getpUserName().equals(uBean.getpUserName()) && pUserBean.getpUserPassword().equals(uBean.getpUserPassword()))
+				return pUserBean;
+		}
+		return uBean;
+	}
 }

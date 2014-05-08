@@ -15,7 +15,7 @@ public class DatabaseConnector
 	{
 		  Connection conn = null;
 		  String user = "root";
-		  String pass = "root";
+		  String pass = "dlsu";
 		  String URL= "jdbc:mysql://localhost:3306/ecall";
 		  try 
 		  {
