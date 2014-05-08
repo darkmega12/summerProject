@@ -10,7 +10,8 @@ Description: Work Experience Bean with their columns as their attribute and thei
 Date: 5/7/14
 ************/ 
 
-public class WorkExperienceBean {
+public class WorkExperienceBean 
+{
 	private int pIdWorkExperienceBean;
 	private Date pStartingDate;
 	private int pYearsEffective;
@@ -19,46 +20,60 @@ public class WorkExperienceBean {
 	private int pIdJobOpening;
 	private int pIdRating;
 	
-	public int getpIdWorkExperienceBean() {
+	public int getpIdWorkExperienceBean() 
+	{
 		return pIdWorkExperienceBean;
 	}
-	public void setpIdWorkExperienceBean(int pIdWorkExperienceBean) {
+	public void setpIdWorkExperienceBean(int pIdWorkExperienceBean) 
+	{
 		this.pIdWorkExperienceBean = pIdWorkExperienceBean;
 	}
-	public Date getpStartingDate() {
+	public Date getpStartingDate() 
+	{
 		return pStartingDate;
 	}
-	public void setpStartingDate(Date pStartingDate) {
+	public void setpStartingDate(Date pStartingDate) 
+	{
 		this.pStartingDate = pStartingDate;
 	}
-	public int getpYearsEffective() {
+	public int getpYearsEffective() 
+	{
 		return pYearsEffective;
 	}
-	public void setpYearsEffective(int pYearsEffective) {
+	public void setpYearsEffective(int pYearsEffective) 
+	{
 		this.pYearsEffective = pYearsEffective;
 	}
-	public float getpAgentSalary() {
+	public float getpAgentSalary() 
+	{
 		return pAgentSalary;
 	}
-	public void setpAgentSalary(float pAgentSalary) {
+	public void setpAgentSalary(float pAgentSalary) 
+	{
 		this.pAgentSalary = pAgentSalary;
 	}
-	public int getpIdAgent() {
+	public int getpIdAgent() 
+	{
 		return pIdAgent;
 	}
-	public void setpIdAgent(int pIdAgent) {
+	public void setpIdAgent(int pIdAgent) 
+	{
 		this.pIdAgent = pIdAgent;
 	}
-	public int getpIdJobOpening() {
+	public int getpIdJobOpening() 
+	{
 		return pIdJobOpening;
 	}
-	public void setpIdJobOpening(int pIdJobOpening) {
+	public void setpIdJobOpening(int pIdJobOpening) 
+	{
 		this.pIdJobOpening = pIdJobOpening;
 	}
-	public int getpIdRating() {
+	public int getpIdRating() 
+	{
 		return pIdRating;
 	}
-	public void setpIdRating(int pIdRating) {
+	public void setpIdRating(int pIdRating) 
+	{
 		this.pIdRating = pIdRating;
 	}
 }

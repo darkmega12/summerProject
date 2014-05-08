@@ -8,7 +8,8 @@ Description: Course Bean with their columns as their attribute and their getters
 Date: 5/6/14
 ************/
 
-public class CourseBean {
+public class CourseBean 
+{
 	private int pIdCourse;
 	private String pCourseDescription;
 	private String pCourseCode;
@@ -16,40 +17,52 @@ public class CourseBean {
 	private int pHourCount;
 	private int pIdAgent;
 	
-	public int getpIdCourse() {
+	public int getpIdCourse() 
+	{
 		return pIdCourse;
 	}
-	public void setpIdCourse(int pIdCourse) {
+	public void setpIdCourse(int pIdCourse) 
+	{
 		this.pIdCourse = pIdCourse;
 	}
-	public String getpCourseDescription() {
+	public String getpCourseDescription() 
+	{
 		return pCourseDescription;
 	}
-	public void setpCourseDescription(String pCourseDescription) {
+	public void setpCourseDescription(String pCourseDescription) 
+	{
 		this.pCourseDescription = pCourseDescription;
 	}
-	public String getpCourseCode() {
+	public String getpCourseCode() 
+	{
 		return pCourseCode;
 	}
-	public void setpCourseCode(String pCourseCode) {
+	public void setpCourseCode(String pCourseCode) 
+	{
 		this.pCourseCode = pCourseCode;
 	}
-	public String getpCourseName() {
+	public String getpCourseName() 
+	{
 		return pCourseName;
 	}
-	public void setpCourseName(String pCourseName) {
+	public void setpCourseName(String pCourseName) 
+	{
 		this.pCourseName = pCourseName;
 	}
-	public int getpHourCount() {
+	public int getpHourCount() 
+	{
 		return pHourCount;
 	}
-	public void setpHourCount(int pHourCount) {
+	public void setpHourCount(int pHourCount) 
+	{
 		this.pHourCount = pHourCount;
 	}
-	public int getpIdAgent() {
+	public int getpIdAgent() 
+	{
 		return pIdAgent;
 	}
-	public void setpIdAgent(int pIdAgent) {
+	public void setpIdAgent(int pIdAgent) 
+	{
 		this.pIdAgent = pIdAgent;
 	}
 }

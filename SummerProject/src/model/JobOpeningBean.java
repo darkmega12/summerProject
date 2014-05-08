@@ -10,9 +10,10 @@ Description: Job Opening Bean with their columns as their attribute and their ge
 Date: 5/7/14
 ************/
 
-//if this works
 
-public class JobOpeningBean {
+
+public class JobOpeningBean 
+{
 	private int pIdJobOpening;
 	private Date pRequestDate;
 	private Date pDueDate;
@@ -22,52 +23,68 @@ public class JobOpeningBean {
 	private int pQuantity;
 	private int pIdCompany;
 	
-	public int getpIdJobOpening() {
+	public int getpIdJobOpening() 
+	{
 		return pIdJobOpening;
 	}
-	public void setpIdJobOpening(int pIdJobOpening) {
+	public void setpIdJobOpening(int pIdJobOpening) 
+	{
 		this.pIdJobOpening = pIdJobOpening;
 	}
-	public Date getpRequestDate() {
+	public Date getpRequestDate() 
+	{
 		return pRequestDate;
 	}
-	public void setpRequestDate(Date pRequestDate) {
+	public void setpRequestDate(Date pRequestDate) 
+	{
 		this.pRequestDate = pRequestDate;
 	}
-	public Date getpDueDate() {
+	public Date getpDueDate() 
+	{
 		return pDueDate;
 	}
-	public void setpDueDate(Date pDueDate) {
+	public void setpDueDate(Date pDueDate) 
+	{
 		this.pDueDate = pDueDate;
 	}
-	public Date getpCompleteDate() {
+	public Date getpCompleteDate() 
+	{
 		return pCompleteDate;
 	}
-	public void setpCompleteDate(Date pCompleteDate) {
+	public void setpCompleteDate(Date pCompleteDate) 
+	{
 		this.pCompleteDate = pCompleteDate;
 	}
-	public String getpOpeningStatus() {
+	public String getpOpeningStatus() 
+	{
 		return pOpeningStatus;
 	}
-	public void setpOpeningStatus(String pOpeningStatus) {
+	public void setpOpeningStatus(String pOpeningStatus) 
+	{
 		this.pOpeningStatus = pOpeningStatus;
 	}
-	public String getpGender() {
+	public String getpGender() 
+	{
 		return pGender;
 	}
-	public void setpGender(String pGender) {
+	public void setpGender(String pGender) 
+	{
 		this.pGender = pGender;
 	}
-	public int getpQuantity() {
+	public int getpQuantity() 
+	{
 		return pQuantity;
 	}
-	public void setpQuantity(int pQuantity) {
+	public void setpQuantity(int pQuantity) 
+	{
 		this.pQuantity = pQuantity;
 	}
-	public int getpIdCompany() {
+	public int getpIdCompany() 
+	{
 		return pIdCompany;
 	}
-	public void setpIdCompany(int pIdCompany) {
+	public void setpIdCompany(int pIdCompany) 
+	{
 		this.pIdCompany = pIdCompany;
 	}
 }

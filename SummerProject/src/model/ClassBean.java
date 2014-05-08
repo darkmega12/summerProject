@@ -10,7 +10,8 @@ Description: Class Bean with their columns as their attribute and their getters 
 Date: 5/6/14
 ************/
 
-public class ClassBean {
+public class ClassBean 
+{
 	private int pIdClass;
 	private int pAgentCount;
 	private Date pStartingDate;
@@ -22,64 +23,84 @@ public class ClassBean {
 	private int pIdAgent;
 	private int pIdGrade;
 	
-	public int getpIdClass() {
+	public int getpIdClass() 
+	{
 		return pIdClass;
 	}
-	public void setpIdClass(int pIdClass) {
+	public void setpIdClass(int pIdClass) 
+	{
 		this.pIdClass = pIdClass;
 	}
-	public int getpAgentCount() {
+	public int getpAgentCount() 
+	{
 		return pAgentCount;
 	}
-	public void setpAgentCount(int pAgentCount) {
+	public void setpAgentCount(int pAgentCount) 
+	{
 		this.pAgentCount = pAgentCount;
 	}
-	public Date getpStartingDate() {
+	public Date getpStartingDate() 
+	{
 		return pStartingDate;
 	}
-	public void setpStartingDate(Date pStartingDate) {
+	public void setpStartingDate(Date pStartingDate) 
+	{
 		this.pStartingDate = pStartingDate;
 	}
-	public Date getpEndingDate() {
+	public Date getpEndingDate() 
+	{
 		return pEndingDate;
 	}
-	public void setpEndingDate(Date pEndingDate) {
+	public void setpEndingDate(Date pEndingDate) 
+	{
 		this.pEndingDate = pEndingDate;
 	}
-	public String getpSchedule() {
+	public String getpSchedule() 
+	{
 		return pSchedule;
 	}
-	public void setpSchedule(String pSchedule) {
+	public void setpSchedule(String pSchedule) 
+	{
 		this.pSchedule = pSchedule;
 	}
-	public String getpVenue() {
+	public String getpVenue() 
+	{
 		return pVenue;
 	}
-	public void setpVenue(String pVenue) {
+	public void setpVenue(String pVenue) 
+	{
 		this.pVenue = pVenue;
 	}
-	public String getpClassStatus() {
+	public String getpClassStatus() 
+	{
 		return pClassStatus;
 	}
-	public void setpClassStatus(String pClassStatus) {
+	public void setpClassStatus(String pClassStatus) 
+	{
 		this.pClassStatus = pClassStatus;
 	}
-	public int getpIdCourse() {
+	public int getpIdCourse() 
+	{
 		return pIdCourse;
 	}
-	public void setpIdCourse(int pIdCourse) {
+	public void setpIdCourse(int pIdCourse) 
+	{
 		this.pIdCourse = pIdCourse;
 	}
-	public int getpIdAgent() {
+	public int getpIdAgent() 
+	{
 		return pIdAgent;
 	}
-	public void setpIdAgent(int pIdAgent) {
+	public void setpIdAgent(int pIdAgent) 
+	{
 		this.pIdAgent = pIdAgent;
 	}
-	public int getpIdGrade() {
+	public int getpIdGrade() 
+	{
 		return pIdGrade;
 	}
-	public void setpIdGrade(int pIdGrade) {
+	public void setpIdGrade(int pIdGrade) 
+	{
 		this.pIdGrade = pIdGrade;
 	}	
 }

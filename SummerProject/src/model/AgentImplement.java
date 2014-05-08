@@ -1,13 +1,12 @@
 package model;
 
-public class AgentImplement {
-	private AgentBean agentBean;
+public class AgentImplement 
+{
+	private AgentBean pAgentBean;
 	
-	public AgentImplement(){
-		agentBean = new AgentBean();
-	}
 	
-	public void insertAgent (AgentBean agent){
+	public void insertAgent (AgentBean agent)
+	{
 		
 	}
 }

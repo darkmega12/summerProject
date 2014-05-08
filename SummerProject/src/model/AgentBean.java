@@ -10,7 +10,8 @@ Description: Agent Bean with their columns as their attribute and their getters 
 Date: 5/6/14
 ************/
 
-public class AgentBean {
+public class AgentBean 
+{
 	// Variables are named according to their respective columns
 	private int pIdAgent;
 	private String pLastName;
@@ -27,91 +28,118 @@ public class AgentBean {
 	private int pZipCode;
 	private String pCity;
 	
-	//whaaat
 	
-	public int getpIdAgent() {
+	public int getpIdAgent() 
+	{
 		return pIdAgent;
 	}
-	public void setpIdAgent(int pIdAgent) {
+	public void setpIdAgent(int pIdAgent) 
+	{
 		this.pIdAgent = pIdAgent;
 	}
-	public String getpLastName() {
+	public String getpLastName() 
+	{
 		return pLastName;
 	}
-	public void setpLastName(String pLastName) {
+	public void setpLastName(String pLastName) 
+	{
 		this.pLastName = pLastName;
 	}
-	public String getpFirstName() {
+	public String getpFirstName() 
+	{
 		return pFirstName;
 	}
-	public void setpFirstName(String pFirstName) {
+	public void setpFirstName(String pFirstName) 
+	{
 		this.pFirstName = pFirstName;
 	}
-	public String getpMiddleName() {
+	public String getpMiddleName() 
+	{
 		return pMiddleName;
 	}
-	public void setpMiddleName(String pMiddleName) {
+	public void setpMiddleName(String pMiddleName) 
+	{
 		this.pMiddleName = pMiddleName;
 	}
-	public String getpGender() {
+	public String getpGender() 
+	{
 		return pGender;
 	}
-	public void setpGender(String pGender) {
+	public void setpGender(String pGender) 
+	{
 		this.pGender = pGender;
 	}
-	public int getpIdUser() {
+	public int getpIdUser() 
+	{
 		return pIdUser;
 	}
-	public void setpIdUser(int pIdUser) {
+	public void setpIdUser(int pIdUser) 
+	{
 		this.pIdUser = pIdUser;
 	}
-	public String getpLandline() {
+	public String getpLandline() 
+	{
 		return pLandline;
 	}
-	public void setpLandline(String pLandline) {
+	public void setpLandline(String pLandline) 
+	{
 		this.pLandline = pLandline;
 	}
-	public String getpMobile() {
+	public String getpMobile() 
+	{
 		return pMobile;
 	}
-	public void setpMobile(String pMobile) {
+	public void setpMobile(String pMobile) 
+	{
 		this.pMobile = pMobile;
 	}
-	public Date getpBirthDate() {
+	public Date getpBirthDate() 
+	{
 		return pBirthDate;
 	}
-	public void setpBirthDate(Date pBirthDate) {
+	public void setpBirthDate(Date pBirthDate) 
+	{
 		this.pBirthDate = pBirthDate;
 	}
-	public Date getpApplicationDate() {
+	public Date getpApplicationDate() 
+	{
 		return pApplicationDate;
 	}
-	public void setpApplicationDate(Date pApplicationDate) {
+	public void setpApplicationDate(Date pApplicationDate) 
+	{
 		this.pApplicationDate = pApplicationDate;
 	}
-	public String getpStatus() {
+	public String getpStatus() 
+	{
 		return pStatus;
 	}
-	public void setpStatus(String pStatus) {
+	public void setpStatus(String pStatus) 
+	{
 		this.pStatus = pStatus;
 	}
-	public String getpStreet() {
+	public String getpStreet() 
+	{
 		return pStreet;
 	}
-	public void setpStreet(String pStreet) {
+	public void setpStreet(String pStreet) 
+	{
 		this.pStreet = pStreet;
 	}
-	public int getpZipCode() {
+	public int getpZipCode() 
+	{
 		return pZipCode;
 	}
-	public void setpZipCode(int pZipCode) {
+	public void setpZipCode(int pZipCode) 
+	{
 		this.pZipCode = pZipCode;
 	}
-	public String getpCity() {
+	public String getpCity() 
+	{
 		return pCity;
 	}
-	public void setpCity(String pCity) {
+	public void setpCity(String pCity) 
+	{
 		this.pCity = pCity;
 	}
 	
-	}
+}

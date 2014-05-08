@@ -7,27 +7,34 @@ Description: List of Courses Bean with their columns as their attribute and thei
 Date: 5/7/14
 ************/
 
-public class ListCoursesBean {
+public class ListCoursesBean 
+{
 	private int pIdListCourses;
 	private int pIdAgent;
 	private int pIdCourse;
 	
-	public int getpIdListCourses() {
+	public int getpIdListCourses() 
+	{
 		return pIdListCourses;
 	}
-	public void setpIdListCourses(int pIdListCourses) {
+	public void setpIdListCourses(int pIdListCourses) 
+	{
 		this.pIdListCourses = pIdListCourses;
 	}
-	public int getpIdAgent() {
+	public int getpIdAgent() 
+	{
 		return pIdAgent;
 	}
-	public void setpIdAgent(int pIdAgent) {
+	public void setpIdAgent(int pIdAgent) 
+	{
 		this.pIdAgent = pIdAgent;
 	}
-	public int getpIdCourse() {
+	public int getpIdCourse() 
+	{
 		return pIdCourse;
 	}
-	public void setpIdCourse(int pIdCourse) {
+	public void setpIdCourse(int pIdCourse) 
+	{
 		this.pIdCourse = pIdCourse;
 	}
 	

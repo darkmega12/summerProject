@@ -7,20 +7,25 @@ Description: Grade Bean with their columns as their attribute and their getters 
 Date: 5/7/14
 ************/
 
-public class GradeBean {
+public class GradeBean 
+{
 	private int pIdGrade;
 	private float pGrade;
 	
-	public int getpIdGrade() {
+	public int getpIdGrade() 
+	{
 		return pIdGrade;
 	}
-	public void setpIdGrade(int pIdGrade) {
+	public void setpIdGrade(int pIdGrade) 
+	{
 		this.pIdGrade = pIdGrade;
 	}
-	public float getpGrade() {
+	public float getpGrade() 
+	{
 		return pGrade;
 	}
-	public void setpGrade(float pGrade) {
+	public void setpGrade(float pGrade) 
+	{
 		this.pGrade = pGrade;
 	}
 }
