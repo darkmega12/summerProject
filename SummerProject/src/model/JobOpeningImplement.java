@@ -46,32 +46,12 @@ public class JobOpeningImplement
 			pStatement.setInt(6, pJobOpeningBean.getpQuantity());
 			pStatement.setInt(7, pCompanyBean.getpIdCompany());
 			pStatement.executeUpdate();
+			pDatabase.closeConnection(pConnection, pStatement);
 		}
 		catch (SQLException e) 
 		{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-		finally
-		{
-			try 
-			{
-				pStatement.close();
-			} 
-			catch (SQLException e) 
-			{
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			try 
-			{
-				pConnection.close();
-			}
-			catch (SQLException e) 
-			{
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
 		}
 	}
 }

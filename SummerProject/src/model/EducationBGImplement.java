@@ -42,32 +42,12 @@ public class EducationBGImplement {
 			pStatement.setString(3, pEducationBG.getpUniversity());
 			pStatement.setInt(4, pAgentBean.getpIdAgent());
 			pStatement.executeUpdate();
+			pDatabase.closeConnection(pConnection, pStatement);
 		} 
 		catch (SQLException e) 
 		{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-		finally
-		{
-			try 
-			{
-				pStatement.close();
-			} 
-			catch (SQLException e) 
-			{
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			try 
-			{
-				pConnection.close();
-			} 
-			catch (SQLException e)
-			{
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
 		}
 	}
 }

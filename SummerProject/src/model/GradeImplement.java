@@ -45,33 +45,12 @@ public class GradeImplement
 			pStatement.setInt(2, pClassBean.getpIdClass());
 			pStatement.setInt(3, pAgentBean.getpIdAgent());
 			pStatement.executeUpdate();
+			pDatabase.closeConnection(pConnection, pStatement);
 		} 
 		catch (SQLException e) 
 		{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		finally 
-		{
-			try 
-			{
-				pStatement.close();
-			} 
-			catch (SQLException e) 
-			{
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			try 
-			{
-				pConnection.close();
-			} 
-			catch (SQLException e) 
-			{
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-		
 	}
 }

@@ -55,32 +55,12 @@ public class AgentImplement
 			pStatement.setString(12, pAgentBean.getpStreet());
 			pStatement.setString(13, pAgentBean.getpCity());
 			pStatement.executeUpdate();
+			pDatabase.closeConnection(pConnection, pStatement);
 		} 
 		catch (SQLException e) 
 		{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-		finally 
-		{
-			try 
-			{
-				pStatement.close();
-			} 
-			catch (SQLException e) 
-			{
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			try 
-			{
-				pConnection.close();
-			} 
-			catch (SQLException e) 
-			{
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
 		}
 	}
 	

@@ -48,32 +48,12 @@ public class ClassImplement {
 			pStatement.setString(6, pClassBean.getpClassStatus());
 			pStatement.setInt(7, pCourseBean.getpIdCourse());
 			pStatement.executeUpdate();
+			pDatabase.closeConnection(pConnection, pStatement);
 		} 
 		catch (SQLException e) 
 		{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-		finally
-		{
-			try 
-			{
-				pStatement.close();
-			} 
-			catch (SQLException e) 
-			{
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			try 
-			{
-				pConnection.close();
-			} 
-			catch (SQLException e) 
-			{
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
 		}
 	}
 }

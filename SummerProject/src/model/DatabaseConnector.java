@@ -7,9 +7,6 @@ Date: 5/7/2014
 package model;
 
 import java.sql.*;
-/* import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.Scanner;*/
 
 public class DatabaseConnector 
 {
@@ -41,26 +38,6 @@ public class DatabaseConnector
 	}
 	
 	public void closeConnection(Connection conn, Statement stmt)
-	{
-		try
-		{
-			stmt.close();
-		}
-		catch(SQLException e)
-		{
-			e.printStackTrace();
-		}
-		try
-		{
-			conn.close();
-		}
-		catch(SQLException e)
-		{
-			e.printStackTrace();
-		}
-	}
-	
-	public void closeConnection(Connection conn, PreparedStatement stmt)
 	{
 		try
 		{

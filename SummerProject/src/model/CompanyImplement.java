@@ -48,32 +48,12 @@ public class CompanyImplement
 			pStatement.setString(7, pCompanyBean.getpStreet());
 			pStatement.setString(8, pCompanyBean.getpCity());
 			pStatement.executeUpdate();
+			pDatabase.closeConnection(pConnection, pStatement);
 		} 
 		catch (SQLException e) 
 		{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-		finally
-		{
-			try 
-			{
-				pResult.close();
-			} 
-			catch (SQLException e) 
-			{
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			try 
-			{
-				pConnection.close();
-			} 
-			catch (SQLException e) 
-			{
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
 		}
 	}
 }

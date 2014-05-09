@@ -41,31 +41,11 @@ public class CourseImplement
 			pStatement.setString(3, pCourseBean.getpCourseName());
 			pStatement.setInt(4, pCourseBean.getpHourCount());
 			pStatement.executeUpdate();
+			pDatabase.closeConnection(pConnection, pStatement);
 		}
 		catch (SQLException e)
 		{
 			e.printStackTrace();
-		}
-		finally
-		{
-			try 
-			{
-				pResult.close();
-			} 
-			catch (SQLException e) 
-			{
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			try 
-			{
-				pConnection.close();
-			} 
-			catch (SQLException e)
-			{
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
 		}
 	}
 }

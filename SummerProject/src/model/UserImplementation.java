@@ -17,7 +17,6 @@ public class UserImplementation
 {
 	private UserBean pUserBean;
 	private ArrayList<UserBean> pUserList;
-	private DatabaseConnector dbConnect;
 	private Connection pConnect;
 	private ResultSet pResult;
 	private PreparedStatement pPreparedstmt;
@@ -26,7 +25,6 @@ public class UserImplementation
 	
 	public UserImplementation()
 	{
-		dbConnect= new DatabaseConnector();
 		pConnect=null;
 		pUserBean= new UserBean();
 		pUserList= new ArrayList<UserBean>();
@@ -44,7 +42,7 @@ public class UserImplementation
 	{
 		try
 		{
-			pConnect= dbConnect.connectToDatabase();
+			pConnect= Driver.dbConnect.connectToDatabase();
 			pStatement= pConnect.createStatement();
 			pResult= pStatement.executeQuery("Select * from User");
 			while(pResult.next())
@@ -55,7 +53,7 @@ public class UserImplementation
 				pUserBean.setpUserType(pResult.getString("userType"));
 				pUserList.add(pUserBean);
 			}
-			dbConnect.closeConnection(pConnect, pStatement);
+			Driver.dbConnect.closeConnection(pConnect, pStatement);
 		} 
 		catch(SQLException e)
 		{
@@ -72,7 +70,7 @@ public class UserImplementation
 	{
 		try
 		{
-			pConnect= dbConnect.connectToDatabase();
+			pConnect= Driver.dbConnect.connectToDatabase();
 			String query="INSERT INTO user (userName, userPassword, userType) Values (?, ?, ?)";
 			pPreparedstmt= pConnect.prepareStatement(query);
 			pPreparedstmt.setString(1, newUser.getpUserName());
@@ -83,7 +81,7 @@ public class UserImplementation
 		{
 			e.printStackTrace();
 		}
-		dbConnect.closeConnection(pConnect, pStatement);
+		Driver.dbConnect.closeConnection(pConnect, pStatement);
 		pUserList.add(newUser);
 	}
 	

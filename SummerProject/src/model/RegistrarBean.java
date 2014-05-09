@@ -10,9 +10,9 @@ Date: 5/7/14
 public class RegistrarBean 
 {
 	private int pIdRegistrar;
-	private int pLastName;
-	private int pFirstName;
-	private int pMiddleName;
+	private String pLastName;
+	private String pFirstName;
+	private String pMiddleName;
 	private int pIdUser;
 	
 	public int getpIdRegistrar() 
@@ -23,27 +23,27 @@ public class RegistrarBean
 	{
 		this.pIdRegistrar = pIdRegistrar;
 	}
-	public int getpLastName() 
+	public String getpLastName() 
 	{
 		return pLastName;
 	}
-	public void setpLastName(int pLastName) 
+	public void setpLastName(String pLastName) 
 	{
 		this.pLastName = pLastName;
 	}
-	public int getpFirstName() 
+	public String getpFirstName() 
 	{
 		return pFirstName;
 	}
-	public void setpFirstName(int pFirstName) 
+	public void setpFirstName(String pFirstName) 
 	{
 		this.pFirstName = pFirstName;
 	}
-	public int getpMiddleName() 
+	public String getpMiddleName()
 	{
 		return pMiddleName;
 	}
-	public void setpMiddleName(int pMiddleName) 
+	public void setpMiddleName(String pMiddleName) 
 	{
 		this.pMiddleName = pMiddleName;
 	}
@@ -51,7 +51,7 @@ public class RegistrarBean
 	{
 		return pIdUser;
 	}
-	public void setpIdUser(int pIdUser)
+	public void setpIdUser(int pIdUser) 
 	{
 		this.pIdUser = pIdUser;
 	}
