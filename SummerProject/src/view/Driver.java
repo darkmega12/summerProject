@@ -21,7 +21,6 @@ public class Driver
 
 	
 	public static UserImplementation mUser;
-	public static DatabaseConnector dbConnect;
 	
 	public static void main(String[] args) 
 	{
@@ -32,8 +31,8 @@ public class Driver
 			{
 				try 
 				{
-					LoginScreen frame = new LoginScreen();
-					frame.setVisible(true);
+					LoginScreen loginFrame = new LoginScreen();
+					loginFrame.setVisible(true);
 				} catch (Exception e) 
 				{
 					e.printStackTrace();
@@ -49,7 +48,6 @@ public class Driver
 	*****/
 	public static void instantEverything()
 	{
-		dbConnect= new DatabaseConnector();
 		mUser=new UserImplementation();
 	}
 

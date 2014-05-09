@@ -40,6 +40,7 @@ public class LoginController implements ActionListener
 	@Override
 	public void actionPerformed(ActionEvent evt) 
 	{
+		errorHandling();
 		if(determineUser())
 		{
 			pLog.setVisible(false);
@@ -67,5 +68,16 @@ public class LoginController implements ActionListener
 			return false;
 		}
 		return true;
+	}
+	
+	public void errorHandling()
+	{
+		/*if(pLog.getUserField().equals(""))
+		{
+			JOptionPane.showMessageDialog(frame,
+				    "Eggs are not supposed to be green.",
+				    "Inane error",
+				    JOptionPane.ERROR_MESSAGE);
+		}*/
 	}
 }

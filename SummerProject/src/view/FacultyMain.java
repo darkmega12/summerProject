@@ -19,7 +19,7 @@ public class FacultyMain extends JFrame
 	/**
 	 * Launch the application.
 	 */
-
+	
 	/**
 	 * Create the frame.
 	 */

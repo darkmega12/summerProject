@@ -112,7 +112,20 @@ public class LoginScreen extends JFrame
 		{
 			case "registrar":
 			case "admin":
-				FacultyMain faculty= new FacultyMain();
+				EventQueue.invokeLater(new Runnable() 
+				{
+					public void run() 
+					{
+						try 
+						{
+							FacultyMain facultyFrame = new FacultyMain();
+							facultyFrame.setVisible(true);
+						} catch (Exception e) 
+						{
+							e.printStackTrace();
+						}
+					}
+				});
 				break;
 			case "company":
 				break;
