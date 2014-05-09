@@ -10,6 +10,7 @@ package model;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class RatingImplement 
 {
@@ -18,6 +19,7 @@ public class RatingImplement
 	private PreparedStatement pStatement;
 	private ResultSet pResult;
 	private RatingBean pRatingBean;
+	private WorkExperienceBean pWorkExperienceBean;
 	
 	public RatingImplement()
 	{
@@ -27,10 +29,24 @@ public class RatingImplement
 		pResult = null;	
 	}
 	
-	public void insertRating(RatingBean ratingBean)
+	public void insertRating(RatingBean ratingBean, WorkExperienceBean workExperience)
 	{
 		pRatingBean = ratingBean;
+		pWorkExperienceBean = workExperience;
 		
-		String query = "INSERT IGNORE into rating (rating) VALUES(?)";
+		String query = "INSERT IGNORE into rating (rating, idWorkExperience) VALUES(?,?)";
+		try 
+		{
+			pStatement = pConnection.prepareStatement(query);
+			pStatement.setFloat(1, pRatingBean.getpRating());
+			pStatement.setInt(2, pWorkExperienceBean.getpIdWorkExperienceBean());
+			pStatement.executeUpdate();
+			pDatabase.closeConnection(pConnection, pStatement);
+		} 
+		catch (SQLException e) 
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }

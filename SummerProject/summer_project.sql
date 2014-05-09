@@ -225,6 +225,35 @@ DEFAULT CHARACTER SET = latin1;
 
 
 -- -----------------------------------------------------
+-- Table `ecall`.`workexperience`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `ecall`.`workexperience` ;
+
+CREATE TABLE IF NOT EXISTS `ecall`.`workexperience` (
+  `idWorkExperience` INT(11) NOT NULL AUTO_INCREMENT,
+  `startingDate` DATE NOT NULL,
+  `yearEffective` INT(11) NOT NULL,
+  `agentSalary` FLOAT NOT NULL,
+  `idJobOpening` INT(11) NOT NULL,
+  `idAgent` INT(11) NOT NULL,
+  PRIMARY KEY (`idWorkExperience`),
+  INDEX `fk_WorkExperience_JobOpening1` (`idJobOpening` ASC),
+  INDEX `fk_workexperience_agent1_idx` (`idAgent` ASC),
+  CONSTRAINT `fk_WorkExperience_JobOpening1`
+    FOREIGN KEY (`idJobOpening`)
+    REFERENCES `ecall`.`jobopening` (`idJobOpening`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_workexperience_agent1`
+    FOREIGN KEY (`idAgent`)
+    REFERENCES `ecall`.`agent` (`idAgent`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = latin1;
+
+
+-- -----------------------------------------------------
 -- Table `ecall`.`rating`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `ecall`.`rating` ;
@@ -232,7 +261,14 @@ DROP TABLE IF EXISTS `ecall`.`rating` ;
 CREATE TABLE IF NOT EXISTS `ecall`.`rating` (
   `idRating` INT(11) NOT NULL AUTO_INCREMENT,
   `rating` FLOAT NOT NULL,
-  PRIMARY KEY (`idRating`))
+  `idWorkExperience` INT(11) NOT NULL,
+  PRIMARY KEY (`idRating`),
+  INDEX `fk_rating_workexperience1_idx` (`idWorkExperience` ASC),
+  CONSTRAINT `fk_rating_workexperience1`
+    FOREIGN KEY (`idWorkExperience`)
+    REFERENCES `ecall`.`workexperience` (`idWorkExperience`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
 
@@ -253,42 +289,6 @@ CREATE TABLE IF NOT EXISTS `ecall`.`registrar` (
   CONSTRAINT `fk_Registrar_User1`
     FOREIGN KEY (`idUser`)
     REFERENCES `ecall`.`user` (`idUser`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = latin1;
-
-
--- -----------------------------------------------------
--- Table `ecall`.`workexperience`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `ecall`.`workexperience` ;
-
-CREATE TABLE IF NOT EXISTS `ecall`.`workexperience` (
-  `idWorkExperience` INT(11) NOT NULL AUTO_INCREMENT,
-  `startingDate` DATE NOT NULL,
-  `yearEffective` INT(11) NOT NULL,
-  `agentSalary` FLOAT NOT NULL,
-  `idAgent` INT(11) NOT NULL,
-  `idJobOpening` INT(11) NOT NULL,
-  `idRating` INT(11) NOT NULL,
-  PRIMARY KEY (`idWorkExperience`),
-  INDEX `fk_WorkExperience_Agent1` (`idAgent` ASC),
-  INDEX `fk_WorkExperience_JobOpening1` (`idJobOpening` ASC),
-  INDEX `fk_WorkExperience_Rating1` (`idRating` ASC),
-  CONSTRAINT `fk_WorkExperience_Agent1`
-    FOREIGN KEY (`idAgent`)
-    REFERENCES `ecall`.`agent` (`idAgent`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_WorkExperience_JobOpening1`
-    FOREIGN KEY (`idJobOpening`)
-    REFERENCES `ecall`.`jobopening` (`idJobOpening`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_WorkExperience_Rating1`
-    FOREIGN KEY (`idRating`)
-    REFERENCES `ecall`.`rating` (`idRating`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB

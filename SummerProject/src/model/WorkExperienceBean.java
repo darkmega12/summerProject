@@ -18,7 +18,6 @@ public class WorkExperienceBean
 	private float pAgentSalary;
 	private int pIdAgent;
 	private int pIdJobOpening;
-	private int pIdRating;
 	
 	public int getpIdWorkExperienceBean() 
 	{
@@ -67,13 +66,5 @@ public class WorkExperienceBean
 	public void setpIdJobOpening(int pIdJobOpening) 
 	{
 		this.pIdJobOpening = pIdJobOpening;
-	}
-	public int getpIdRating() 
-	{
-		return pIdRating;
-	}
-	public void setpIdRating(int pIdRating) 
-	{
-		this.pIdRating = pIdRating;
 	}
 }

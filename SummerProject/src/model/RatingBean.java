@@ -11,6 +11,7 @@ public class RatingBean
 {
 	private int pIdRating;
 	private float pRating;
+	private int pIdWorkExperience;
 	
 	public int getpIdRating() 
 	{
@@ -27,5 +28,11 @@ public class RatingBean
 	public void setpRating(float pRating) 
 	{
 		this.pRating = pRating;
+	}
+	public int getpIdWorkExperience() {
+		return pIdWorkExperience;
+	}
+	public void setpIdWorkExperience(int pIdWorkExperience) {
+		this.pIdWorkExperience = pIdWorkExperience;
 	}
 }
