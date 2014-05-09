@@ -3,6 +3,7 @@ package model;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Iterator;
+import view.Driver;
 
 /*****
  * 
@@ -15,21 +16,20 @@ import java.util.Iterator;
 public class UserImplementation 
 {
 	private UserBean pUserBean;
-	private ArrayList<UserBean> pUserList= new ArrayList<UserBean>();
-	private ResultSet pRset;
+	private ArrayList<UserBean> pUserList;
+	private Connection pConnect;
+	private ResultSet pResult;
+	private PreparedStatement pPreparedstmt;
 	private Statement pStatement;
 	
 	
-	public UserImplementation(DatabaseConnector db)
+	public UserImplementation()
 	{
-		try
-		{
-			pStatement=db.connectToDatabase().createStatement();
-		}
-		catch(SQLException e)
-		{
-			System.out.println("SQL ERROR: "+ e.getMessage());
-		}
+		pConnect=null;
+		pUserBean= new UserBean();
+		pUserList= new ArrayList<UserBean>();
+		pResult= null;
+		pStatement=null;
 	}
 	
 	
@@ -42,17 +42,18 @@ public class UserImplementation
 	{
 		try
 		{
-			pRset= pStatement.executeQuery("Select * from User");
-			
-			while(pRset.next())
+			pConnect= Driver.dbConnect.connectToDatabase();
+			pStatement= pConnect.createStatement();
+			pResult= pStatement.executeQuery("Select * from User");
+			while(pResult.next())
 			{
-				pUserBean.setpIdUser(pRset.getInt("idUser"));
-				pUserBean.setpUserName(pRset.getString("userName"));
-				pUserBean.setpUserPassword(pRset.getString("userPassword"));
-				pUserBean.setpUserType(pRset.getString("userType"));
+				pUserBean.setpIdUser(pResult.getInt("idUser"));
+				pUserBean.setpUserName(pResult.getString("userName"));
+				pUserBean.setpUserPassword(pResult.getString("userPassword"));
+				pUserBean.setpUserType(pResult.getString("userType"));
 				pUserList.add(pUserBean);
 			}
-			
+			Driver.dbConnect.closeConnection(pConnect, pStatement);
 		} 
 		catch(SQLException e)
 		{
@@ -67,13 +68,28 @@ public class UserImplementation
 	
 	public void addUser(UserBean newUser)
 	{
+		try
+		{
+			pConnect= Driver.dbConnect.connectToDatabase();
+			String query="INSERT INTO user (userName, userPassword, userType) Values (?, ?, ?)";
+			pPreparedstmt= pConnect.prepareStatement(query);
+			pPreparedstmt.setString(1, newUser.getpUserName());
+			pPreparedstmt.setString(2, newUser.getpUserPassword());
+			pPreparedstmt.setString(3, newUser.getpUserType());
+		}
+		catch(SQLException e)
+		{
+			e.printStackTrace();
+		}
+		Driver.dbConnect.closeConnection(pConnect, pStatement);
 		pUserList.add(newUser);
 	}
 	
 	
 	/******
 	 * Function Name: getUser
-	 * Description: returns a user bean that matches the username and password with the parameter uBean
+	 * Description: Returns a user bean that matches the username and password with the parameter uBean.
+	 * 				If there was no match found, the function returns the parameter
 	 * uBean- contains the username and password to verify
 	******/
 	
@@ -86,5 +102,6 @@ public class UserImplementation
 			if(pUserBean.getpUserName().equals(uBean.getpUserName()) && pUserBean.getpUserPassword().equals(uBean.getpUserPassword()))
 				return pUserBean;
 		}
+		return uBean;
 	}
 }

@@ -1,4 +1,4 @@
-package controller;
+package controller_LoginModule;
 
 import java.sql.*;
 import java.awt.event.ActionListener;
@@ -7,7 +7,6 @@ import java.awt.event.ActionEvent;
 import model.UserBean;
 import model.UserImplementation;
 import view.LoginScreen;
-import view.FacultyMain;
 
 /*****
  * 
@@ -17,7 +16,7 @@ import view.FacultyMain;
  * 
 *****/
 
-public class UserController implements ActionListener 
+public class LoginController implements ActionListener 
 {
 
 	/******
@@ -30,10 +29,9 @@ public class UserController implements ActionListener
 	private UserBean pUbean;
 	private UserImplementation pUmodel;
 	private LoginScreen pLog;
-	private FacultyMain pFaculty;
 	
 	
-	public UserController(UserImplementation userModel, LoginScreen loginView)
+	public LoginController(UserImplementation userModel, LoginScreen loginView)
 	{
 		pUmodel=userModel;
 		pLog=loginView;
@@ -42,21 +40,10 @@ public class UserController implements ActionListener
 	@Override
 	public void actionPerformed(ActionEvent evt) 
 	{
-		Object source = evt.getSource();
-		if(source==pLog.getLogbtn())
+		if(determineUser())
 		{
-			determineUser();
 			pLog.setVisible(false);
-			switch(pUbean.getpUserType())
-			{
-				case "registrar":
-				pFaculty= new FacultyMain();
-					break;
-				case "company":
-					break;
-				case "agent":
-					break;
-			}
+			pLog.determineModule(pUbean.getpUserType());
 		}
 	}
 	
@@ -65,11 +52,20 @@ public class UserController implements ActionListener
 	 * Description: verifies the user input (username and password) and checks for possible match in the database
 	******/
 	
-	public void determineUser()
+	public boolean determineUser()
 	{
 		UserBean tempUser=new UserBean();
+		pUmodel.getAllUsers();
+		System.out.println("performed");
 		tempUser.setpUserName(pLog.getUserField());
 		tempUser.setpUserPassword(pLog.getPassField());
 		pUbean= pUmodel.getUser(tempUser);
+		/* If user type is null, the function getUser returned the parameter indicating that the user is not in the database*/
+		if(pUbean.getpUserType()==null)
+		{
+			System.out.println("No user in database");
+			return false;
+		}
+		return true;
 	}
 }

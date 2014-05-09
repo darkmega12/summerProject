@@ -5,7 +5,7 @@ import java.awt.EventQueue;
 import model.DatabaseConnector;
 import model.UserImplementation; 
 
-import controller.UserController;
+import controller_LoginModule.LoginController;
 
 /*****
  * 
@@ -20,19 +20,18 @@ public class Driver
 {
 
 	
-	static UserImplementation mUser;
-	static UserController cUser;
+	public static UserImplementation mUser;
+	public static DatabaseConnector dbConnect;
 	
 	public static void main(String[] args) 
 	{
-		System.out.println("Hi");
+		instantEverything();
 		EventQueue.invokeLater(new Runnable() 
 		{
 			public void run() 
 			{
 				try 
 				{
-					initEverything();
 					LoginScreen frame = new LoginScreen();
 					frame.setVisible(true);
 				} catch (Exception e) 
@@ -45,13 +44,13 @@ public class Driver
 	
 	
 	/*****
-	 * Function Name: initEverything
-	 * Description: initializes db and other things that i haven't foreseen
+	 * Function Name: instantEverything
+	 * Description:	instantiates all model classes
 	*****/
-	public static void initEverything()
+	public static void instantEverything()
 	{
-		DatabaseConnector db= new DatabaseConnector();
-		mUser= new UserImplementation(db);
+		dbConnect= new DatabaseConnector();
+		mUser=new UserImplementation();
 	}
 
 }

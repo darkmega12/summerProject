@@ -16,7 +16,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JPasswordField;
 
-import controller.UserController;
+import controller_LoginModule.LoginController;
 
 /*****
  * 
@@ -32,13 +32,13 @@ public class LoginScreen extends JFrame
 	private JTextField userField;
 	private JPasswordField passwordField;
 	private JButton btnLogin;
-	private UserController pUserControl;
+	private LoginController pLoginCtrl;
 	/**
 	 * Create the frame.
 	 */
 	public LoginScreen() 
 	{
-		pUserControl= new UserController(Driver.mUser, this);
+		pLoginCtrl= new LoginController(Driver.mUser, this);
 		
 		setTitle("E-CALL PLACEMENT SYSTEM");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -75,7 +75,7 @@ public class LoginScreen extends JFrame
 		
 		JButton btnLogin = new JButton("LOGIN");
 		btnLogin.setBounds(187, 300, 251, 50);
-		btnLogin.addActionListener(pUserControl);
+		btnLogin.addActionListener(pLoginCtrl);
 		panel.add(btnLogin);
 		
 		JButton btnCreate = new JButton("CREATE ACCOUNT");
@@ -104,5 +104,20 @@ public class LoginScreen extends JFrame
 	public String getPassField()
 	{
 		return new String(passwordField.getPassword());
+	}
+	
+	public void determineModule(String userType)
+	{
+		switch(userType)
+		{
+			case "registrar":
+			case "admin":
+				FacultyMain faculty= new FacultyMain();
+				break;
+			case "company":
+				break;
+			case "agent":
+				break;
+		}
 	}
 }
