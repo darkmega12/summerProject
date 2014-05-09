@@ -3,7 +3,7 @@ package view;
 import java.awt.EventQueue;
 
 import model.DatabaseConnector;
-import model.UserImplementation; 
+import model.UserImplement; 
 
 import controller_LoginModule.LoginController;
 
@@ -20,11 +20,10 @@ public class Driver
 {
 
 	
-	public static UserImplementation mUser;
+	public static UserImplement mUser;
 	
 	public static void main(String[] args) 
 	{
-		instantEverything();
 		EventQueue.invokeLater(new Runnable() 
 		{
 			public void run() 
@@ -40,15 +39,4 @@ public class Driver
 			}
 		});
 	}
-	
-	
-	/*****
-	 * Function Name: instantEverything
-	 * Description:	instantiates all model classes
-	*****/
-	public static void instantEverything()
-	{
-		mUser=new UserImplementation();
-	}
-
 }

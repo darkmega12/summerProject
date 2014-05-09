@@ -17,6 +17,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JPasswordField;
 
 import controller_LoginModule.LoginController;
+import model.UserImplement;
 
 /*****
  * 
@@ -33,12 +34,14 @@ public class LoginScreen extends JFrame
 	private JPasswordField passwordField;
 	private JButton btnLogin;
 	private LoginController pLoginCtrl;
+	private UserImplement userModel;
 	/**
 	 * Create the frame.
 	 */
 	public LoginScreen() 
 	{
-		pLoginCtrl= new LoginController(Driver.mUser, this);
+		userModel= new UserImplement();
+		pLoginCtrl= new LoginController(userModel, this);
 		
 		setTitle("E-CALL PLACEMENT SYSTEM");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

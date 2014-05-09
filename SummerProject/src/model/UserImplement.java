@@ -13,7 +13,7 @@ import view.Driver;
  * 
 *****/
 
-public class UserImplementation 
+public class UserImplement 
 {
 	private UserBean pUserBean;
 	private ArrayList<UserBean> pUserList;
@@ -21,10 +21,12 @@ public class UserImplementation
 	private ResultSet pResult;
 	private PreparedStatement pPreparedstmt;
 	private Statement pStatement;
+	private DatabaseConnector dbConnect;
 	
 	
-	public UserImplementation()
+	public UserImplement()
 	{
+		dbConnect= new DatabaseConnector();
 		pConnect=null;
 		pUserBean= new UserBean();
 		pUserList= new ArrayList<UserBean>();
@@ -38,11 +40,12 @@ public class UserImplementation
 	 * Description: stores all users from the databases in pUserBean
 	******/
 	
-	public void getAllUsers()
+	public ArrayList<UserBean> getAllUsers()
 	{
+		ArrayList<UserBean> tempList= new ArrayList<UserBean>();
 		try
 		{
-			pConnect= Driver.dbConnect.connectToDatabase();
+			pConnect= dbConnect.connectToDatabase();
 			pStatement= pConnect.createStatement();
 			pResult= pStatement.executeQuery("Select * from User");
 			while(pResult.next())
@@ -51,14 +54,16 @@ public class UserImplementation
 				pUserBean.setpUserName(pResult.getString("userName"));
 				pUserBean.setpUserPassword(pResult.getString("userPassword"));
 				pUserBean.setpUserType(pResult.getString("userType"));
-				pUserList.add(pUserBean);
+				tempList.add(pUserBean);
 			}
-			Driver.dbConnect.closeConnection(pConnect, pStatement);
+			dbConnect.closeConnection(pConnect, pStatement);
 		} 
 		catch(SQLException e)
 		{
 			System.err.println(e);
 		}
+		
+		return tempList;
 	}
 	
 	/******
@@ -70,7 +75,7 @@ public class UserImplementation
 	{
 		try
 		{
-			pConnect= Driver.dbConnect.connectToDatabase();
+			pConnect= dbConnect.connectToDatabase();
 			String query="INSERT INTO user (userName, userPassword, userType) Values (?, ?, ?)";
 			pPreparedstmt= pConnect.prepareStatement(query);
 			pPreparedstmt.setString(1, newUser.getpUserName());
@@ -81,7 +86,7 @@ public class UserImplementation
 		{
 			e.printStackTrace();
 		}
-		Driver.dbConnect.closeConnection(pConnect, pStatement);
+		dbConnect.closeConnection(pConnect, pStatement);
 		pUserList.add(newUser);
 	}
 	
@@ -95,6 +100,7 @@ public class UserImplementation
 	
 	public UserBean getUser(UserBean uBean)
 	{
+		pUserList = getAllUsers();
 		Iterator<UserBean> i = pUserList.iterator();
 		while(i.hasNext())
 		{

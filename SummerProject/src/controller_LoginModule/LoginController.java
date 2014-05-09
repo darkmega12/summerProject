@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 import model.UserBean;
-import model.UserImplementation;
+import model.UserImplement;
 import view.LoginScreen;
 
 /*****
@@ -27,11 +27,11 @@ public class LoginController implements ActionListener
 	******/
 	
 	private UserBean pUbean;
-	private UserImplementation pUmodel;
+	private UserImplement pUmodel;
 	private LoginScreen pLog;
 	
 	
-	public LoginController(UserImplementation userModel, LoginScreen loginView)
+	public LoginController(UserImplement userModel, LoginScreen loginView)
 	{
 		pUmodel=userModel;
 		pLog=loginView;
@@ -56,7 +56,6 @@ public class LoginController implements ActionListener
 	public boolean determineUser()
 	{
 		UserBean tempUser=new UserBean();
-		pUmodel.getAllUsers();
 		System.out.println("performed");
 		tempUser.setpUserName(pLog.getUserField());
 		tempUser.setpUserPassword(pLog.getPassField());
