@@ -1,13 +1,3 @@
-package controller_LoginModule;
-
-import java.sql.*;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-
-import model.UserBean;
-import model.UserImplement;
-import view.LoginScreen;
-
 /*****
  * 
  * Author: Christian Kiel Abejuro
@@ -15,6 +5,19 @@ import view.LoginScreen;
  * Description: Handles the user models
  * 
 *****/
+package controller_LoginModule;
+
+import java.sql.*;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
+import model.UserBean;
+import model.UserImplement;
+import view.LoginScreen;
+
+
 
 public class LoginController implements ActionListener 
 {
@@ -40,12 +43,18 @@ public class LoginController implements ActionListener
 	@Override
 	public void actionPerformed(ActionEvent evt) 
 	{
-		errorHandling();
+		if(errorHandling())
+			return;
 		if(determineUser())
 		{
 			pLog.setVisible(false);
 			pLog.determineModule(pUbean.getpUserType());
 		}
+		else
+			JOptionPane.showMessageDialog(new JFrame(),
+				    "Username and Password is invalid.",
+				    "",
+				    JOptionPane.ERROR_MESSAGE);
 	}
 	
 	/******
@@ -69,14 +78,16 @@ public class LoginController implements ActionListener
 		return true;
 	}
 	
-	public void errorHandling()
+	public boolean errorHandling()
 	{
-		/*if(pLog.getUserField().equals(""))
+		if(pLog.getUserField().equals(""))
 		{
-			JOptionPane.showMessageDialog(frame,
-				    "Eggs are not supposed to be green.",
-				    "Inane error",
+			JOptionPane.showMessageDialog(new JFrame(),
+				    "Please input username.",
+				    "Login Error",
 				    JOptionPane.ERROR_MESSAGE);
-		}*/
+			return true;
+		}
+		return false;
 	}
 }
