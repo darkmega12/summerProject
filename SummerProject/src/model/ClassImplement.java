@@ -11,8 +11,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
-public class ClassImplement {
+public class ClassImplement implements ClassInterface{
 	private DatabaseConnector pDatabase;
 	private Connection pConnection;
 	private PreparedStatement pStatement;
@@ -55,5 +56,23 @@ public class ClassImplement {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+
+	@Override
+	public boolean updateClass(ClassBean oldClassBean, ClassBean newClassBean) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public ArrayList<ClassBean> getAllClass() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<ClassBean> searchClassByCourseCode(CourseBean courseBean) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

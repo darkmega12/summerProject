@@ -12,7 +12,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class JobOpeningImplement 
+public class JobOpeningImplement implements JobOpeningInterface
 {
 	private DatabaseConnector pDatabase;
 	private Connection pConnection;

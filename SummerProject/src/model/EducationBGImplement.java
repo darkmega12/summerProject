@@ -11,8 +11,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
-public class EducationBGImplement {
+public class EducationBGImplement implements EducationBGInterface
+{
 	private DatabaseConnector pDatabase;
 	private Connection pConnection;
 	private PreparedStatement pStatement;
@@ -49,5 +51,26 @@ public class EducationBGImplement {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+
+	@Override
+	public boolean updateEducationBG(EducationBGBean oldEducationBGBean, EducationBGBean newEducationBGBean) 
+	{
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public ArrayList<EducationBGBean> getAllEducationBG() 
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<EducationBGBean> searchEducationBGByAgent(AgentBean agentBean)
+	{
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

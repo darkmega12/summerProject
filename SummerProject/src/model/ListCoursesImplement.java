@@ -13,7 +13,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class ListCoursesImplement {
+public class ListCoursesImplement implements ListCoursesInterface{
 	private DatabaseConnector pDatabase;
 	private Connection pConnection;
 	private PreparedStatement pStatement;

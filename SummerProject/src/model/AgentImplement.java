@@ -11,8 +11,9 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
-public class AgentImplement 
+public class AgentImplement implements AgentInterface 
 {
 	private AgentBean pAgentBean;
 	private UserBean pUserBean;
@@ -62,6 +63,48 @@ public class AgentImplement
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+
+	@Override
+	public boolean updateAgent(AgentBean newAgentBean, AgentBean oldAgentBean) 
+	{
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public ArrayList<AgentBean> getAllAgents() 
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<AgentBean> searchAgentByName(AgentBean agentBean) 
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<AgentBean> searchAgentByApplicationDate(AgentBean agentBean) 
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<AgentBean> searchAgentByApplicationStatus(AgentBean agentBean)
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<AgentBean> searchAgentByCity(AgentBean agentBean) 
+	{
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	

@@ -11,8 +11,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
-public class CompanyImplement 
+public class CompanyImplement implements CompanyInterface
 {
 	private DatabaseConnector pDatabase;
 	private Connection pConnection;
@@ -55,5 +56,26 @@ public class CompanyImplement
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+
+	@Override
+	public boolean updateCompany(CompanyBean oldCompanyBean, CompanyBean newCompanyBean) 
+	{
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public ArrayList<CompanyBean> getAllCompany() 
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<CompanyBean> searchCompanyByName(CompanyBean companyBean) 
+	{
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

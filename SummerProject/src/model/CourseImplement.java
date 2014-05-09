@@ -11,8 +11,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
-public class CourseImplement 
+public class CourseImplement implements CourseInterface
 {
 	private DatabaseConnector pDatabase;
 	private Connection pConnection;
@@ -47,5 +48,26 @@ public class CourseImplement
 		{
 			e.printStackTrace();
 		}
+	}
+
+	@Override
+	public boolean updateCourse(CourseBean newCourseBean, CourseBean oldCourseBean)
+	{
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public ArrayList<CourseBean> getAllCourse() 
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<CourseBean> searchCourseByCourseCode(CourseBean courseBean) 
+	{
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
