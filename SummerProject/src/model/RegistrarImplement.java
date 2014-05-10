@@ -25,13 +25,16 @@ public class RegistrarImplement
 	public RegistrarImplement()
 	{
 		pDatabase = new DatabaseConnector();
-		pConnection = pDatabase.connectToDatabase();
+		pConnection=null;
 		pStatement  = null;
 		pResult = null;		
 	}
 	
 	public void insertRegistrar(UserBean userBean, RegistrarBean registrarBean)
 	{
+		pDatabase = new DatabaseConnector();
+		pConnection = pDatabase.connectToDatabase();
+		
 		pRegistrarBean = registrarBean;
 		pUserBean = userBean;
 		
@@ -52,5 +55,21 @@ public class RegistrarImplement
 			e.printStackTrace();
 		}
 		
+	}
+	
+	public boolean searchDuplicate(RegistrarBean registrarBean)
+	{
+		pDatabase = new DatabaseConnector();
+		pConnection = pDatabase.connectToDatabase();
+		
+		try
+		{
+			pStatement = pConnection.prepareStatement("");
+		}
+		catch(SQLException e)
+		{
+			e.printStackTrace();
+		}
+		return false;
 	}
 }

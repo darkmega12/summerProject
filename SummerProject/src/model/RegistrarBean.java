@@ -15,6 +15,15 @@ public class RegistrarBean
 	private String pMiddleName;
 	private int pIdUser;
 	
+	public RegistrarBean()
+	{
+		pIdRegistrar=0;
+		pLastName=null;
+		pFirstName=null;
+		pMiddleName=null;
+		pIdUser=0;
+	}
+	
 	public int getpIdRegistrar() 
 	{
 		return pIdRegistrar;

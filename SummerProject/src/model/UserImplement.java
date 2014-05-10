@@ -76,17 +76,18 @@ public class UserImplement
 		try
 		{
 			pConnect= dbConnect.connectToDatabase();
-			String query="INSERT INTO user (userName, userPassword, userType) Values (?, ?, ?)";
+			String query="INSERT IGNORE INTO user (userName, userPassword, userType) Values (?, ?, ?)";
 			pPreparedstmt= pConnect.prepareStatement(query);
 			pPreparedstmt.setString(1, newUser.getpUserName());
 			pPreparedstmt.setString(2, newUser.getpUserPassword());
 			pPreparedstmt.setString(3, newUser.getpUserType());
+			pPreparedstmt.executeUpdate();
+			dbConnect.closeConnection(pConnect, pPreparedstmt);
 		}
 		catch(SQLException e)
 		{
 			e.printStackTrace();
 		}
-		dbConnect.closeConnection(pConnect, pStatement);
 		pUserList.add(newUser);
 	}
 	

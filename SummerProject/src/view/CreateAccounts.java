@@ -22,11 +22,20 @@ import javax.swing.JTextField;
 
 import com.toedter.calendar.JCalendar;
 
+import controller_createModule.CreateRegistrarController;
+
+import javax.swing.JPasswordField;
+
+import model.RegistrarImplement;
+
 public class CreateAccounts extends JFrame {
 
 	final static String SELECTION_PANEL = "selection";
 	final static String COMPANY_PANEL = "company";
 	final static String REGISTRAR_PANEL = "registrar";
+	
+	private CreateRegistrarController pRegistrarController;
+	private RegistrarImplement pRegistrarModel;
 
 	private JPanel contentPane;
 	private JTextField nameField;
@@ -37,24 +46,26 @@ public class CreateAccounts extends JFrame {
 	private JTextField regFirstName;
 	private JTextField regMiddleName;
 	private JTextField regLastName;
-	private JTextField regUserName;
-	private JTextField regPassword;
-	private JTextField regConfirmPass;
 	
 	final CardLayout panelLayer;
 	final JPanel layerPanel;
 	final JLabel lblSelect;
 	private JTextField companyPass;
 	private JTextField companyConfirmPass;
-
+	private JPasswordField regPassword;
+	private JPasswordField regConfirmPassword;
 
 	/**
 	 * Create the frame.
 	 */
 	public CreateAccounts() {
+		pRegistrarModel= new RegistrarImplement();
+		pRegistrarController= new CreateRegistrarController(pRegistrarModel, this);
+		
 		setTitle("CREATE ACCOUNT");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 600);
+		setResizable(false);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setBackground(new Color(176, 196, 222));
@@ -220,35 +231,15 @@ public class CreateAccounts extends JFrame {
 		crtRegistrarPanel.add(regLastName);
 		regLastName.setColumns(10);
 		
-		JLabel lblUsername = new JLabel("Username:");
-		lblUsername.setFont(new Font("SansSerif", Font.PLAIN, 15));
-		lblUsername.setBounds(410, 97, 83, 19);
-		crtRegistrarPanel.add(lblUsername);
-		
-		regUserName = new JTextField();
-		regUserName.setBounds(503, 94, 236, 28);
-		crtRegistrarPanel.add(regUserName);
-		regUserName.setColumns(10);
-		
 		JLabel lblPassword = new JLabel("Password:");
 		lblPassword.setFont(new Font("SansSerif", Font.PLAIN, 15));
-		lblPassword.setBounds(410, 151, 78, 23);
+		lblPassword.setBounds(410, 126, 78, 23);
 		crtRegistrarPanel.add(lblPassword);
-		
-		regPassword = new JTextField();
-		regPassword.setBounds(503, 152, 236, 28);
-		crtRegistrarPanel.add(regPassword);
-		regPassword.setColumns(10);
 		
 		JLabel lblReenterPassword = new JLabel("<html>Re-enter </br> Password: </html>");
 		lblReenterPassword.setFont(new Font("SansSerif", Font.PLAIN, 15));
-		lblReenterPassword.setBounds(410, 193, 83, 34);
+		lblReenterPassword.setBounds(410, 179, 83, 34);
 		crtRegistrarPanel.add(lblReenterPassword);
-		
-		regConfirmPass = new JTextField();
-		regConfirmPass.setBounds(503, 202, 236, 28);
-		crtRegistrarPanel.add(regConfirmPass);
-		regConfirmPass.setColumns(10);
 		
 		JButton btnBackRegistrar = new JButton("Back");
 		btnBackRegistrar.setBounds(164, 301, 162, 61);
@@ -256,7 +247,16 @@ public class CreateAccounts extends JFrame {
 		
 		JButton btnCrtRegistrar = new JButton("Create Account");
 		btnCrtRegistrar.setBounds(399, 301, 162, 61);
+		btnCrtRegistrar.addActionListener(pRegistrarController);
 		crtRegistrarPanel.add(btnCrtRegistrar);
+		
+		regPassword = new JPasswordField();
+		regPassword.setBounds(503, 125, 236, 28);
+		crtRegistrarPanel.add(regPassword);
+		
+		regConfirmPassword = new JPasswordField();
+		regConfirmPassword.setBounds(503, 191, 236, 28);
+		crtRegistrarPanel.add(regConfirmPassword);
 		
 		lblSelect = new JLabel("Please select an account to create");
 		lblSelect.setBounds(230, 50, 402, 65);
@@ -310,4 +310,30 @@ public class CreateAccounts extends JFrame {
 		
 
 	}
+	
+	public String getRegFirstName()
+	{
+		return regFirstName.getText();
+	}
+	
+	public String getRegMiddleName()
+	{
+		return regMiddleName.getText();
+	}
+	
+	public String getRegLastName()
+	{
+		return regLastName.getText();
+	}
+	
+	public String getRegPassword()
+	{
+		return new String(regPassword.getPassword());
+	}
+	
+	public String getRegConfirmPassword()
+	{
+		return new String(regConfirmPassword.getPassword());
+	}
+	
 }

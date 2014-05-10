@@ -16,6 +16,14 @@ public class UserBean
 	private String pUserPassword;
 	private String pUserType;
 	
+	public UserBean()
+	{
+		pIdUser=0;
+		pUserName=null;
+		pUserPassword=null;
+		pUserType=null;
+	}
+	
 	public int getpIdUser() 
 	{
 		return pIdUser;
