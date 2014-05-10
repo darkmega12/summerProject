@@ -93,6 +93,25 @@ public class LoginScreen extends JFrame
 		lblDontHaveAn.setFont(new Font("SansSerif", Font.PLAIN, 15));
 		lblDontHaveAn.setBounds(139, 405, 164, 31);
 		panel.add(lblDontHaveAn);
+		
+		btnCreate.addActionListener(new ActionListener()
+		{
+			@Override
+			public void actionPerformed(ActionEvent e)
+			{
+				EventQueue.invokeLater(new Runnable() {
+					public void run() {
+						try {
+							CreateAccounts frame = new CreateAccounts();
+							frame.setVisible(true);
+							frame.setLocationRelativeTo(null);
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+				});
+			}
+		});
 	}
 	
 	public Object getLogbtn()
