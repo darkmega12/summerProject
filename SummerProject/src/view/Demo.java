@@ -1,8 +1,9 @@
 package view;
 
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 
-import com.toedter.calendar.JCalendar;
+import com.toedter.calendar.*;
 
 import model.DatabaseConnector;
 
@@ -11,13 +12,18 @@ public class Demo {
 	/**
 	 * @param args
 	 */
+	private static JPanel contentPane;
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		JCalendar demo = new JCalendar();
 		JFrame frame = new JFrame();
+		frame.setBounds(100,100, 400, 400);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
-		frame.add(demo);
+		contentPane = new JPanel();
+		frame.setContentPane(contentPane);
+		contentPane.add(demo);
+		
 	}
 
 }

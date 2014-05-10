@@ -102,9 +102,10 @@ public class LoginScreen extends JFrame
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
-							CreateAccounts frame = new CreateAccounts();
-							frame.setVisible(true);
-							frame.setLocationRelativeTo(null);
+						    setVisible(false);
+							CreateAccounts createFrame = new CreateAccounts();
+							createFrame.setVisible(true);
+							createFrame.setLocationRelativeTo(null);
 						} catch (Exception e) {
 							e.printStackTrace();
 						}
