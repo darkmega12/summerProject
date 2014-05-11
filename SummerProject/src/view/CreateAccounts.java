@@ -99,7 +99,7 @@ public class CreateAccounts extends JFrame {
 		crtCompanyPanel.setLayout(null);
 		
 		JLabel lblCompanyName = new JLabel("Company Name: ");
-		lblCompanyName.setFont(new Font("SansSerif", Font.PLAIN, 15));
+		lblCompanyName.setFont(new Font("SansSerif", Font.BOLD, 15));
 		lblCompanyName.setBounds(32, 42, 119, 27);
 		crtCompanyPanel.add(lblCompanyName);
 		
@@ -109,8 +109,8 @@ public class CreateAccounts extends JFrame {
 		nameField.setColumns(10);
 		
 		JLabel lblContactNumber = new JLabel("Contact Number: ");
-		lblContactNumber.setFont(new Font("SansSerif", Font.PLAIN, 15));
-		lblContactNumber.setBounds(32, 89, 119, 20);
+		lblContactNumber.setFont(new Font("SansSerif", Font.BOLD, 15));
+		lblContactNumber.setBounds(22, 89, 129, 20);
 		crtCompanyPanel.add(lblContactNumber);
 		
 		numberField = new JTextField();
@@ -119,12 +119,12 @@ public class CreateAccounts extends JFrame {
 		numberField.setColumns(10);
 		
 		JLabel lblAddress = new JLabel("ADDRESS");
-		lblAddress.setFont(new Font("SansSerif", Font.PLAIN, 15));
+		lblAddress.setFont(new Font("SansSerif", Font.BOLD, 15));
 		lblAddress.setBounds(32, 247, 80, 14);
 		crtCompanyPanel.add(lblAddress);
 		
 		JLabel lblZipCode = new JLabel("Zip Code:");
-		lblZipCode.setFont(new Font("SansSerif", Font.PLAIN, 15));
+		lblZipCode.setFont(new Font("SansSerif", Font.BOLD, 15));
 		lblZipCode.setBounds(83, 272, 68, 20);
 		crtCompanyPanel.add(lblZipCode);
 		
@@ -134,7 +134,7 @@ public class CreateAccounts extends JFrame {
 		zipField.setColumns(10);
 		
 		JLabel lblStreet = new JLabel("Street:");
-		lblStreet.setFont(new Font("SansSerif", Font.PLAIN, 15));
+		lblStreet.setFont(new Font("SansSerif", Font.BOLD, 15));
 		lblStreet.setBounds(98, 313, 53, 14);
 		crtCompanyPanel.add(lblStreet);
 		
@@ -144,7 +144,7 @@ public class CreateAccounts extends JFrame {
 		streetField.setColumns(10);
 		
 		JLabel lblCity = new JLabel("City:");
-		lblCity.setFont(new Font("SansSerif", Font.PLAIN, 15));
+		lblCity.setFont(new Font("SansSerif", Font.BOLD, 15));
 		lblCity.setBounds(114, 347, 37, 23);
 		crtCompanyPanel.add(lblCity);
 		
@@ -172,7 +172,7 @@ public class CreateAccounts extends JFrame {
 		crtCompanyPanel.add(calendarPanel);
 		
 		JLabel lblPassword_1 = new JLabel("Password:");
-		lblPassword_1.setFont(new Font("SansSerif", Font.PLAIN, 15));
+		lblPassword_1.setFont(new Font("SansSerif", Font.BOLD, 15));
 		lblPassword_1.setBounds(68, 132, 80, 20);
 		crtCompanyPanel.add(lblPassword_1);
 		
@@ -182,7 +182,7 @@ public class CreateAccounts extends JFrame {
 		companyPass.setColumns(10);
 		
 		JLabel lblConfirmpassword = new JLabel("<html>Re-enter </br> Password:</html>");
-		lblConfirmpassword.setFont(new Font("SansSerif", Font.PLAIN, 15));
+		lblConfirmpassword.setFont(new Font("SansSerif", Font.BOLD, 15));
 		lblConfirmpassword.setBounds(68, 166, 73, 43);
 		crtCompanyPanel.add(lblConfirmpassword);
 		
@@ -202,7 +202,7 @@ public class CreateAccounts extends JFrame {
 		crtRegistrarPanel.setLayout(null);
 		
 		JLabel lblFirstName = new JLabel("First Name:");
-		lblFirstName.setFont(new Font("SansSerif", Font.PLAIN, 15));
+		lblFirstName.setFont(new Font("SansSerif", Font.BOLD, 15));
 		lblFirstName.setBounds(22, 94, 83, 28);
 		crtRegistrarPanel.add(lblFirstName);
 		
@@ -212,8 +212,8 @@ public class CreateAccounts extends JFrame {
 		regFirstName.setColumns(10);
 		
 		JLabel lblMiddleName = new JLabel("Middle Name:");
-		lblMiddleName.setFont(new Font("SansSerif", Font.PLAIN, 15));
-		lblMiddleName.setBounds(10, 151, 95, 20);
+		lblMiddleName.setFont(new Font("SansSerif", Font.BOLD, 15));
+		lblMiddleName.setBounds(10, 153, 105, 20);
 		crtRegistrarPanel.add(lblMiddleName);
 		
 		regMiddleName = new JTextField();
@@ -222,7 +222,7 @@ public class CreateAccounts extends JFrame {
 		regMiddleName.setColumns(10);
 		
 		JLabel lblLastName = new JLabel("Last Name:");
-		lblLastName.setFont(new Font("SansSerif", Font.PLAIN, 15));
+		lblLastName.setFont(new Font("SansSerif", Font.BOLD, 15));
 		lblLastName.setBounds(22, 205, 83, 14);
 		crtRegistrarPanel.add(lblLastName);
 		
@@ -232,20 +232,22 @@ public class CreateAccounts extends JFrame {
 		regLastName.setColumns(10);
 		
 		JLabel lblPassword = new JLabel("Password:");
-		lblPassword.setFont(new Font("SansSerif", Font.PLAIN, 15));
+		lblPassword.setFont(new Font("SansSerif", Font.BOLD, 15));
 		lblPassword.setBounds(410, 126, 78, 23);
 		crtRegistrarPanel.add(lblPassword);
 		
 		JLabel lblReenterPassword = new JLabel("<html>Re-enter </br> Password: </html>");
-		lblReenterPassword.setFont(new Font("SansSerif", Font.PLAIN, 15));
+		lblReenterPassword.setFont(new Font("SansSerif", Font.BOLD, 15));
 		lblReenterPassword.setBounds(410, 179, 83, 34);
 		crtRegistrarPanel.add(lblReenterPassword);
 		
 		JButton btnBackRegistrar = new JButton("Back");
+		btnBackRegistrar.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		btnBackRegistrar.setBounds(164, 301, 162, 61);
 		crtRegistrarPanel.add(btnBackRegistrar);
 		
 		JButton btnCrtRegistrar = new JButton("Create Account");
+		btnCrtRegistrar.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		btnCrtRegistrar.setBounds(399, 301, 162, 61);
 		btnCrtRegistrar.addActionListener(pRegistrarController);
 		crtRegistrarPanel.add(btnCrtRegistrar);
@@ -311,29 +313,29 @@ public class CreateAccounts extends JFrame {
 
 	}
 	
-	public String getRegFirstName()
+	public JTextField getRegFirstNameField()
 	{
-		return regFirstName.getText();
+		return regFirstName;
 	}
 	
-	public String getRegMiddleName()
+	public JTextField getRegMiddleNameField()
 	{
-		return regMiddleName.getText();
+		return regMiddleName;
 	}
 	
-	public String getRegLastName()
+	public JTextField getRegLastNameField()
 	{
-		return regLastName.getText();
+		return regLastName;
 	}
 	
-	public String getRegPassword()
+	public JPasswordField getRegPasswordField()
 	{
-		return new String(regPassword.getPassword());
+		return regPassword;
 	}
 	
-	public String getRegConfirmPassword()
+	public JPasswordField getRegConfirmPasswordField()
 	{
-		return new String(regConfirmPassword.getPassword());
+		return regConfirmPassword;
 	}
 	
 }
