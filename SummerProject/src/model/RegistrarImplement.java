@@ -94,11 +94,12 @@ public class RegistrarImplement
 		pConnection = pDatabase.connectToDatabase();
 		boolean duplicate= false;
 		
-		String query= "select idRegistrar, lastName, firstName, middleName, idUser " +
+		String query= "select lastName, firstName, middleName " +
 					  "from registrar " +
 					  "where lastName= ? and firstName= ? and middleName= ?";
 		try
 		{
+			System.out.println(registrarBean.getpFirstName()+" "+registrarBean.getpMiddleName()+" "+registrarBean.getpLastName());
 			pPreparedStmt = pConnection.prepareStatement(query);
 			pPreparedStmt.setString(1, registrarBean.getpLastName());
 			pPreparedStmt.setString(2, registrarBean.getpFirstName());

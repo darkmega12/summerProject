@@ -46,6 +46,7 @@ public class CreateRegistrarController implements ActionListener
 	@Override
 	public void actionPerformed(ActionEvent e)
 	{
+		setValues();
 		if(errorHandling())
 			return;
 		
@@ -58,7 +59,6 @@ public class CreateRegistrarController implements ActionListener
 		
 		if(choice==JOptionPane.YES_OPTION)
 		{
-			setValues();
 			createRegistrar();
 			JOptionPane.showMessageDialog(
 				new JFrame(),
