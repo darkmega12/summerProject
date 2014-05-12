@@ -1,3 +1,11 @@
+/*******
+ *
+ * Author: Christian Kiel Abejuro
+ * 
+ * Description: Handles the account creation for Company
+ *
+ *******/
+
 package controller_createModule;
 
 import java.awt.Color;
@@ -27,6 +35,11 @@ public class CreateRegistrarController implements ActionListener
 	private UserBean pUserBean;
 	private UserImplement pUserModel;
 	private CreateAccounts pCreate;
+	
+	/****
+	 * missingDataList- used for storing the fields that are empty
+	 * normalList- used for storing the fields that are filled up 
+	 ****/
 	private LinkedList<JTextField> missingDataList;
 	private LinkedList<JTextField> normalList;
 	
@@ -68,20 +81,40 @@ public class CreateRegistrarController implements ActionListener
 		}
 	}
 	
+	/******
+	 * Function Name: setValues
+	 * 
+	 * Description: gets all the values from the user input and stores them in their respective beans
+	 ******/
+	
 	public void setValues()
 	{
 		pRegBean.setpFirstName(pCreate.getRegFirstNameField().getText());
 		pRegBean.setpMiddleName(pCreate.getRegMiddleNameField().getText());
 		pRegBean.setpLastName(pCreate.getRegLastNameField().getText());
 		
+		/****
+		 * +Creates a username with the format firstname.lastname where first name contains 
+		 *  the first name of the user while the lastname contains the last name
+		 * +the names are formatted to lower case and last name spaces are removed 
+		 * eg name: Juan Lorenzo dela Cruz 
+		 * 	  username: juan.delacruz
+		 ****/
 		String[] lastName= pRegBean.getpLastName().split(" ");
 		String userName= pRegBean.getpFirstName().toLowerCase().split(" ")[0]+".";
 		for(int i=0;i<lastName.length; i++)
 			userName+=lastName[i].toLowerCase();
 		pUserBean.setpUserName(userName);
+		
 		pUserBean.setpUserPassword(new String(pCreate.getRegPasswordField().getPassword()));
 		pUserBean.setpUserType(REGISTRAR);
 	}
+	
+	/*******
+	 * Function Name: createRegistrar
+	 *  
+	 * Description: Adds the locally stored beans to the database
+	 *******/
 	
 	public void createRegistrar()
 	{
@@ -90,6 +123,12 @@ public class CreateRegistrarController implements ActionListener
 		if(tempBean.getpIdUser()!=0)
 			pRegModel.insertRegistrar(tempBean, pRegBean);
 	}
+	
+	/******
+	 * Function Name: errorHandling
+	 * 
+	 * Description: checks the user inputs if there are errors
+	 ******/
 	
 	public boolean errorHandling()
 	{
@@ -112,6 +151,7 @@ public class CreateRegistrarController implements ActionListener
 					JOptionPane.ERROR_MESSAGE);
 			error= true;
 		}
+		//checks if the passwords entered are the identical
 		else if(!new String(pCreate.getRegPasswordField().getPassword()).equals(new String(pCreate.getRegConfirmPasswordField().getPassword())))
 		{
 			JOptionPane.showMessageDialog(
@@ -124,10 +164,28 @@ public class CreateRegistrarController implements ActionListener
 		return error;
 	}
 
+	/******
+	 * Function Name: checkDuplicateData
+	 * 
+	 * Description: checks if there are similar data of the registrar is already in the database.
+	 * 	
+	 * Return Type: boolean; returns true if there is duplicate data, otherwise false
+	 ******/
+	
 	public boolean checkDuplicateData()
 	{
 		return pRegModel.searchDuplicate(pRegBean);
 	}
+	
+	/******
+	 * Function Name: checkMissingData
+	 * 
+	 * Description: checks all input fields if they are filled up
+	 * 				if an input field is empty, it's added to missingDataList, otherwise it is added to normalList
+	 * 
+	 * Return Type: boolean; returns true if there are fields not filled up, otherwise false
+	 ******/
+	
 	public boolean checkMissingData()
 	{
 		missingDataList.clear();

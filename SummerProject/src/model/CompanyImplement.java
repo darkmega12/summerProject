@@ -78,4 +78,60 @@ public class CompanyImplement implements CompanyInterface
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public int searchCompanyId(CompanyBean companyBean) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public ArrayList<CompanyBean> searchCompanyByRegistrationDate(
+			CompanyBean companyBean) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<CompanyBean> searchCompanyByCompanyStatus(
+			CompanyBean companyBean) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<CompanyBean> searchCompanyByCity(CompanyBean companyBean) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	public boolean searchDuplicate(CompanyBean companyBean)
+	{
+		pDatabase = new DatabaseConnector();
+		pConnection = pDatabase.connectToDatabase();
+		boolean duplicate= false;
+		
+		String query= "select companyName, contactNumber, registrationDate, zipCode" +
+					  "from registrar " +
+					  "where companyName= ? and contactNumber= ? and registrationDate= ? and zipCode= ?";
+		try
+		{
+			System.out.println(companyBean.getpCompanyName()+" "+companyBean.getpContactNumber()+" "
+							   +companyBean.getpRegistrationDate()+" "+companyBean.getpZipCode());
+			pStatement= pConnection.prepareStatement(query);
+			pStatement.setString(1, companyBean.getpCompanyName());
+			pStatement.setString(2, companyBean.getpContactNumber());
+			pStatement.setDate(3, companyBean.getpRegistrationDate());
+			pStatement.setInt(4, companyBean.getpZipCode());
+			pStatement.executeQuery();
+			if(pResult.next())
+				duplicate=true;
+			pDatabase.closeConnection(pConnection, pStatement);
+		}
+		catch(SQLException e)
+		{
+			e.printStackTrace();
+		}
+		return duplicate;
+	}
 }

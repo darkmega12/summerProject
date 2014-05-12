@@ -11,7 +11,6 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.CardLayout;
-import javax.swing.JLayeredPane;
 import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -19,13 +18,16 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JTextField;
+import javax.swing.text.Document;
 
 import com.toedter.calendar.JCalendar;
 
+import controller_createModule.CreateCompanyController;
 import controller_createModule.CreateRegistrarController;
 
 import javax.swing.JPasswordField;
 
+import model.CompanyImplement;
 import model.RegistrarImplement;
 
 public class CreateAccounts extends JFrame {
@@ -36,6 +38,8 @@ public class CreateAccounts extends JFrame {
 	
 	private CreateRegistrarController pRegistrarController;
 	private RegistrarImplement pRegistrarModel;
+	private CreateCompanyController pCompanyController;
+	private CompanyImplement pCompanyModel;
 
 	private JPanel contentPane;
 	private JTextField nameField;
@@ -50,17 +54,21 @@ public class CreateAccounts extends JFrame {
 	final CardLayout panelLayer;
 	final JPanel layerPanel;
 	final JLabel lblSelect;
-	private JTextField companyPass;
-	private JTextField companyConfirmPass;
 	private JPasswordField regPassword;
 	private JPasswordField regConfirmPassword;
+	private JPasswordField companyPassword;
+	private JPasswordField companyConfirmPassword;
+	private JCalendar companyCalendar;
 
 	/**
 	 * Create the frame.
 	 */
-	public CreateAccounts() {
+	public CreateAccounts() 
+	{
 		pRegistrarModel= new RegistrarImplement();
 		pRegistrarController= new CreateRegistrarController(pRegistrarModel, this);
+		pCompanyModel= new CompanyImplement();
+		pCompanyController= new CreateCompanyController(pCompanyModel, this);
 		
 		setTitle("CREATE ACCOUNT");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -130,6 +138,7 @@ public class CreateAccounts extends JFrame {
 		
 		zipField = new JTextField();
 		zipField.setBounds(161, 271, 254, 27);
+		//zipField.setDocument(createTextDocument(4));
 		crtCompanyPanel.add(zipField);
 		zipField.setColumns(10);
 		
@@ -155,6 +164,7 @@ public class CreateAccounts extends JFrame {
 		
 		JButton btnCrtCompany = new JButton("Create Account");
 		btnCrtCompany.setBounds(606, 304, 136, 63);
+		btnCrtCompany.addActionListener(pCompanyController);
 		crtCompanyPanel.add(btnCrtCompany);
 		
 		JButton btnBackCompany = new JButton("Back");
@@ -166,9 +176,9 @@ public class CreateAccounts extends JFrame {
 		calendarPanel.setOpaque(false);
 		calendarPanel.setBackground(new Color(0,0,0));
 		calendarPanel.setLayout(null);
-		JCalendar calendar= new JCalendar();
-		calendar.setBounds(0, 5, 237, 157);
-		calendarPanel.add(calendar);
+		companyCalendar= new JCalendar();
+		companyCalendar.setBounds(0, 5, 237, 157);
+		calendarPanel.add(companyCalendar);
 		crtCompanyPanel.add(calendarPanel);
 		
 		JLabel lblPassword_1 = new JLabel("Password:");
@@ -176,25 +186,23 @@ public class CreateAccounts extends JFrame {
 		lblPassword_1.setBounds(68, 132, 80, 20);
 		crtCompanyPanel.add(lblPassword_1);
 		
-		companyPass = new JTextField();
-		companyPass.setBounds(161, 131, 254, 27);
-		crtCompanyPanel.add(companyPass);
-		companyPass.setColumns(10);
-		
 		JLabel lblConfirmpassword = new JLabel("<html>Re-enter </br> Password:</html>");
 		lblConfirmpassword.setFont(new Font("SansSerif", Font.BOLD, 15));
 		lblConfirmpassword.setBounds(68, 166, 73, 43);
 		crtCompanyPanel.add(lblConfirmpassword);
 		
-		companyConfirmPass = new JTextField();
-		companyConfirmPass.setBounds(161, 182, 254, 27);
-		crtCompanyPanel.add(companyConfirmPass);
-		companyConfirmPass.setColumns(10);
-		
 		JLabel lblSelectDateToday = new JLabel("Select Date Today");
 		lblSelectDateToday.setFont(new Font("SansSerif", Font.BOLD, 14));
 		lblSelectDateToday.setBounds(536, 56, 129, 27);
 		crtCompanyPanel.add(lblSelectDateToday);
+		
+		companyPassword = new JPasswordField();
+		companyPassword.setBounds(161, 134, 254, 27);
+		crtCompanyPanel.add(companyPassword);
+		
+		companyConfirmPassword = new JPasswordField();
+		companyConfirmPassword.setBounds(161, 182, 254, 27);
+		crtCompanyPanel.add(companyConfirmPassword);
 		
 		JPanel crtRegistrarPanel = new JPanel();
 		crtRegistrarPanel.setBackground(new Color(153, 204, 204));
@@ -336,6 +344,46 @@ public class CreateAccounts extends JFrame {
 	public JPasswordField getRegConfirmPasswordField()
 	{
 		return regConfirmPassword;
+	}
+	
+	public JTextField getNameField()
+	{
+		return nameField;
+	}
+	
+	public JTextField getNumberField()
+	{
+		return numberField;
+	}
+	
+	public JPasswordField getCompanyPassword()
+	{
+		return companyPassword;
+	}
+	
+	public JPasswordField getCompanyConfirmPassword()
+	{
+		return companyConfirmPassword;
+	}
+	
+	public JTextField getZipField()
+	{
+		return zipField;
+	}
+	
+	public JTextField getStreetField()
+	{
+		return streetField;
+	}
+	
+	public JTextField getCityField()
+	{
+		return cityField;
+	}
+	
+	public JCalendar getCompanyCalendar()
+	{
+		return companyCalendar;
 	}
 	
 }
