@@ -23,6 +23,7 @@ import model.RegistrarImplement;
 import model.UserBean;
 import model.UserImplement;
 import view.CreateAccounts;
+import view.Driver;
 
 public class CreateRegistrarController implements ActionListener
 {
@@ -63,21 +64,33 @@ public class CreateRegistrarController implements ActionListener
 		if(errorHandling())
 			return;
 		
-		int choice= JOptionPane.showConfirmDialog(
+		int confirm= JOptionPane.showConfirmDialog(
 				new JFrame(), 
 				"Are you sure about the information given?", 
 				"Confirm Add Account", 
 				JOptionPane.YES_NO_OPTION, 
 				JOptionPane.WARNING_MESSAGE);
 		
-		if(choice==JOptionPane.YES_OPTION)
+		if(confirm==JOptionPane.YES_OPTION)
 		{
 			createRegistrar();
-			JOptionPane.showMessageDialog(
-				new JFrame(),
-				"Account Created Successfully! Your username is: "+pUserBean.getpUserName(),
-				"Creation Success!",
-				JOptionPane.PLAIN_MESSAGE);
+			int choice = JOptionPane.showConfirmDialog(
+						 new JFrame(),
+						 "<html>Account Created Successfully! Your username is: "+pUserBean.getpUserName()+
+						 " </br> Would you like to go back to LoginScreen?</html>",
+						 "Creation Success!",
+						 JOptionPane.YES_NO_OPTION,
+						 JOptionPane.QUESTION_MESSAGE);
+			if(choice==JOptionPane.YES_OPTION)
+			{
+				pCreate.setVisible(false);
+				Driver.loginFrame.setVisible(true);
+			}
+			if(choice==JOptionPane.NO_OPTION)
+			{
+				pCreate.lblSelect.setVisible(true);
+				pCreate.panelLayer.show(pCreate.layerPanel, CreateAccounts.SELECTION_PANEL);
+			}
 		}
 	}
 	

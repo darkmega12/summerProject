@@ -19,6 +19,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import view.CreateAccounts;
+import view.Driver;
 import model.CompanyBean;
 import model.CompanyImplement;
 import model.UserBean;
@@ -62,21 +63,33 @@ public class CreateCompanyController implements ActionListener
 		setValues();
 		if(errorHandling())
 			return;
-		int choice= JOptionPane.showConfirmDialog(
+		int confirm= JOptionPane.showConfirmDialog(
 				new JFrame(), 
 				"Are you sure about the information given?", 
 				"Confirm Add Account", 
 				JOptionPane.YES_NO_OPTION, 
 				JOptionPane.WARNING_MESSAGE);
 		
-		if(choice==JOptionPane.YES_OPTION)
+		if(confirm==JOptionPane.YES_OPTION)
 		{
 			createCompany();
-			JOptionPane.showMessageDialog(
-					new JFrame(),
-					"Account Created Successfully! Your username is: "+pUserBean.getpUserName(),
-					"Creation Success!",
-					JOptionPane.PLAIN_MESSAGE);
+			int choice = JOptionPane.showConfirmDialog(
+						 new JFrame(),
+						 "<html>Account Created Successfully! Your username is: "+pUserBean.getpUserName()+
+						 " </br> Would you like to go back to LoginScreen?</html>",
+						 "Creation Success!",
+						 JOptionPane.YES_NO_OPTION,
+						 JOptionPane.QUESTION_MESSAGE);
+			if(choice==JOptionPane.YES_OPTION)
+			{
+				pCreate.setVisible(false);
+				Driver.loginFrame.setVisible(true);
+			}
+			if(choice==JOptionPane.NO_OPTION)
+			{
+				pCreate.lblSelect.setVisible(true);
+				pCreate.panelLayer.show(pCreate.layerPanel, CreateAccounts.SELECTION_PANEL);
+			}
 		}
 	}
 	
@@ -93,14 +106,14 @@ public class CreateCompanyController implements ActionListener
 		if(!pCreate.getZipField().getText().equals(""))
 			pCompanyBean.setpZipCode(Integer.parseInt(pCreate.getZipField().getText()));
 		pCompanyBean.setpCity(pCreate.getCityField().getText());
+		pCompanyBean.setCompanyStatus("active");
 		
 		/******
 		 * Date is added by getting the values from the JCalendar and formats it to yyyy-mm-dd in a string
 		 ******/
 		String date= new String();
-		date+=pCreate.getCompanyCalendar().getYearChooser().getYear()+"-";
-		date+=(pCreate.getCompanyCalendar().getMonthChooser().getMonth()+1)+"-";
-		date+=pCreate.getCompanyCalendar().getDayChooser().getDay();
+		String[] parsedDate= pCreate.getLblDate().getText().split("/");
+		date+=parsedDate[2]+"-"+parsedDate[0]+"-"+parsedDate[1];
 		pCompanyBean.setpRegistrationDate(Date.valueOf(date));
 		
 		/****
@@ -133,7 +146,7 @@ public class CreateCompanyController implements ActionListener
 		pUserModel.addUser(pUserBean);
 		UserBean tempBean= pUserModel.getUser(pUserBean);
 		if(tempBean.getpIdUser()!=0)
-			pCompanyModel.insertCompany(pCompanyBean, pUserBean);
+			pCompanyModel.insertCompany(pCompanyBean, tempBean);
 	}
 	
 	/******
@@ -252,6 +265,12 @@ public class CreateCompanyController implements ActionListener
 		}
 		else
 			normalList.add(pCreate.getCityField());
+		if(!pCreate.getLblDate().isVisible())
+		{
+			missingData=true;
+			pCreate.getLblDate().setVisible(true);
+			pCreate.getLblDate().setForeground(Color.red);
+		}
 		
 		//If a field is empty, the field will be colored red
 		for(JTextField e: missingDataList)
@@ -267,3 +286,6 @@ public class CreateCompanyController implements ActionListener
 		return missingData;
 	}
 }
+
+
+

@@ -18,6 +18,7 @@ import controller_LoginModule.LoginController;
 
 public class Driver
 {	
+	public static LoginScreen loginFrame;
 	public static void main(String[] args) 
 	{
 		EventQueue.invokeLater(new Runnable() 
@@ -26,7 +27,7 @@ public class Driver
 			{
 				try 
 				{
-					LoginScreen loginFrame = new LoginScreen();
+					loginFrame = new LoginScreen();
 					loginFrame.setVisible(true);
 					loginFrame.setLocationRelativeTo(null);
 				} catch (Exception e) 

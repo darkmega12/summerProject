@@ -39,6 +39,7 @@ public class CompanyImplement implements CompanyInterface
 		
 		try 
 		{
+			pConnection = pDatabase.connectToDatabase();
 			pStatement = pConnection.prepareStatement(query);
 			pStatement.setString(1, pCompanyBean.getpCompanyName());
 			pStatement.setInt(2, pCompanyBean.getpZipCode());
@@ -111,20 +112,18 @@ public class CompanyImplement implements CompanyInterface
 		pConnection = pDatabase.connectToDatabase();
 		boolean duplicate= false;
 		
-		String query= "select companyName, contactNumber, registrationDate, zipCode" +
-					  "from registrar " +
-					  "where companyName= ? and contactNumber= ? and registrationDate= ? and zipCode= ?";
+		String query= "select companyName, contactNumber, zipCode " +
+					  "from company " +
+					  "where companyName= ? and contactNumber= ? and zipCode= ?";
 		try
 		{
-			System.out.println(companyBean.getpCompanyName()+" "+companyBean.getpContactNumber()+" "
-							   +companyBean.getpRegistrationDate()+" "+companyBean.getpZipCode());
+			System.out.println(companyBean.getpCompanyName()+" "+companyBean.getpContactNumber()+" "+companyBean.getpZipCode());
 			pStatement= pConnection.prepareStatement(query);
 			pStatement.setString(1, companyBean.getpCompanyName());
 			pStatement.setString(2, companyBean.getpContactNumber());
-			pStatement.setDate(3, companyBean.getpRegistrationDate());
-			pStatement.setInt(4, companyBean.getpZipCode());
+			pStatement.setInt(3, companyBean.getpZipCode());
 			pStatement.executeQuery();
-			if(pResult.next())
+			if(pResult!=null)
 				duplicate=true;
 			pDatabase.closeConnection(pConnection, pStatement);
 		}

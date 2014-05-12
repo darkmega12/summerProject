@@ -29,10 +29,15 @@ import javax.swing.JPasswordField;
 
 import model.CompanyImplement;
 import model.RegistrarImplement;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+import java.util.Calendar;
 
 public class CreateAccounts extends JFrame {
 
-	final static String SELECTION_PANEL = "selection";
+	public final static String SELECTION_PANEL = "selection";
 	final static String COMPANY_PANEL = "company";
 	final static String REGISTRAR_PANEL = "registrar";
 	
@@ -51,9 +56,10 @@ public class CreateAccounts extends JFrame {
 	private JTextField regMiddleName;
 	private JTextField regLastName;
 	
-	final CardLayout panelLayer;
-	final JPanel layerPanel;
-	final JLabel lblSelect;
+	public CardLayout panelLayer;
+	public JPanel layerPanel;
+	public JLabel lblSelect;
+	private JLabel lblDate;
 	private JPasswordField regPassword;
 	private JPasswordField regConfirmPassword;
 	private JPasswordField companyPassword;
@@ -172,11 +178,27 @@ public class CreateAccounts extends JFrame {
 		crtCompanyPanel.add(btnBackCompany);
 		
 		JPanel calendarPanel = new JPanel();
-		calendarPanel.setBounds(481, 94, 247, 180);
+		calendarPanel.setBounds(481, 56, 247, 180);
 		calendarPanel.setOpaque(false);
 		calendarPanel.setBackground(new Color(0,0,0));
 		calendarPanel.setLayout(null);
 		companyCalendar= new JCalendar();
+		companyCalendar.addPropertyChangeListener("calendar", new PropertyChangeListener() 
+		{
+
+		    @Override
+		    public void propertyChange(PropertyChangeEvent e) 
+		    {
+		    	if(lblDate.getText().equals("mm/dd/yyyy"))
+		    		lblDate.setForeground(Color.black);
+		    	String date= new String();
+				date+=companyCalendar.getMonthChooser().getMonth()+"/";
+				date+=companyCalendar.getDayChooser().getDay()+"/";
+				date+=companyCalendar.getYearChooser().getYear();
+				lblDate.setText(date);
+				lblDate.setVisible(true);
+		    }
+		});
 		companyCalendar.setBounds(0, 5, 237, 157);
 		calendarPanel.add(companyCalendar);
 		crtCompanyPanel.add(calendarPanel);
@@ -193,7 +215,7 @@ public class CreateAccounts extends JFrame {
 		
 		JLabel lblSelectDateToday = new JLabel("Select Date Today");
 		lblSelectDateToday.setFont(new Font("SansSerif", Font.BOLD, 14));
-		lblSelectDateToday.setBounds(536, 56, 129, 27);
+		lblSelectDateToday.setBounds(535, 29, 129, 27);
 		crtCompanyPanel.add(lblSelectDateToday);
 		
 		companyPassword = new JPasswordField();
@@ -203,6 +225,17 @@ public class CreateAccounts extends JFrame {
 		companyConfirmPassword = new JPasswordField();
 		companyConfirmPassword.setBounds(161, 182, 254, 27);
 		crtCompanyPanel.add(companyConfirmPassword);
+		
+		JLabel lblDateSelected = new JLabel("Date Selected:");
+		lblDateSelected.setFont(new Font("SansSerif", Font.BOLD, 14));
+		lblDateSelected.setBounds(481, 241, 104, 27);
+		crtCompanyPanel.add(lblDateSelected);
+		
+		lblDate = new JLabel("mm/dd/yyyy");
+		lblDate.setFont(new Font("SansSerif", Font.PLAIN, 15));
+		lblDate.setBounds(606, 245, 87, 19);
+		crtCompanyPanel.add(lblDate);
+		lblDate.setVisible(false);
 		
 		JPanel crtRegistrarPanel = new JPanel();
 		crtRegistrarPanel.setBackground(new Color(153, 204, 204));
@@ -386,4 +419,8 @@ public class CreateAccounts extends JFrame {
 		return companyCalendar;
 	}
 	
+	public JLabel getLblDate()
+	{
+		return lblDate;
+	}
 }
