@@ -26,10 +26,10 @@ public class UserImplement
 	
 	public UserImplement()
 	{
-		pConnection = null;
+		pConnection = new DatabaseConnector();
 		pConnect = null;
-		pUserBean = null;
-		pUserList = null;
+		pUserBean = new UserBean();
+		pUserList = new ArrayList<UserBean>();
 		pResult = null;
 		pStatement = null;
 	}
@@ -42,7 +42,6 @@ public class UserImplement
 	
 	public ArrayList<UserBean> getAllUsers()
 	{
-		pConnection = new DatabaseConnector();
 		pUserList = new ArrayList<UserBean>();
 		
 		ArrayList<UserBean> tempList= new ArrayList<UserBean>();

@@ -26,7 +26,7 @@ public class CompanyImplement implements CompanyInterface
 	{
 		pStatement  = null;
 		pResult = null;
-		pDatabase = null;
+		pDatabase = new DatabaseConnector();
 		pCompanyBean = null;
 		pUserBean = null;
 		pConnection = null;
@@ -34,7 +34,6 @@ public class CompanyImplement implements CompanyInterface
 	
 	public void insertCompany(CompanyBean companyBean, UserBean userBean)
 	{
-		pDatabase = new DatabaseConnector();
 		pConnection = pDatabase.connectToDatabase();
 		
 		pCompanyBean = companyBean;
@@ -115,7 +114,6 @@ public class CompanyImplement implements CompanyInterface
 	
 	public boolean searchDuplicate(CompanyBean companyBean)
 	{
-		pDatabase = new DatabaseConnector();
 		pConnection = pDatabase.connectToDatabase();
 		
 		boolean duplicate= false;

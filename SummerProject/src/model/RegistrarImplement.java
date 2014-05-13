@@ -29,7 +29,7 @@ public class RegistrarImplement
 	{
 		pStatement  = null;
 		pResult = null;
-		pDatabase = null;
+		pDatabase = new DatabaseConnector();
 		pRegistrarBean = null;
 		pPreparedStmt = null;
 		pUserBean = null;
@@ -65,7 +65,6 @@ public class RegistrarImplement
 	
 	public ArrayList<UserBean> getAllUsers()
 	{
-		pDatabase = new DatabaseConnector();
 		pConnection = pDatabase.connectToDatabase();
 		
 		ArrayList<UserBean> tempList= new ArrayList<UserBean>();
@@ -95,7 +94,6 @@ public class RegistrarImplement
 	
 	public boolean searchDuplicate(RegistrarBean registrarBean)
 	{
-		pDatabase = new DatabaseConnector();
 		pConnection = pDatabase.connectToDatabase();
 		boolean duplicate= false;
 		
