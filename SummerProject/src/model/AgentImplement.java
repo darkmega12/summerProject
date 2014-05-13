@@ -106,6 +106,13 @@ public class AgentImplement implements AgentInterface
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public int searchAgentId(AgentBean agentBean)
+	{
+		// TODO Auto-generated method stub
+		return 0;
+	}
 	
 	
 	

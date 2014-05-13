@@ -73,4 +73,25 @@ public class EducationBGImplement implements EducationBGInterface
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public ArrayList<EducationBGBean> searchEducationBGByDegree(EducationBGBean educationBGBean) 
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<EducationBGBean> searchEducationBGByYearCompletion(EducationBGBean educationBGBean) 
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<EducationBGBean> searchEducationBGByUniversity(EducationBGBean educationBGBean) 
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

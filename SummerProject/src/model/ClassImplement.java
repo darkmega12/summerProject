@@ -59,19 +59,57 @@ public class ClassImplement implements ClassInterface{
 	}
 
 	@Override
-	public boolean updateClass(ClassBean oldClassBean, ClassBean newClassBean) {
+	public boolean updateClass(ClassBean oldClassBean, ClassBean newClassBean) 
+	{
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public ArrayList<ClassBean> getAllClass() {
+	public ArrayList<ClassBean> getAllClass() 
+	{
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ArrayList<ClassBean> searchClassByCourseCode(CourseBean courseBean) {
+	public ArrayList<ClassBean> searchClassByCourseCode(CourseBean courseBean) 
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<ClassBean> searchClassByStartDate(ClassBean classBean) 
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<ClassBean> searchClassByEndDate(ClassBean classBean) 
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<ClassBean> searchClassByClassStatus(ClassBean classBean) 
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<ClassBean> searchClassByClassVenue(ClassBean classBean) 
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<ClassBean> searchClassByClassSchedule(ClassBean classBean) 
+	{
 		// TODO Auto-generated method stub
 		return null;
 	}

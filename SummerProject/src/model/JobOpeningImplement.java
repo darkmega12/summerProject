@@ -11,6 +11,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class JobOpeningImplement implements JobOpeningInterface
 {
@@ -53,5 +54,75 @@ public class JobOpeningImplement implements JobOpeningInterface
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+
+	@Override
+	public boolean updateJobOpening(JobOpeningBean oldJobOpeningBean, JobOpeningBean newJobOpeningBean) 
+	{
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public ArrayList<JobOpeningBean> getAllJobOpening() 
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int searchJobOpeningId(JobOpeningBean jobOpeningBean) 
+	{
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public ArrayList<JobOpeningBean> searchGradesByRequestDate(JobOpeningBean jobOpeningBean) 
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<JobOpeningBean> searchGradesByDueDate(JobOpeningBean jobOpeningBean) 
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<JobOpeningBean> searchGradesByCompleteDate(JobOpeningBean jobOpeningBean) 
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<JobOpeningBean> searchGradesByOpeningStatus(JobOpeningBean jobOpeningBean)
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<JobOpeningBean> searchGradesByGender(JobOpeningBean jobOpeningBean) 
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<JobOpeningBean> searchGradesByQuantity(JobOpeningBean jobOpeningBean) 
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<JobOpeningBean> searchGradesByCompany(CompanyBean companyBean) 
+	{
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

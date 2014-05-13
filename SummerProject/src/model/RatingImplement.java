@@ -12,7 +12,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class RatingImplement 
+public class RatingImplement implements RatingInterface 
 {
 	private DatabaseConnector pDatabase;
 	private Connection pConnection;

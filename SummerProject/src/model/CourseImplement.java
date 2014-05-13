@@ -70,4 +70,18 @@ public class CourseImplement implements CourseInterface
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public int searchCourseId(CourseBean courseBean) 
+	{
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public ArrayList<CourseBean> searchCourseByCourseName(CourseBean courseBean) 
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

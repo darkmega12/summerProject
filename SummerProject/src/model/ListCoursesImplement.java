@@ -12,6 +12,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class ListCoursesImplement implements ListCoursesInterface{
 	private DatabaseConnector pDatabase;
@@ -49,5 +50,19 @@ public class ListCoursesImplement implements ListCoursesInterface{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+
+	@Override
+	public boolean updateListCourses(ListCoursesBean newListCoursesBean, ListCoursesBean oldListCoursesBean) 
+	{
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public ArrayList<CourseBean> getAllListCoursesByAgent(AgentBean agentBean) 
+	{
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
