@@ -56,4 +56,35 @@ public class DatabaseConnector
 			e.printStackTrace();
 		}
 	}
+	
+	public void closeAllConnection(Connection conn, Statement stmt, ResultSet result)
+	{
+		try 
+		{
+			stmt.close();
+		} 
+		catch (SQLException e) 
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try 
+		{
+			result.close();
+		} 
+		catch (SQLException e) 
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try 
+		{
+			conn.close();
+		}
+		catch (SQLException e) 
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 }

@@ -77,8 +77,45 @@ public class AgentImplement implements AgentInterface
 	@Override
 	public ArrayList<AgentBean> getAllAgents() 
 	{
-		// TODO Auto-generated method stub
-		return null;
+		pConnection = pDatabase.connectToDatabase();
+		ArrayList<AgentBean> arrAgent = new ArrayList<AgentBean>();
+		
+		String query = "SELECT * from agent";
+		
+		try 
+		{
+			pStatement = pConnection.prepareStatement(query);
+			pResult = pStatement.executeQuery();
+			
+			while(pResult.next())
+			{
+				AgentBean agentBean = new AgentBean();
+				
+				agentBean.setpIdAgent(pResult.getInt("idAgent"));
+				agentBean.setpLastName(pResult.getString("lastName"));
+				agentBean.setpFirstName(pResult.getString("firstName"));
+				agentBean.setpMiddleName(pResult.getString("middleName"));
+				agentBean.setpLandline(pResult.getString("landline"));
+				agentBean.setpMobile(pResult.getString("mobile"));
+				agentBean.setpBirthDate(pResult.getDate("birthDate"));
+				agentBean.setpGender(pResult.getString("gender"));
+				agentBean.setpApplicationDate(pResult.getDate("applicationDate"));
+				agentBean.setpStatus(pResult.getString("agentStatus"));
+				agentBean.setpIdUser(pResult.getInt("idUser"));
+				agentBean.setpZipCode(pResult.getInt("zipCode"));
+				agentBean.setpStreet(pResult.getString("street"));
+				agentBean.setpCity(pResult.getString("city"));
+				
+				arrAgent.add(agentBean);
+			}
+			
+			pDatabase.closeAllConnection(pConnection, pStatement, pResult);
+		} 
+		catch (SQLException e) 
+		{
+		
+		}
+		return arrAgent;
 	}
 
 	@Override
