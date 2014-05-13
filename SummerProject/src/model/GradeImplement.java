@@ -27,7 +27,7 @@ public class GradeImplement implements GradeInterface
 	{
 		pStatement  = null;
 		pResult = null;
-		pDatabase = null;
+		pDatabase = new DatabaseConnector();
 		pAgentBean = null;
 		pClassBean = null;
 		pGradeBean = null;
@@ -36,7 +36,6 @@ public class GradeImplement implements GradeInterface
 	
 	public void insertGrade(AgentBean agentBean, ClassBean classBean, GradeBean gradeBean)
 	{
-		pDatabase = new DatabaseConnector();
 		pConnection = pDatabase.connectToDatabase();
 		
 		pAgentBean = agentBean;

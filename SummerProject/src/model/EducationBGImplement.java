@@ -26,15 +26,14 @@ public class EducationBGImplement implements EducationBGInterface
 	{
 		pStatement  = null;
 		pResult = null;
-		pDatabase = null;
 		pAgentBean = null;
 		pEducationBG = null;
 		pConnection = null;
+		pDatabase = new DatabaseConnector();
 	}
 	
 	public void insertEducationBG(AgentBean agentBean, EducationBGBean educationBG)
 	{
-		pDatabase = new DatabaseConnector();
 		pConnection = pDatabase.connectToDatabase();
 		
 		pEducationBG = educationBG;

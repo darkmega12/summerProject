@@ -11,8 +11,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
-public class WorkExperienceImplement {
+public class WorkExperienceImplement implements WorkExperienceInterface 
+{
 	private DatabaseConnector pDatabase;
 	private Connection pConnection;
 	private PreparedStatement pStatement;
@@ -25,7 +27,7 @@ public class WorkExperienceImplement {
 	{
 		pStatement  = null;
 		pResult = null;
-		pDatabase = null;
+		pDatabase = new DatabaseConnector();
 		pAgentBean = null;
 		pJobOpeningBean = null;
 		pWorkExperienceBean = null;
@@ -34,7 +36,6 @@ public class WorkExperienceImplement {
 	
 	public void insertWorkExperience(WorkExperienceBean workExperienceBean, JobOpeningBean jobOpeningBean, AgentBean agentBean)
 	{
-		pDatabase = new DatabaseConnector();
 		pConnection = pDatabase.connectToDatabase(); 
 		
 		pWorkExperienceBean = workExperienceBean;
@@ -58,5 +59,33 @@ public class WorkExperienceImplement {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+
+	@Override
+	public void updateWorkExperience(WorkExperienceBean newWorkExperienceBean, WorkExperienceBean oldWorkExperienceBean) 
+	{
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public WorkExperienceBean searchWorkExperienceBean(JobOpeningBean jobOpeningBean, AgentBean agentBean) 
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<WorkExperienceBean> getWorkExperienceBeanByJobOpening(JobOpeningBean jobOpeningBean) 
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<WorkExperienceBean> getWorkExperienceBeanByAgent(AgentBean agentBean) 
+	{
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

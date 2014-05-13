@@ -26,10 +26,10 @@ public class CompanyImplement implements CompanyInterface
 	{
 		pStatement  = null;
 		pResult = null;
-		pDatabase = new DatabaseConnector();
 		pCompanyBean = null;
 		pUserBean = null;
 		pConnection = null;
+		pDatabase = new DatabaseConnector();
 	}
 	
 	public void insertCompany(CompanyBean companyBean, UserBean userBean)

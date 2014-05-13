@@ -26,15 +26,14 @@ public class AgentImplement implements AgentInterface
 	{
 		pStatement  = null;
 		pResult = null;
-		pDatabase = null;
 		pAgentBean = null;
 		pUserBean = null;
 		pConnection = null;
+		pDatabase = new DatabaseConnector();
 	}
 	
 	public void insertAgent(AgentBean agentBean, UserBean userBean)
 	{
-		pDatabase = new DatabaseConnector();
 		pConnection = pDatabase.connectToDatabase();
 		
 		pAgentBean = agentBean;

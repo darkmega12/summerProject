@@ -25,15 +25,14 @@ public class ClassImplement implements ClassInterface{
 	{
 		pStatement  = null;
 		pResult = null;
-		pDatabase = null;
 		pCourseBean = null;
 		pClassBean = null;
 		pConnection = null;
+		pDatabase = new DatabaseConnector();
 	}
 	
 	public void insertClass(CourseBean courseBean, ClassBean classBean)
 	{
-		pDatabase = new DatabaseConnector();
 		pConnection = pDatabase.connectToDatabase();
 
 		pClassBean = classBean;

@@ -11,6 +11,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class RatingImplement implements RatingInterface 
 {
@@ -25,15 +26,14 @@ public class RatingImplement implements RatingInterface
 	{
 		pStatement  = null;
 		pResult = null;
-		pDatabase = null;
 		pRatingBean = null;
 		pWorkExperienceBean = null;
 		pConnection = null;
+		pDatabase = new DatabaseConnector();
 	}
 	
 	public void insertRating(RatingBean ratingBean, WorkExperienceBean workExperience)
 	{
-		pDatabase = new DatabaseConnector();
 		pConnection = pDatabase.connectToDatabase();
 		
 		pRatingBean = ratingBean;
@@ -53,5 +53,19 @@ public class RatingImplement implements RatingInterface
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+
+	@Override
+	public boolean updateRating(RatingBean newRatingBean, RatingBean oldRatingBean) 
+	{
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public ArrayList<RatingBean> getAllRatingByWorkExperience(WorkExperienceBean workExperienceBean) 
+	{
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

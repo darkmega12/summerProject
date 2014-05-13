@@ -25,14 +25,13 @@ public class CourseImplement implements CourseInterface
 	{
 		pStatement  = null;
 		pResult = null;
-		pDatabase = null;
 		pCourseBean = null;
 		pConnection = null;
+		pDatabase = new DatabaseConnector();
 	}
 	
 	public void insertCourse(CourseBean courseBean)
 	{
-		pDatabase = new DatabaseConnector();
 		pConnection = pDatabase.connectToDatabase();
 		
 		pCourseBean = courseBean;

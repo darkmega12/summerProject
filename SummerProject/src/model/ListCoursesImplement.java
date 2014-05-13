@@ -26,7 +26,7 @@ public class ListCoursesImplement implements ListCoursesInterface{
 	{
 		pStatement  = null;
 		pResult = null;
-		pDatabase = null;
+		pDatabase = new DatabaseConnector();
 		pAgentBean = null;
 		pCourseBean = null;
 		pConnection = null;	
@@ -34,7 +34,6 @@ public class ListCoursesImplement implements ListCoursesInterface{
 	
 	public void insertListCourses(AgentBean agentBean, CourseBean courseBean)
 	{
-		pDatabase = new DatabaseConnector();
 		pConnection = pDatabase.connectToDatabase();
 		
 		pAgentBean = agentBean;
