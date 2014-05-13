@@ -24,14 +24,19 @@ public class ListCoursesImplement implements ListCoursesInterface{
 	
 	public ListCoursesImplement()
 	{
-		pDatabase = new DatabaseConnector();
-		pConnection = pDatabase.connectToDatabase();
 		pStatement  = null;
-		pResult = null;	
+		pResult = null;
+		pDatabase = null;
+		pAgentBean = null;
+		pCourseBean = null;
+		pConnection = null;	
 	}
 	
 	public void insertListCourses(AgentBean agentBean, CourseBean courseBean)
 	{
+		pDatabase = new DatabaseConnector();
+		pConnection = pDatabase.connectToDatabase();
+		
 		pAgentBean = agentBean;
 		pCourseBean = courseBean;
 		

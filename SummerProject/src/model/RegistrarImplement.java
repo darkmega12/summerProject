@@ -27,11 +27,13 @@ public class RegistrarImplement
 	
 	public RegistrarImplement()
 	{
-		pDatabase = new DatabaseConnector();
-		pConnection=null;
-		pPreparedStmt = null;
 		pStatement  = null;
-		pResult = null;		
+		pResult = null;
+		pDatabase = null;
+		pRegistrarBean = null;
+		pPreparedStmt = null;
+		pUserBean = null;
+		pConnection = null;	
 	}
 	
 	public void insertRegistrar(UserBean userBean, RegistrarBean registrarBean)
@@ -63,6 +65,9 @@ public class RegistrarImplement
 	
 	public ArrayList<UserBean> getAllUsers()
 	{
+		pDatabase = new DatabaseConnector();
+		pConnection = pDatabase.connectToDatabase();
+		
 		ArrayList<UserBean> tempList= new ArrayList<UserBean>();
 		try
 		{

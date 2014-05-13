@@ -24,14 +24,19 @@ public class CompanyImplement implements CompanyInterface
 	
 	public CompanyImplement()
 	{
-		pDatabase = new DatabaseConnector();
-		pConnection = pDatabase.connectToDatabase();
 		pStatement  = null;
 		pResult = null;
+		pDatabase = null;
+		pCompanyBean = null;
+		pUserBean = null;
+		pConnection = null;
 	}
 	
 	public void insertCompany(CompanyBean companyBean, UserBean userBean)
 	{
+		pDatabase = new DatabaseConnector();
+		pConnection = pDatabase.connectToDatabase();
+		
 		pCompanyBean = companyBean;
 		pUserBean = userBean;
 		
@@ -81,27 +86,29 @@ public class CompanyImplement implements CompanyInterface
 	}
 
 	@Override
-	public int searchCompanyId(CompanyBean companyBean) {
+	public int searchCompanyId(CompanyBean companyBean) 
+	{
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public ArrayList<CompanyBean> searchCompanyByRegistrationDate(
-			CompanyBean companyBean) {
+	public ArrayList<CompanyBean> searchCompanyByRegistrationDate(CompanyBean companyBean) 
+	{
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ArrayList<CompanyBean> searchCompanyByCompanyStatus(
-			CompanyBean companyBean) {
+	public ArrayList<CompanyBean> searchCompanyByCompanyStatus(CompanyBean companyBean) 
+	{
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ArrayList<CompanyBean> searchCompanyByCity(CompanyBean companyBean) {
+	public ArrayList<CompanyBean> searchCompanyByCity(CompanyBean companyBean)
+	{
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -110,6 +117,7 @@ public class CompanyImplement implements CompanyInterface
 	{
 		pDatabase = new DatabaseConnector();
 		pConnection = pDatabase.connectToDatabase();
+		
 		boolean duplicate= false;
 		
 		String query= "select companyName, contactNumber, zipCode " +

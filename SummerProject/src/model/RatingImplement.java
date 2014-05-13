@@ -23,14 +23,19 @@ public class RatingImplement implements RatingInterface
 	
 	public RatingImplement()
 	{
-		pDatabase = new DatabaseConnector();
-		pConnection = pDatabase.connectToDatabase();
 		pStatement  = null;
-		pResult = null;	
+		pResult = null;
+		pDatabase = null;
+		pRatingBean = null;
+		pWorkExperienceBean = null;
+		pConnection = null;
 	}
 	
 	public void insertRating(RatingBean ratingBean, WorkExperienceBean workExperience)
 	{
+		pDatabase = new DatabaseConnector();
+		pConnection = pDatabase.connectToDatabase();
+		
 		pRatingBean = ratingBean;
 		pWorkExperienceBean = workExperience;
 		

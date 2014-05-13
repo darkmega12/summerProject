@@ -11,8 +11,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
-public class GradeImplement 
+public class GradeImplement implements GradeInterface
 {
 	private DatabaseConnector pDatabase;
 	private Connection pConnection;
@@ -24,14 +25,20 @@ public class GradeImplement
 	
 	public GradeImplement()
 	{
-		pDatabase = new DatabaseConnector();
-		pConnection = pDatabase.connectToDatabase();
 		pStatement  = null;
 		pResult = null;
+		pDatabase = null;
+		pAgentBean = null;
+		pClassBean = null;
+		pGradeBean = null;
+		pConnection = null;
 	}	
 	
 	public void insertGrade(AgentBean agentBean, ClassBean classBean, GradeBean gradeBean)
 	{
+		pDatabase = new DatabaseConnector();
+		pConnection = pDatabase.connectToDatabase();
+		
 		pAgentBean = agentBean;
 		pClassBean = classBean;
 		pGradeBean = gradeBean;
@@ -52,5 +59,40 @@ public class GradeImplement
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+
+	@Override
+	public boolean updateGrade(GradeBean newGradeBean, GradeBean oldGradeBean) 
+	{
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public int searchGradeId(ClassBean classBean, AgentBean agentBean) 
+	{
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public ArrayList<GradeBean> getAllGrades() 
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<GradeBean> searchGradesByAgent(AgentBean agentBean) 
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<GradeBean> searchGradesByClass(ClassBean classBean)
+	{
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

@@ -23,14 +23,20 @@ public class WorkExperienceImplement {
 	
 	public WorkExperienceImplement()
 	{
-		pDatabase = new DatabaseConnector();
-		pConnection = pDatabase.connectToDatabase();
 		pStatement  = null;
 		pResult = null;
+		pDatabase = null;
+		pAgentBean = null;
+		pJobOpeningBean = null;
+		pWorkExperienceBean = null;
+		pConnection = null;
 	}
 	
 	public void insertWorkExperience(WorkExperienceBean workExperienceBean, JobOpeningBean jobOpeningBean, AgentBean agentBean)
 	{
+		pDatabase = new DatabaseConnector();
+		pConnection = pDatabase.connectToDatabase(); 
+		
 		pWorkExperienceBean = workExperienceBean;
 		pJobOpeningBean = jobOpeningBean;
 		pAgentBean = agentBean;

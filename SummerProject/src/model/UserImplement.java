@@ -21,17 +21,17 @@ public class UserImplement
 	private ResultSet pResult;
 	private PreparedStatement pPreparedstmt;
 	private Statement pStatement;
-	private DatabaseConnector dbConnect;
+	private DatabaseConnector pConnection;
 	
 	
 	public UserImplement()
 	{
-		dbConnect= new DatabaseConnector();
-		pConnect=null;
-		pUserBean= new UserBean();
-		pUserList= new ArrayList<UserBean>();
-		pResult= null;
-		pStatement=null;
+		pConnection = null;
+		pConnect = null;
+		pUserBean = null;
+		pUserList = null;
+		pResult = null;
+		pStatement = null;
 	}
 	
 	
@@ -42,10 +42,13 @@ public class UserImplement
 	
 	public ArrayList<UserBean> getAllUsers()
 	{
+		pConnection = new DatabaseConnector();
+		pUserList = new ArrayList<UserBean>();
+		
 		ArrayList<UserBean> tempList= new ArrayList<UserBean>();
 		try
 		{
-			pConnect= dbConnect.connectToDatabase();
+			pConnect= pConnection.connectToDatabase();
 			pStatement= pConnect.createStatement();
 			pResult= pStatement.executeQuery("Select * from User");
 			while(pResult.next())
@@ -56,7 +59,7 @@ public class UserImplement
 				pUserBean.setpUserType(pResult.getString("userType"));
 				tempList.add(pUserBean);
 			}
-			dbConnect.closeConnection(pConnect, pStatement);
+			pConnection.closeConnection(pConnect, pStatement);
 		} 
 		catch(SQLException e)
 		{
@@ -75,14 +78,14 @@ public class UserImplement
 	{
 		try
 		{
-			pConnect= dbConnect.connectToDatabase();
+			pConnect= pConnection.connectToDatabase();
 			String query="INSERT IGNORE INTO user (userName, userPassword, userType) Values (?, ?, ?)";
 			pPreparedstmt= pConnect.prepareStatement(query);
 			pPreparedstmt.setString(1, newUser.getpUserName());
 			pPreparedstmt.setString(2, newUser.getpUserPassword());
 			pPreparedstmt.setString(3, newUser.getpUserType());
 			pPreparedstmt.executeUpdate();
-			dbConnect.closeConnection(pConnect, pPreparedstmt);
+			pConnection.closeConnection(pConnect, pPreparedstmt);
 		}
 		catch(SQLException e)
 		{

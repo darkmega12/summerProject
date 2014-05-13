@@ -24,14 +24,19 @@ public class JobOpeningImplement implements JobOpeningInterface
 	
 	public JobOpeningImplement()
 	{
-		pDatabase = new DatabaseConnector();
-		pConnection = pDatabase.connectToDatabase();
 		pStatement  = null;
-		pResult = null;	
+		pResult = null;
+		pDatabase = null;
+		pJobOpeningBean = null;
+		pCompanyBean = null;
+		pConnection = null;	
 	}
 	
 	public void insertJobOpening(CompanyBean companyBean, JobOpeningBean jobOpeningBean)
 	{
+		pDatabase = new DatabaseConnector();
+		pConnection = pDatabase.connectToDatabase();
+		
 		pCompanyBean = companyBean;
 		pJobOpeningBean = jobOpeningBean;
 		

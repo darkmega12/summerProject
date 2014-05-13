@@ -23,14 +23,18 @@ public class CourseImplement implements CourseInterface
 	
 	public CourseImplement()
 	{
-		pDatabase = new DatabaseConnector();
-		pConnection = pDatabase.connectToDatabase();
 		pStatement  = null;
-		pResult = null;	
+		pResult = null;
+		pDatabase = null;
+		pCourseBean = null;
+		pConnection = null;
 	}
 	
 	public void insertCourse(CourseBean courseBean)
 	{
+		pDatabase = new DatabaseConnector();
+		pConnection = pDatabase.connectToDatabase();
+		
 		pCourseBean = courseBean;
 		String query = "INSERT IGNORE into course (courseDescription, courseCode, courseName, hourCount) VALUES(?,?,?,?)";
 		
