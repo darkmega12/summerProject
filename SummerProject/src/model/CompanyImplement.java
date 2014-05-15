@@ -73,8 +73,41 @@ public class CompanyImplement implements CompanyInterface
 	@Override
 	public ArrayList<CompanyBean> getAllCompany() 
 	{
-		// TODO Auto-generated method stub
-		return null;
+		pConnection = pDatabase.connectToDatabase();
+		ArrayList<CompanyBean> arrCompany = new ArrayList<CompanyBean>();
+		
+		String query = "SELECT * from company";
+		
+		try 
+		{
+			pStatement = pConnection.prepareStatement(query);
+			pResult = pStatement.executeQuery();
+			
+			while(pResult.next())
+			{
+				CompanyBean companyBean = new CompanyBean();
+				
+				companyBean.setpIdCompany(pResult.getInt("idCompany"));
+				companyBean.setpCompanyName(pResult.getString("companyName"));
+				companyBean.setpZipCode(pResult.getInt("zipCode"));
+				companyBean.setpContactNumber(pResult.getString("contactNumber"));
+				companyBean.setpRegistrationDate(pResult.getDate("registrationDate"));
+				companyBean.setCompanyStatus(pResult.getString("companyStatus"));
+				companyBean.setpIdUser(pResult.getInt("idUser"));
+				companyBean.setpStreet(pResult.getString("street"));
+				companyBean.setpCity(pResult.getString("city"));
+				
+				arrCompany.add(companyBean);
+			}
+			
+			pDatabase.closeAllConnection(pConnection, pStatement, pResult);
+		}
+		catch (SQLException e) 
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return arrCompany;
 	}
 
 	@Override

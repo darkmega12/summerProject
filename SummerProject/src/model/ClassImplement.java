@@ -50,6 +50,7 @@ public class ClassImplement implements ClassInterface{
 			pStatement.setString(5, pClassBean.getpVenue());
 			pStatement.setString(6, pClassBean.getpClassStatus());
 			pStatement.setInt(7, pCourseBean.getpIdCourse());
+			
 			pStatement.executeUpdate();
 			pDatabase.closeConnection(pConnection, pStatement);
 		} 
@@ -70,8 +71,39 @@ public class ClassImplement implements ClassInterface{
 	@Override
 	public ArrayList<ClassBean> getAllClass() 
 	{
-		// TODO Auto-generated method stub
-		return null;
+		pConnection = pDatabase.connectToDatabase();
+		ArrayList<ClassBean> arrClass = new ArrayList<ClassBean>();
+		
+		String query = "SELECT * from class";
+		try 
+		{
+			pStatement = pConnection.prepareStatement(query);
+			pResult = pStatement.executeQuery();
+			
+			while (pResult.next())
+			{
+				ClassBean classBean = new ClassBean();
+				
+				classBean.setpIdClass(pResult.getInt("idClass"));
+				classBean.setpAgentCount(pResult.getInt("agentCount"));
+				classBean.setpStartingDate(pResult.getDate("startingDate"));
+				classBean.setpEndingDate(pResult.getDate("endingDate"));
+				classBean.setpSchedule(pResult.getString("schedule"));
+				classBean.setpVenue(pResult.getString("venue"));
+				classBean.setpClassStatus(pResult.getString("classStatus"));
+				classBean.setpIdCourse(pResult.getInt("idCourse"));
+				
+				arrClass.add(classBean);
+			}
+			
+			pDatabase.closeAllConnection(pConnection, pStatement, pResult);
+		}
+		catch (SQLException e) 
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return arrClass;
 	}
 
 	@Override
