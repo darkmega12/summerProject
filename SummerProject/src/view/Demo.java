@@ -15,7 +15,7 @@ public class Demo {
 	private static JPanel contentPane;
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		JCalendar demo = new JCalendar();
+		JCalendarDemo demo = new JCalendarDemo();
 		JFrame frame = new JFrame();
 		frame.setBounds(100,100, 400, 400);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

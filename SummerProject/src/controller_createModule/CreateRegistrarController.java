@@ -44,9 +44,9 @@ public class CreateRegistrarController implements ActionListener
 	private LinkedList<JTextField> missingDataList;
 	private LinkedList<JTextField> normalList;
 	
-	public CreateRegistrarController(RegistrarImplement registrarModel, CreateAccounts registrarView)
+	public CreateRegistrarController(CreateAccounts registrarView)
 	{
-		pRegModel= registrarModel;
+		pRegModel= new RegistrarImplement();
 		pCreate=registrarView;
 		pUserBean= new UserBean();
 		pRegBean= new RegistrarBean();

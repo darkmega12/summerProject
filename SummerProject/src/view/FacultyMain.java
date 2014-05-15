@@ -15,19 +15,25 @@ import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JList;
+import javax.swing.JTable;
+import com.toedter.calendar.JCalendar;
 
 public class FacultyMain extends JFrame 
 {
-
+	
 	private JPanel contentPane;
 	private JTextField firstNameField;
 	private JTextField middleNameField;
 	private JTextField lastNameField;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
+	private JTextField zipCodeField;
+	private JTextField streetField;
+	private JTextField cityField;
+	private JTextField landlineField;
+	private JTextField mobileField;
+	private JTable table;
+	private JTable table_1;
+	private JCalendar birthdayCalendar;
 
 	/**
 	 * Launch the application.
@@ -70,7 +76,7 @@ public class FacultyMain extends JFrame
 		
 		JLabel lblFirstName = new JLabel("First Name:");
 		lblFirstName.setFont(new Font("SansSerif", Font.BOLD, 13));
-		lblFirstName.setBounds(26, 37, 72, 18);
+		lblFirstName.setBounds(10, 37, 72, 18);
 		addAgent.add(lblFirstName);
 		
 		firstNameField = new JTextField();
@@ -90,7 +96,7 @@ public class FacultyMain extends JFrame
 		
 		JLabel lblLastName = new JLabel("Last Name:");
 		lblLastName.setFont(new Font("SansSerif", Font.BOLD, 13));
-		lblLastName.setBounds(26, 107, 72, 14);
+		lblLastName.setBounds(10, 107, 72, 14);
 		addAgent.add(lblLastName);
 		
 		lastNameField = new JTextField();
@@ -98,24 +104,24 @@ public class FacultyMain extends JFrame
 		addAgent.add(lastNameField);
 		lastNameField.setColumns(10);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Male", "Female"}));
-		comboBox.setBounds(402, 37, 59, 20);
-		addAgent.add(comboBox);
+		JComboBox genderComboBox = new JComboBox();
+		genderComboBox.setModel(new DefaultComboBoxModel(new String[] {"Male", "Female"}));
+		genderComboBox.setBounds(402, 37, 59, 20);
+		addAgent.add(genderComboBox);
 		
 		JLabel lblGender = new JLabel("Gender:");
 		lblGender.setFont(new Font("SansSerif", Font.BOLD, 13));
 		lblGender.setBounds(320, 39, 60, 14);
 		addAgent.add(lblGender);
 		
-		JLabel lblSelectDateToday = new JLabel("Select Date Today:");
-		lblSelectDateToday.setFont(new Font("SansSerif", Font.BOLD, 13));
-		lblSelectDateToday.setBounds(26, 326, 129, 14);
-		addAgent.add(lblSelectDateToday);
+		JLabel lblCurrentDate = new JLabel("Select Date Today:");
+		lblCurrentDate.setFont(new Font("SansSerif", Font.BOLD, 13));
+		lblCurrentDate.setBounds(26, 326, 129, 14);
+		addAgent.add(lblCurrentDate);
 		
-		JButton btnShowCalendar = new JButton("Show Calendar");
-		btnShowCalendar.setBounds(26, 351, 119, 28);
-		addAgent.add(btnShowCalendar);
+		JButton currDateCalendar = new JButton("Show Calendar");
+		currDateCalendar.setBounds(26, 351, 119, 28);
+		addAgent.add(currDateCalendar);
 		
 		JLabel lblName = new JLabel("Name");
 		lblName.setFont(new Font("SansSerif", Font.BOLD, 14));
@@ -132,30 +138,30 @@ public class FacultyMain extends JFrame
 		lblZipCode.setBounds(10, 194, 72, 18);
 		addAgent.add(lblZipCode);
 		
-		textField = new JTextField();
-		textField.setBounds(81, 194, 59, 20);
-		addAgent.add(textField);
-		textField.setColumns(10);
+		zipCodeField = new JTextField();
+		zipCodeField.setBounds(81, 194, 59, 20);
+		addAgent.add(zipCodeField);
+		zipCodeField.setColumns(10);
 		
 		JLabel lblStreet = new JLabel("Street:");
 		lblStreet.setFont(new Font("SansSerif", Font.BOLD, 13));
 		lblStreet.setBounds(154, 196, 51, 14);
 		addAgent.add(lblStreet);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(203, 194, 119, 20);
-		addAgent.add(textField_1);
-		textField_1.setColumns(10);
+		streetField = new JTextField();
+		streetField.setBounds(203, 194, 119, 20);
+		addAgent.add(streetField);
+		streetField.setColumns(10);
 		
 		JLabel lblCity = new JLabel("City:");
 		lblCity.setFont(new Font("SansSerif", Font.BOLD, 13));
 		lblCity.setBounds(332, 194, 39, 18);
 		addAgent.add(lblCity);
 		
-		textField_2 = new JTextField();
-		textField_2.setBounds(377, 194, 105, 20);
-		addAgent.add(textField_2);
-		textField_2.setColumns(10);
+		cityField = new JTextField();
+		cityField.setBounds(377, 194, 105, 20);
+		addAgent.add(cityField);
+		cityField.setColumns(10);
 		
 		JLabel lblContactNumbers = new JLabel("Contact Numbers");
 		lblContactNumbers.setFont(new Font("SansSerif", Font.BOLD, 14));
@@ -172,50 +178,74 @@ public class FacultyMain extends JFrame
 		lblLandline.setBounds(29, 274, 69, 14);
 		addAgent.add(lblLandline);
 		
-		JComboBox monthComboBox = new JComboBox();
-		monthComboBox.setModel(new DefaultComboBoxModel(new String[] {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"}));
-		monthComboBox.setBounds(326, 105, 77, 20);
-		addAgent.add(monthComboBox);
-		
-		JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"}));
-		comboBox_1.setBounds(413, 105, 39, 20);
-		addAgent.add(comboBox_1);
-		
-		JComboBox comboBox_2 = new JComboBox();
-		comboBox_2.setModel(new DefaultComboBoxModel(new String[] {"2000", "2001", "2002", "2003", "2004"}));
-		comboBox_2.setBounds(462, 105, 59, 20);
-		addAgent.add(comboBox_2);
-		
-		JButton btnShowCalendar_1 = new JButton("Show Calendar");
-		btnShowCalendar_1.setBounds(393, 70, 105, 24);
-		addAgent.add(btnShowCalendar_1);
-		
-		textField_3 = new JTextField();
-		textField_3.setBounds(137, 272, 104, 20);
-		addAgent.add(textField_3);
-		textField_3.setColumns(10);
+		landlineField = new JTextField();
+		landlineField.setBounds(137, 272, 104, 20);
+		addAgent.add(landlineField);
+		landlineField.setColumns(10);
 		
 		JLabel lblMobile = new JLabel("Mobile:");
 		lblMobile.setFont(new Font("SansSerif", Font.BOLD, 13));
 		lblMobile.setBounds(279, 274, 59, 14);
 		addAgent.add(lblMobile);
 		
-		textField_4 = new JTextField();
-		textField_4.setBounds(357, 272, 104, 20);
-		addAgent.add(textField_4);
-		textField_4.setColumns(10);
+		mobileField = new JTextField();
+		mobileField.setBounds(357, 272, 104, 20);
+		addAgent.add(mobileField);
+		mobileField.setColumns(10);
 		
 		JButton btnAddAgent = new JButton("Add Agent");
 		btnAddAgent.setFont(new Font("Arial", Font.BOLD, 14));
 		btnAddAgent.setBounds(377, 345, 104, 38);
 		addAgent.add(btnAddAgent);
 		
+		JPanel calendarPanel = new JPanel();
+		calendarPanel.setBounds(320, 85, 201, 156);
+		addAgent.add(calendarPanel);
+		
+		birthdayCalendar= new JCalendar();
+		calendarPanel.add(birthdayCalendar);
+		
 		JPanel viewAgent = new JPanel();
-		tabbedPane.addTab("View Agent", null, viewAgent, null);
+		tabbedPane.addTab("View/Edit Agent", null, viewAgent, null);
+		viewAgent.setLayout(null);
+		
+		table = new JTable();
+		table.setBounds(25, 72, 338, 307);
+		viewAgent.add(table);
+		
+		JLabel lblListOfAgents = new JLabel("Agent Selected:");
+		lblListOfAgents.setFont(new Font("SansSerif", Font.BOLD, 14));
+		lblListOfAgents.setBounds(25, 28, 121, 20);
+		viewAgent.add(lblListOfAgents);
+		
+		JButton btnEditAgentData = new JButton("Edit Agent");
+		btnEditAgentData.setBounds(400, 138, 99, 49);
+		viewAgent.add(btnEditAgentData);
+		
+		JButton btnViewAgentData = new JButton("View Agent");
+		btnViewAgentData.setBounds(400, 236, 99, 49);
+		viewAgent.add(btnViewAgentData);
+		
+		JLabel lblManageAgentName = new JLabel("Last Name, First Name");
+		lblManageAgentName.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblManageAgentName.setBounds(156, 31, 275, 14);
+		viewAgent.add(lblManageAgentName);
 		
 		JPanel agentRequest = new JPanel();
 		tabbedPane.addTab("Agent Request", null, agentRequest, null);
 		agentRequest.setLayout(null);
+		
+		table_1 = new JTable();
+		table_1.setBounds(10, 61, 493, 283);
+		agentRequest.add(table_1);
+		
+		JLabel lblSelectAnAgent = new JLabel("Select an Agent Request you want to Resolve");
+		lblSelectAnAgent.setFont(new Font("SansSerif", Font.BOLD, 14));
+		lblSelectAnAgent.setBounds(95, 22, 327, 20);
+		agentRequest.add(lblSelectAnAgent);
+		
+		JButton btnViewAgentRequest = new JButton("View Agent Request");
+		btnViewAgentRequest.setBounds(188, 355, 160, 38);
+		agentRequest.add(btnViewAgentRequest);
 	}
 }

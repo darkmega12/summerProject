@@ -42,9 +42,7 @@ public class CreateAccounts extends JFrame {
 	final static String REGISTRAR_PANEL = "registrar";
 	
 	private CreateRegistrarController pRegistrarController;
-	private RegistrarImplement pRegistrarModel;
 	private CreateCompanyController pCompanyController;
-	private CompanyImplement pCompanyModel;
 
 	private JPanel contentPane;
 	private JTextField nameField;
@@ -71,10 +69,8 @@ public class CreateAccounts extends JFrame {
 	 */
 	public CreateAccounts() 
 	{
-		pRegistrarModel= new RegistrarImplement();
-		pRegistrarController= new CreateRegistrarController(pRegistrarModel, this);
-		pCompanyModel= new CompanyImplement();
-		pCompanyController= new CreateCompanyController(pCompanyModel, this);
+		pRegistrarController= new CreateRegistrarController(this);
+		pCompanyController= new CreateCompanyController(this);
 		
 		setTitle("CREATE ACCOUNT");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

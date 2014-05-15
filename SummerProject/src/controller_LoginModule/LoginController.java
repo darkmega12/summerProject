@@ -8,13 +8,16 @@
 package controller_LoginModule;
 
 import java.sql.*;
+import java.awt.EventQueue;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import model.UserBean;
 import model.UserImplement;
+import view.FacultyMain;
 import view.LoginScreen;
 
 
@@ -34,9 +37,9 @@ public class LoginController implements ActionListener
 	private LoginScreen pLog;
 	
 	
-	public LoginController(UserImplement userModel, LoginScreen loginView)
+	public LoginController(LoginScreen loginView)
 	{
-		pUmodel=userModel;
+		pUmodel=new UserImplement();
 		pLog=loginView;
 	}
 	
@@ -48,7 +51,7 @@ public class LoginController implements ActionListener
 		if(determineUser())
 		{
 			pLog.setVisible(false);
-			pLog.determineModule(pUbean.getpUserType());
+			determineModule(pUbean.getpUserType());
 		}
 		else
 			JOptionPane.showMessageDialog(new JFrame(),
@@ -89,5 +92,32 @@ public class LoginController implements ActionListener
 			return true;
 		}
 		return false;
+	}
+	public void determineModule(String userType)
+	{
+		switch(userType)
+		{
+			case "registrar":
+			case "admin":
+				EventQueue.invokeLater(new Runnable() 
+				{
+					public void run() 
+					{
+						try 
+						{
+							FacultyMain facultyFrame = new FacultyMain();
+							facultyFrame.setVisible(true);
+						} catch (Exception e) 
+						{
+							e.printStackTrace();
+						}
+					}
+				});
+				break;
+			case "company":
+				break;
+			case "agent":
+				break;
+		}
 	}
 }

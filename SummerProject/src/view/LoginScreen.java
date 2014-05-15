@@ -34,15 +34,12 @@ public class LoginScreen extends JFrame
 	private JPasswordField passwordField;
 	private JButton btnLogin;
 	private LoginController pLoginCtrl;
-	private UserImplement userModel;
 	/**
 	 * Create the frame.
 	 */
 	public LoginScreen() 
 	{
-		userModel= new UserImplement();
-		pLoginCtrl= new LoginController(userModel, this);
-		
+		pLoginCtrl= new LoginController(this);
 		setTitle("E-CALL PLACEMENT SYSTEM");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 600, 490);
@@ -129,31 +126,5 @@ public class LoginScreen extends JFrame
 		return new String(passwordField.getPassword());
 	}
 	
-	public void determineModule(String userType)
-	{
-		switch(userType)
-		{
-			case "registrar":
-			case "admin":
-				EventQueue.invokeLater(new Runnable() 
-				{
-					public void run() 
-					{
-						try 
-						{
-							FacultyMain facultyFrame = new FacultyMain();
-							facultyFrame.setVisible(true);
-						} catch (Exception e) 
-						{
-							e.printStackTrace();
-						}
-					}
-				});
-				break;
-			case "company":
-				break;
-			case "agent":
-				break;
-		}
-	}
+	
 }

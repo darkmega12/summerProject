@@ -46,9 +46,9 @@ public class CreateCompanyController implements ActionListener
 	private LinkedList<JTextField> missingDataList;
 	private LinkedList<JTextField> normalList;
 	
-	public CreateCompanyController(CompanyImplement model, CreateAccounts view)
+	public CreateCompanyController(CreateAccounts view)
 	{
-		pCompanyModel= model;
+		pCompanyModel= new CompanyImplement();
 		pCreate= view;
 		pUserBean=new UserBean();
 		pUserModel= new UserImplement();
