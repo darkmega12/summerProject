@@ -77,8 +77,36 @@ public class GradeImplement implements GradeInterface
 	@Override
 	public ArrayList<GradeBean> getAllGrades() 
 	{
-		// TODO Auto-generated method stub
-		return null;
+		pConnection = pDatabase.connectToDatabase();
+		ArrayList<GradeBean> arrGrade = new ArrayList<GradeBean>();
+		
+		String query = "SELECT * from grade";
+		
+		try 
+		{
+			pStatement = pConnection.prepareStatement(query);
+			pResult = pStatement.executeQuery();
+			
+			while(pResult.next())
+			{
+				GradeBean gradeBean = new GradeBean();
+				
+				gradeBean.setpIdGrade(pResult.getInt("idGrade"));
+				gradeBean.setpGrade(pResult.getFloat("grade"));
+				gradeBean.setpIdClass(pResult.getInt("idClass"));
+				gradeBean.setpIdAgent(pResult.getInt("idAgent"));
+				
+				arrGrade.add(gradeBean);
+			}
+			
+			pDatabase.closeAllConnection(pConnection, pStatement, pResult);
+		}
+		catch (SQLException e) 
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return arrGrade;
 	}
 
 	@Override

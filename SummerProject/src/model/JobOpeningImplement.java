@@ -69,9 +69,40 @@ public class JobOpeningImplement implements JobOpeningInterface
 
 	@Override
 	public ArrayList<JobOpeningBean> getAllJobOpening() 
-	{
-		// TODO Auto-generated method stub
-		return null;
+	{	
+		pConnection = pDatabase.connectToDatabase();
+		ArrayList<JobOpeningBean> arrJobOpening = new ArrayList<JobOpeningBean>();
+		
+		String query = "SELECT * from jobopening";
+		try 
+		{
+			pStatement = pConnection.prepareStatement(query);
+			pResult = pStatement.executeQuery();
+			
+			while(pResult.next())
+			{
+				JobOpeningBean jobOpeningBean = new JobOpeningBean();
+				
+				jobOpeningBean.setpIdJobOpening(pResult.getInt("idJobOpening"));
+				jobOpeningBean.setpRequestDate(pResult.getDate("requestDate"));
+				jobOpeningBean.setpDueDate(pResult.getDate("dueDate"));
+				jobOpeningBean.setpCompleteDate(pResult.getDate("completeDate"));
+				jobOpeningBean.setpOpeningStatus(pResult.getString("openingStatus"));
+				jobOpeningBean.setpGender(pResult.getString("gender"));
+				jobOpeningBean.setpQuantity(pResult.getInt("quantity"));
+				jobOpeningBean.setpIdCompany(pResult.getInt("idCompany"));
+				
+				arrJobOpening.add(jobOpeningBean);
+			}
+			pDatabase.closeAllConnection(pConnection, pStatement, pResult);
+		}
+		catch (SQLException e) 
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return arrJobOpening;
 	}
 
 	@Override

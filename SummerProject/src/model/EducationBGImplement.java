@@ -67,8 +67,37 @@ public class EducationBGImplement implements EducationBGInterface
 	@Override
 	public ArrayList<EducationBGBean> getAllEducationBG() 
 	{
-		// TODO Auto-generated method stub
-		return null;
+		pConnection = pDatabase.connectToDatabase();
+		ArrayList<EducationBGBean> arrEduc = new ArrayList<EducationBGBean>();
+		
+		String query = "SELECT * from educationbg";
+		
+		try 
+		{
+			pStatement = pConnection.prepareStatement(query);
+			pResult = pStatement.executeQuery();
+			
+			while(pResult.next())
+			{
+				EducationBGBean educationBGBean = new EducationBGBean();
+				
+				educationBGBean.setpIdEducationBG(pResult.getInt("idEducationBG"));
+				educationBGBean.setpDegree(pResult.getString("degree"));
+				educationBGBean.setpYear(pResult.getInt("yearCompletion"));
+				educationBGBean.setpUniversity(pResult.getString("university"));
+				educationBGBean.setpIdAgent(pResult.getInt("idAgent"));
+				
+				arrEduc.add(educationBGBean);
+			}
+			pDatabase.closeAllConnection(pConnection, pStatement, pResult);
+		}
+		catch (SQLException e) 
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return arrEduc;
 	}
 
 	@Override
