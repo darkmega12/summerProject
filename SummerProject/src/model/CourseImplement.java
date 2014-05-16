@@ -63,8 +63,37 @@ public class CourseImplement implements CourseInterface
 	@Override
 	public ArrayList<CourseBean> getAllCourse() 
 	{
-		// TODO Auto-generated method stub
-		return null;
+		pConnection = pDatabase.connectToDatabase();
+		ArrayList<CourseBean> arrCourse = new ArrayList<CourseBean>();
+
+		String query = "SELECT * from course";
+		
+		try 
+		{
+			pStatement = pConnection.prepareStatement(query);
+			pResult = pStatement.executeQuery();
+			
+			while(pResult.next())
+			{
+				CourseBean courseBean = new CourseBean();
+				
+				courseBean.setpIdCourse(pResult.getInt("idCourse"));
+				courseBean.setpCourseDescription(pResult.getString("courseDescription"));
+				courseBean.setpCourseCode(pResult.getString("courseCode"));
+				courseBean.setpCourseName(pResult.getString("courseName"));
+				courseBean.setpHourCount(pResult.getInt("hourCount"));
+				
+				arrCourse.add(courseBean);
+			}
+			pDatabase.closeAllConnection(pConnection, pStatement, pResult);
+		}
+		catch (SQLException e) 
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return arrCourse;
 	}
 
 	@Override
