@@ -55,11 +55,36 @@ public class RatingImplement implements RatingInterface
 		}
 	}
 
+	/************
+	 * Disclaimer: It only changes the rating. Thus, all other ids are assumed to be on the oldBean. 
+	 ************/
 	@Override
 	public boolean updateRating(RatingBean newRatingBean, RatingBean oldRatingBean) 
 	{
-		// TODO Auto-generated method stub
-		return false;
+		pConnection = pDatabase.connectToDatabase();
+		pRatingBean = newRatingBean;
+		boolean isSuccessful = true;
+		
+		String query = "UPDATE rating set rating = ? "
+				+ "WHERE idRating = ? AND idWorkExperience = ?";
+		
+		try 
+		{
+			pStatement = pConnection.prepareStatement(query);
+			
+			pStatement.setFloat(1, pRatingBean.getpRating());
+			pStatement.setInt(2, oldRatingBean.getpIdRating());
+			pStatement.setInt(3, oldRatingBean.getpIdWorkExperience());
+			
+			pStatement.executeUpdate();
+			pDatabase.closeConnection(pConnection, pStatement);
+		} 
+		catch (SQLException e) 
+		{
+			isSuccessful = false;
+			e.printStackTrace();
+		}
+		return isSuccessful;
 	}
 
 	@Override

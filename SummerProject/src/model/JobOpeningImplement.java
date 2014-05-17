@@ -60,11 +60,43 @@ public class JobOpeningImplement implements JobOpeningInterface
 		}
 	}
 
+	/************
+	 * Disclaimer: It assumes the old ids are in oldBean instead of newBean since the ids can't be edited anyway.
+	 * Except for idCompany since it can be changed anyway.
+	 ************/
 	@Override
 	public boolean updateJobOpening(JobOpeningBean oldJobOpeningBean, JobOpeningBean newJobOpeningBean) 
 	{
-		// TODO Auto-generated method stub
-		return false;
+		pConnection = pDatabase.connectToDatabase();
+		pJobOpeningBean = newJobOpeningBean;
+		boolean isSuccessful = true;
+		
+		String query = "UPDATE jobopening set requestDate = ?, dueDate = ?, completeDate = ?,"
+				+ " openingStatus = ?, gender = ?, quantity = ?, idCompany = ? where idJobOpening = ?";
+		
+		try 
+		{
+			pStatement = pConnection.prepareStatement(query);
+			
+			pStatement.setDate(1, pJobOpeningBean.getpRequestDate());
+			pStatement.setDate(2, pJobOpeningBean.getpDueDate());
+			pStatement.setDate(3, pJobOpeningBean.getpCompleteDate());
+			pStatement.setString(4, pJobOpeningBean.getpOpeningStatus());
+			pStatement.setString(5, pJobOpeningBean.getpGender());
+			pStatement.setInt(6, pJobOpeningBean.getpQuantity());
+			pStatement.setInt(7, pJobOpeningBean.getpIdCompany());
+			pStatement.setInt(8, oldJobOpeningBean.getpIdJobOpening());
+			
+			pStatement.executeUpdate();
+			pDatabase.closeConnection(pConnection, pStatement);
+		}
+		catch (SQLException e) 
+		{
+			isSuccessful = false;
+			e.printStackTrace();
+		}
+		
+		return isSuccessful;
 	}
 
 	@Override

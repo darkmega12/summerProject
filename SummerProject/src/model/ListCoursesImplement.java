@@ -21,6 +21,7 @@ public class ListCoursesImplement implements ListCoursesInterface{
 	private ResultSet pResult;
 	private CourseBean pCourseBean;
 	private AgentBean pAgentBean;
+	private ListCoursesBean pListCoursesBean;
 	
 	public ListCoursesImplement()
 	{
@@ -29,6 +30,7 @@ public class ListCoursesImplement implements ListCoursesInterface{
 		pDatabase = new DatabaseConnector();
 		pAgentBean = null;
 		pCourseBean = null;
+		pListCoursesBean = null;
 		pConnection = null;	
 	}
 	
@@ -55,12 +57,37 @@ public class ListCoursesImplement implements ListCoursesInterface{
 			e.printStackTrace();
 		}
 	}
-
+	
+	/************
+	 * Disclaimer: It only changes the idCourse. Thus, all other ids are assumed to be on the oldBean. 
+	 ************/
 	@Override
 	public boolean updateListCourses(ListCoursesBean newListCoursesBean, ListCoursesBean oldListCoursesBean) 
 	{
-		// TODO Auto-generated method stub
-		return false;
+		pConnection = pDatabase.connectToDatabase();
+		pListCoursesBean = newListCoursesBean;
+		boolean isSuccessful = true;
+		
+		String query = "UPDATE listcourses set idCourse = ? "
+				+ "WHERE idAgent = ? AND idListCourses = ?";
+		
+		try 
+		{
+			pStatement = pConnection.prepareStatement(query);
+			
+			pStatement.setInt(1, pListCoursesBean.getpIdCourse());
+			pStatement.setInt(2, oldListCoursesBean.getpIdAgent());
+			pStatement.setInt(3, oldListCoursesBean.getpIdListCourses());
+			
+			pStatement.executeUpdate();
+			pDatabase.closeConnection(pConnection, pStatement);
+		} 
+		catch (SQLException e) 
+		{
+			isSuccessful = false;
+			e.printStackTrace();
+		}
+		return isSuccessful;
 	}
 
 	@Override
