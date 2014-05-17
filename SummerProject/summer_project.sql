@@ -42,7 +42,7 @@ CREATE TABLE `agent` (
   PRIMARY KEY (`idAgent`),
   KEY `fk_Agent_User1` (`idUser`),
   CONSTRAINT `fk_Agent_User1` FOREIGN KEY (`idUser`) REFERENCES `user` (`idUser`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -51,7 +51,7 @@ CREATE TABLE `agent` (
 
 LOCK TABLES `agent` WRITE;
 /*!40000 ALTER TABLE `agent` DISABLE KEYS */;
-INSERT INTO `agent` VALUES (1,'Bernales','Mayrein','Ramos','7831805','09169804710','1991-01-30','Female','2000-05-17','Deployed',5,1123,'Apple','Quezon'),(2,'Agrigar','Vanessa','Campos','4143327','09087396178','1987-12-15','Female','2005-04-12','Discontinued',6,2120,'Mango','Manila'),(3,'Liberato','Erlinda','','9278939','09157839252','1984-02-29','Female','2014-03-26','Application',7,1984,'Peach','Caloocan'),(4,'Morales','Donabel','Eustaquio','9359873','09167839244','1979-05-20','Female','2007-02-10','Ready for Deployment',8,1464,'Strawberry','Navotas'),(5,'Reyes','Karina','Cabral','9848274','09183849245','1980-03-10','Female','2001-01-23','Company Screening',9,1375,'Orange','Malabon');
+INSERT INTO `agent` VALUES (1,'Bernales','Mayrein','Ramos','7831805','09169804710','1991-01-30','Female','2010-05-17','Deployed',5,1123,'Apple','Quezon'),(2,'Agrigar','Vanessa','Campos','4143327','09087396178','1987-12-15','Female','2005-04-12','Discontinued',6,2120,'Mango','Manila'),(3,'Liberato','Erlinda','','9278939','09157839252','1984-02-29','Female','2014-03-26','Application',7,1984,'Peach','Caloocan'),(4,'Morales','Donabel','Eustaquio','9359873','09167839244','1979-05-20','Female','2007-02-10','Ready for Deployment',8,1464,'Strawberry','Navotas'),(5,'Reyes','Karina','Cabral','9848274','09183849245','1980-03-10','Female','2001-01-23','Company Screening',9,1375,'Orange','Malabon'),(6,'Uytengsu','Martin','Eusebio','9535731','09335678584','1978-04-27','Male','2013-06-10','Application',11,1235,'Lemon','Quezon');
 /*!40000 ALTER TABLE `agent` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -74,7 +74,7 @@ CREATE TABLE `class` (
   PRIMARY KEY (`idClass`),
   KEY `fk_Class_Course1` (`idCourse`),
   CONSTRAINT `fk_Class_Course1` FOREIGN KEY (`idCourse`) REFERENCES `course` (`idCourse`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -83,6 +83,7 @@ CREATE TABLE `class` (
 
 LOCK TABLES `class` WRITE;
 /*!40000 ALTER TABLE `class` DISABLE KEYS */;
+INSERT INTO `class` VALUES (1,20,'2014-01-08','2014-04-17','MWF','A1007','Full',2),(2,5,'2014-01-09','2014-04-18','TH','A903','Dissolved',2),(3,15,'2014-01-10','2014-04-19','MWF','A905','Free',2),(4,20,'2014-01-08','2014-04-17','MWF','G201','Full',3),(5,10,'2014-01-09','2014-04-18','TH','G202','Dissolved',3),(6,9,'2014-01-10','2014-04-19','MWF','G203','Dissolved',4),(7,6,'2014-01-08','2014-04-17','MWF','G204','Dissolved',5),(8,19,'2014-01-09','2014-04-18','TH','G205','Free',5),(9,17,'2014-01-10','2014-04-19','MWF','G206','Free',5),(10,12,'2014-01-08','2014-04-17','MWF','G207','Free',5),(11,11,'2014-01-09','2014-04-18','TH','G208','Free',5),(12,10,'2014-01-10','2014-04-19','MWF','G209','Free',5),(13,13,'2014-01-09','2014-04-18','TH','G210','Free',5),(14,16,'2014-01-10','2014-04-19','MWF','G211','Free',5);
 /*!40000 ALTER TABLE `class` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -106,7 +107,7 @@ CREATE TABLE `company` (
   PRIMARY KEY (`idCompany`),
   KEY `fk_Company_User1` (`idUser`),
   CONSTRAINT `fk_Company_User1` FOREIGN KEY (`idUser`) REFERENCES `user` (`idUser`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -115,6 +116,7 @@ CREATE TABLE `company` (
 
 LOCK TABLES `company` WRITE;
 /*!40000 ALTER TABLE `company` DISABLE KEYS */;
+INSERT INTO `company` VALUES (1,'TeleTech',1113,'09158723467','2000-02-10','On Going',12,'Bonifacio High','Taguig'),(2,'Telus',1101,'09158972838','2001-03-27','Discontinued',13,'Bel-Air','Makati'),(3,'Convergys',1100,'09328759532','2002-04-28','On Going',14,'Paseo De Roxas','Makati'),(4,'Sitel',1102,'09338583759','2004-05-03','Discontinued',15,'Metropolitan','Makati'),(5,'StarTek',1103,'09158375672','2010-06-23','On Going',16,'V.A Rufino','Makati'),(6,'Teleperformance',1104,'09167375925','2011-07-27','On Going',17,'E.P Leviste','Makati'),(7,'Sykes',1112,'09274739656','2006-08-23','On Going',18,'Salcedo','Makati');
 /*!40000 ALTER TABLE `company` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -127,12 +129,12 @@ DROP TABLE IF EXISTS `course`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `course` (
   `idCourse` int(11) NOT NULL AUTO_INCREMENT,
-  `courseDescription` varchar(45) NOT NULL,
+  `courseDescription` varchar(100) NOT NULL,
   `courseCode` varchar(7) NOT NULL,
   `courseName` varchar(45) NOT NULL,
   `hourCount` int(2) NOT NULL,
   PRIMARY KEY (`idCourse`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -141,6 +143,7 @@ CREATE TABLE `course` (
 
 LOCK TABLES `course` WRITE;
 /*!40000 ALTER TABLE `course` DISABLE KEYS */;
+INSERT INTO `course` VALUES (1,'The student completed his/her list of courses','ISFINAL','Finalized All Courses',0),(2,'The course covers the basics for fluent English Communication such as grammar.','ENGLCOM','English Communication Skills',3),(3,'The course covers the basics for customer care protocols used in call center companies.','CUSTCOM','Customer Care',3),(4,'The course covers the computer operations used in a call center company such as Microsoft Word.','COMOPER','Computer Operations',5),(5,'The course covers the products and services of a specific company. ','BUSOPER','Business Operations',7);
 /*!40000 ALTER TABLE `course` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -160,7 +163,7 @@ CREATE TABLE `educationbg` (
   PRIMARY KEY (`idEducationBG`),
   KEY `fk_EducationBG_Agent1` (`idAgent`),
   CONSTRAINT `fk_EducationBG_Agent1` FOREIGN KEY (`idAgent`) REFERENCES `agent` (`idAgent`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -169,6 +172,7 @@ CREATE TABLE `educationbg` (
 
 LOCK TABLES `educationbg` WRITE;
 /*!40000 ALTER TABLE `educationbg` DISABLE KEYS */;
+INSERT INTO `educationbg` VALUES (1,'',2005,'Saint Joseph\'s College',1),(2,'Computer Science',2005,'Trinity University of Asia',2),(3,'Marketing',2002,'San Beda College',3),(4,'Business Administration',2003,'Far Eastern University',4),(5,'',1995,'Saint Paul University',5),(6,'Tourism',1997,'Centro Escolar University',6);
 /*!40000 ALTER TABLE `educationbg` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -189,7 +193,7 @@ CREATE TABLE `grade` (
   KEY `fk_grade_agent1_idx` (`idAgent`),
   CONSTRAINT `fk_grade_agent1` FOREIGN KEY (`idAgent`) REFERENCES `agent` (`idAgent`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_grade_class1` FOREIGN KEY (`idClass`) REFERENCES `class` (`idClass`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -198,6 +202,7 @@ CREATE TABLE `grade` (
 
 LOCK TABLES `grade` WRITE;
 /*!40000 ALTER TABLE `grade` DISABLE KEYS */;
+INSERT INTO `grade` VALUES (1,2.5,1,3),(2,3,4,3),(3,3.5,3,6),(4,1,4,6);
 /*!40000 ALTER TABLE `grade` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -220,7 +225,7 @@ CREATE TABLE `jobopening` (
   PRIMARY KEY (`idJobOpening`),
   KEY `fk_JobOpening_Company1` (`idCompany`),
   CONSTRAINT `fk_JobOpening_Company1` FOREIGN KEY (`idCompany`) REFERENCES `company` (`idCompany`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -229,6 +234,7 @@ CREATE TABLE `jobopening` (
 
 LOCK TABLES `jobopening` WRITE;
 /*!40000 ALTER TABLE `jobopening` DISABLE KEYS */;
+INSERT INTO `jobopening` VALUES (1,'2014-01-08','2014-02-08','2014-01-10','Completed','Male',20,1),(2,'2014-05-03','2014-06-03','0000-00-00','Selecting by Ecall','Female',15,2),(3,'2014-02-04','2014-02-19','0000-00-00','Screening by Company','Male, Female',10,3),(4,'2013-02-11','2013-02-25','0000-00-00','Cancelled','Female',5,4),(5,'2012-03-28','2012-04-28','2012-04-15','Completed','Male, Female',6,5),(6,'2014-04-20','2014-06-20','0000-00-00','New','Male',30,6),(7,'2014-05-17','2014-07-17','0000-00-00','New','Female',50,7);
 /*!40000 ALTER TABLE `jobopening` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -248,7 +254,7 @@ CREATE TABLE `listcourses` (
   KEY `fk_listcourses_agent1_idx` (`idAgent`),
   CONSTRAINT `fk_listcourses_agent1` FOREIGN KEY (`idAgent`) REFERENCES `agent` (`idAgent`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_ListCourses_Course1` FOREIGN KEY (`idCourse`) REFERENCES `course` (`idCourse`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -257,6 +263,7 @@ CREATE TABLE `listcourses` (
 
 LOCK TABLES `listcourses` WRITE;
 /*!40000 ALTER TABLE `listcourses` DISABLE KEYS */;
+INSERT INTO `listcourses` VALUES (1,1,1),(2,1,2),(3,2,3),(4,3,3),(5,4,3),(6,5,3),(7,1,4),(8,1,5),(9,2,6),(10,3,6);
 /*!40000 ALTER TABLE `listcourses` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -274,7 +281,7 @@ CREATE TABLE `rating` (
   PRIMARY KEY (`idRating`),
   KEY `fk_rating_workexperience1_idx` (`idWorkExperience`),
   CONSTRAINT `fk_rating_workexperience1` FOREIGN KEY (`idWorkExperience`) REFERENCES `workexperience` (`idWorkExperience`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -283,6 +290,7 @@ CREATE TABLE `rating` (
 
 LOCK TABLES `rating` WRITE;
 /*!40000 ALTER TABLE `rating` DISABLE KEYS */;
+INSERT INTO `rating` VALUES (1,4,1),(2,1.5,2);
 /*!40000 ALTER TABLE `rating` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -328,7 +336,7 @@ CREATE TABLE `user` (
   `userPassword` varchar(45) NOT NULL,
   `userType` varchar(45) NOT NULL,
   PRIMARY KEY (`idUser`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -337,7 +345,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'bao.fang','password','Registrar'),(2,'yolanda.basilio','password','Registrar'),(3,'leogildo.garcia','password','Registrar'),(4,'chiara.de.la.paz','password','Admin'),(5,'mayrein.bernales','password','Agent'),(6,'vanessa.agrigar','password','Agent'),(7,'erlinda.liberato','password','Agent'),(8,'donabel.morales','password','Agent'),(9,'karina.reyes','password','Agent'),(10,'shery.ann.perez','password','Registrar');
+INSERT INTO `user` VALUES (1,'bao.fang','password','Registrar'),(2,'yolanda.basilio','password','Registrar'),(3,'leogildo.garcia','password','Registrar'),(4,'chiara.de.la.paz','password','Admin'),(5,'mayrein.bernales','password','Agent'),(6,'vanessa.agrigar','password','Agent'),(7,'erlinda.liberato','password','Agent'),(8,'donabel.morales','password','Agent'),(9,'karina.reyes','password','Agent'),(10,'shery.ann.perez','password','Registrar'),(11,'martin.uytengsu','password','Agent'),(12,'teletech','password','Company'),(13,'telus','password','Company'),(14,'convergys','password','Company'),(15,'sitel','password','Company'),(16,'startek','password','Company'),(17,'teleperformance','password','Company'),(18,'sykes','password','Company');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -360,7 +368,7 @@ CREATE TABLE `workexperience` (
   KEY `fk_workexperience_agent1_idx` (`idAgent`),
   CONSTRAINT `fk_workexperience_agent1` FOREIGN KEY (`idAgent`) REFERENCES `agent` (`idAgent`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_WorkExperience_JobOpening1` FOREIGN KEY (`idJobOpening`) REFERENCES `jobopening` (`idJobOpening`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -369,6 +377,7 @@ CREATE TABLE `workexperience` (
 
 LOCK TABLES `workexperience` WRITE;
 /*!40000 ALTER TABLE `workexperience` DISABLE KEYS */;
+INSERT INTO `workexperience` VALUES (1,'2014-01-10',2,20000,1,1),(2,'2012-04-16',2,15000,5,2);
 /*!40000 ALTER TABLE `workexperience` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -381,4 +390,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-05-17 14:59:30
+-- Dump completed on 2014-05-17 17:37:58
