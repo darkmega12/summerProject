@@ -70,8 +70,17 @@ public class AgentImplement implements AgentInterface
 	@Override
 	public boolean updateAgent(AgentBean newAgentBean, AgentBean oldAgentBean) 
 	{
-		// TODO Auto-generated method stub
-		return false;
+		pConnection = pDatabase.connectToDatabase();
+		pAgentBean = newAgentBean;
+		boolean isSuccessful = true;
+		
+		String query = "UPDATE agent set lastName = ?, firstName = ?, middleName = ?, landline = ?, mobile = ?, birthDate = ?, gender = ?, applicationDate = ?, agentStatus = ?, idUser = ? , zipCode = ?, street = ?, city = ? where idAgent = ?"; 
+		pStatement = pConnection.prepareStatement(query);
+		pStatement.setString(1, nAthlete.getFirstName());
+		pStatement.executeUpdate();
+		
+		pDatabase.closeConnection(pConnection, pStatement);
+		return isSuccessful;
 	}
 
 	@Override
