@@ -49,7 +49,7 @@ public class CompanyImplement implements CompanyInterface
 			pStatement.setInt(2, pCompanyBean.getpZipCode());
 			pStatement.setString(3, pCompanyBean.getpContactNumber());
 			pStatement.setDate(4, pCompanyBean.getpRegistrationDate());
-			pStatement.setString(5, pCompanyBean.getCompanyStatus());
+			pStatement.setString(5, pCompanyBean.getpCompanyStatus());
 			pStatement.setInt(6, pUserBean.getpIdUser());
 			pStatement.setString(7, pCompanyBean.getpStreet());
 			pStatement.setString(8, pCompanyBean.getpCity());
@@ -58,16 +58,48 @@ public class CompanyImplement implements CompanyInterface
 		} 
 		catch (SQLException e) 
 		{
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
-
+	
+	/************
+	 * Disclaimer: It assumes the old ids are in oldBean instead of newBean since the ids can't be edited anyway
+	 ************/
 	@Override
 	public boolean updateCompany(CompanyBean oldCompanyBean, CompanyBean newCompanyBean) 
 	{
-		// TODO Auto-generated method stub
-		return false;
+		pConnection = pDatabase.connectToDatabase();
+		pCompanyBean = newCompanyBean;
+		boolean isSuccessful = true;
+		
+		String query = "UPDATE company set companyName = ? "
+				+ "zipCode = ?, contactNumber = ?, registrationDate = ?, "
+				+ "companyStatus = ?, idUser = ?, street = ?, city = ? where idCompany = ?";
+		
+		try
+		{
+			pStatement = pConnection.prepareStatement(query);
+			
+			pStatement.setString(1, pCompanyBean.getpCompanyName());
+			pStatement.setInt(2, pCompanyBean.getpZipCode());
+			pStatement.setString(3, pCompanyBean.getpContactNumber());
+			pStatement.setDate(4, pCompanyBean.getpRegistrationDate());
+			pStatement.setString(5, pCompanyBean.getpCompanyStatus());
+			pStatement.setInt(6, oldCompanyBean.getpIdUser());
+			pStatement.setString(7, pCompanyBean.getpStreet());
+			pStatement.setString(8, pCompanyBean.getpCity());
+			pStatement.setInt(9, oldCompanyBean.getpIdCompany());
+			
+			pStatement.executeUpdate();
+			pDatabase.closeConnection(pConnection, pStatement);
+		}
+		catch (SQLException e) 
+		{
+			isSuccessful = false;
+			e.printStackTrace();
+		}
+		
+		return isSuccessful;
 	}
 
 	@Override
@@ -92,7 +124,7 @@ public class CompanyImplement implements CompanyInterface
 				companyBean.setpZipCode(pResult.getInt("zipCode"));
 				companyBean.setpContactNumber(pResult.getString("contactNumber"));
 				companyBean.setpRegistrationDate(pResult.getDate("registrationDate"));
-				companyBean.setCompanyStatus(pResult.getString("companyStatus"));
+				companyBean.setpCompanyStatus(pResult.getString("companyStatus"));
 				companyBean.setpIdUser(pResult.getInt("idUser"));
 				companyBean.setpStreet(pResult.getString("street"));
 				companyBean.setpCity(pResult.getString("city"));

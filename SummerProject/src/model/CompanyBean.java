@@ -17,7 +17,7 @@ public class CompanyBean
 	private int pZipCode;
 	private String pContactNumber;
 	private Date pRegistrationDate;
-	private String companyStatus;
+	private String pCompanyStatus;
 	private int pIdUser;
 	private String pStreet;
 	private String pCity;
@@ -62,13 +62,13 @@ public class CompanyBean
 	{
 		this.pRegistrationDate = pRegistrationDate;
 	}
-	public String getCompanyStatus() 
+	public String getpCompanyStatus() 
 	{
-		return companyStatus;
+		return pCompanyStatus;
 	}
-	public void setCompanyStatus(String companyStatus) 
+	public void setpCompanyStatus(String companyStatus) 
 	{
-		this.companyStatus = companyStatus;
+		this.pCompanyStatus = companyStatus;
 	}
 	public int getpIdUser() 
 	{

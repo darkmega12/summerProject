@@ -67,6 +67,9 @@ public class AgentImplement implements AgentInterface
 		}
 	}
 
+	/************
+	 * Disclaimer: It assumes the old ids are in oldBean instead of newBean since the ids can't be edited anyway
+	 ************/
 	@Override
 	public boolean updateAgent(AgentBean newAgentBean, AgentBean oldAgentBean) 
 	{
@@ -75,10 +78,33 @@ public class AgentImplement implements AgentInterface
 		boolean isSuccessful = true;
 		
 		String query = "UPDATE agent set lastName = ?, firstName = ?, middleName = ?, landline = ?, mobile = ?, birthDate = ?, gender = ?, applicationDate = ?, agentStatus = ?, idUser = ? , zipCode = ?, street = ?, city = ? where idAgent = ?"; 
-		pStatement = pConnection.prepareStatement(query);
-		pStatement.setString(1, nAthlete.getFirstName());
-		pStatement.executeUpdate();
 		
+		try 
+		{
+			pStatement = pConnection.prepareStatement(query);
+			
+			pStatement.setString(1, pAgentBean.getpLastName());
+			pStatement.setString(2, pAgentBean.getpFirstName());
+			pStatement.setString(3, pAgentBean.getpMiddleName());
+			pStatement.setString(4, pAgentBean.getpLandline());
+			pStatement.setString(5, pAgentBean.getpMobile());
+			pStatement.setDate(6, pAgentBean.getpBirthDate());
+			pStatement.setString(7, pAgentBean.getpGender());
+			pStatement.setDate(8, pAgentBean.getpApplicationDate());
+			pStatement.setString(9, pAgentBean.getpStatus());
+			pStatement.setInt(10, oldAgentBean.getpIdUser());
+			pStatement.setInt(11, pAgentBean.getpZipCode());
+			pStatement.setString(12, pAgentBean.getpStreet());
+			pStatement.setString(13, pAgentBean.getpCity());
+			pStatement.setInt(14, oldAgentBean.getpIdAgent());
+			
+			pStatement.executeUpdate();
+		}
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+			isSuccessful = false;
+		}		
 		pDatabase.closeConnection(pConnection, pStatement);
 		return isSuccessful;
 	}

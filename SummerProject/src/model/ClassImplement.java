@@ -59,16 +59,47 @@ public class ClassImplement implements ClassInterface{
 		} 
 		catch (SQLException e) 
 		{
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 
+	/************
+	 * Disclaimer: It assumes the old ids are in oldBean instead of newBean since the ids can't be edited anyway.
+	 * Except for idCourse since it can be changed anyway.
+	 ************/
 	@Override
 	public boolean updateClass(ClassBean oldClassBean, ClassBean newClassBean) 
 	{
-		// TODO Auto-generated method stub
-		return false;
+		pConnection = pDatabase.connectToDatabase();
+		pClassBean = newClassBean;
+		boolean isSuccessful = true;
+		
+		String query = "UPDATE class set idCourse = ?, agentCount = ?, startingDate = ?, endingDate = ?, startTime = ?, endTime = ?, schedule = ?, venue = ?, classStatus = ?  where idClass = ?";
+		
+		try 
+		{
+			pStatement = pConnection.prepareStatement(query);
+			
+			pStatement.setInt(1, pClassBean.getpIdCourse());
+			pStatement.setInt(2, pClassBean.getpAgentCount());
+			pStatement.setDate(3, pClassBean.getpStartingDate());
+			pStatement.setDate(4, pClassBean.getpEndingDate());
+			pStatement.setString(5, pClassBean.getpStartTime());
+			pStatement.setString(6, pClassBean.getpEndTime());
+			pStatement.setString(7, pClassBean.getpSchedule());
+			pStatement.setString(8, pClassBean.getpVenue());
+			pStatement.setString(9, pClassBean.getpClassStatus());
+			pStatement.setInt(10, oldClassBean.getpIdClass());
+			
+			pStatement.executeUpdate();
+			pDatabase.closeConnection(pConnection, pStatement);
+		} 
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+			isSuccessful = false;
+		}
+		return isSuccessful;
 	}
 
 	@Override

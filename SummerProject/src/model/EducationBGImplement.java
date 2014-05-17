@@ -52,16 +52,43 @@ public class EducationBGImplement implements EducationBGInterface
 		} 
 		catch (SQLException e) 
 		{
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 
+	/************
+	 * Disclaimer: It assumes the old ids are in oldBean instead of newBean since the ids can't be edited anyway
+	 ************/
 	@Override
 	public boolean updateEducationBG(EducationBGBean oldEducationBGBean, EducationBGBean newEducationBGBean) 
 	{
-		// TODO Auto-generated method stub
-		return false;
+		pConnection = pDatabase.connectToDatabase();
+		pEducationBG = newEducationBGBean;
+		boolean isSuccessful = true; 
+		
+		String query = "UPDATE educationbg set degree = ?, yearCompletion = ?, "
+				+ "university = ?, idAgent = ? where idEducationBG = ?";
+		
+		try
+		{
+			pStatement = pConnection.prepareStatement(query);
+			
+			pStatement.setString(1, pEducationBG.getpDegree());
+			pStatement.setInt(2, pEducationBG.getpYear());
+			pStatement.setString(3, pEducationBG.getpUniversity());
+			pStatement.setInt(4, pEducationBG.getpIdAgent());
+			pStatement.setInt(5, pEducationBG.getpIdEducationBG());
+			
+			pStatement.executeUpdate();
+			pDatabase.closeConnection(pConnection, pStatement);
+		} 
+		catch (SQLException e) 
+		{
+			isSuccessful = false;
+			e.printStackTrace();
+		}
+		
+		return isSuccessful;
 	}
 
 	@Override

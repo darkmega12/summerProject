@@ -55,16 +55,43 @@ public class GradeImplement implements GradeInterface
 		} 
 		catch (SQLException e) 
 		{
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 
+	/************
+	 * Disclaimer: Only grade is being changed depending on the idClass, idGrade, idAgent combination. 
+	 * Thus, all ids should be on the oldGradeBean.
+	 ************/
 	@Override
 	public boolean updateGrade(GradeBean newGradeBean, GradeBean oldGradeBean) 
 	{
-		// TODO Auto-generated method stub
-		return false;
+		pConnection = pDatabase.connectToDatabase();
+		pGradeBean = newGradeBean;
+		boolean isSuccessful = true;
+		
+		String query = "UPDATE grade set grade = ? "
+				+ "where idAgent = ? and idClass = ? and idGrade = ?";
+		
+		try
+		{
+			pStatement = pConnection.prepareStatement(query);
+			
+			pStatement.setFloat(1, pGradeBean.getpGrade());
+			pStatement.setInt(2, oldGradeBean.getpIdAgent());
+			pStatement.setInt(3, oldGradeBean.getpIdClass());
+			pStatement.setInt(4, oldGradeBean.getpIdGrade());
+			
+			pStatement.executeUpdate();
+			pDatabase.closeConnection(pConnection, pStatement);
+		} 
+		catch (SQLException e) 
+		{
+			isSuccessful = false;
+			e.printStackTrace();
+		}
+		
+		return isSuccessful;
 	}
 
 	@Override

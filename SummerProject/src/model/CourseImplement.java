@@ -52,12 +52,40 @@ public class CourseImplement implements CourseInterface
 			e.printStackTrace();
 		}
 	}
-
+	
+	/************
+	 * Disclaimer: It assumes the old ids are in oldBean instead of newBean since the ids can't be edited anyway
+	 ************/
 	@Override
 	public boolean updateCourse(CourseBean newCourseBean, CourseBean oldCourseBean)
 	{
-		// TODO Auto-generated method stub
-		return false;
+		pConnection = pDatabase.connectToDatabase();
+		pCourseBean = newCourseBean;
+		boolean isSuccessful = true;
+		
+		String query = "UPDATE course set courseDescription = ?, courseCode = ?, courseName = ?, hourCount = ? "
+				+ "where idCourse = ?";
+		
+		try 
+		{
+			pStatement = pConnection.prepareStatement(query);
+			
+			pStatement.setString(1, pCourseBean.getpCourseDescription());
+			pStatement.setString(2, pCourseBean.getpCourseCode());
+			pStatement.setString(3, pCourseBean.getpCourseName());
+			pStatement.setInt(4, pCourseBean.getpHourCount());
+			pStatement.setInt(5, oldCourseBean.getpIdCourse());
+			
+			pStatement.executeUpdate();
+			pDatabase.closeConnection(pConnection, pStatement);
+		} 
+		catch (SQLException e) 
+		{
+			isSuccessful = false;
+			e.printStackTrace();
+		}
+		
+		return isSuccessful;
 	}
 
 	@Override
