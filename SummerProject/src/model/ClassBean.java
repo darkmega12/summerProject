@@ -20,6 +20,8 @@ public class ClassBean
 	private String pVenue;
 	private String pClassStatus;
 	private int pIdCourse;
+	private String pStartTime;
+	private String pEndTime;
 	
 	private int pIdGrade;
 	
@@ -94,5 +96,21 @@ public class ClassBean
 	public void setpIdGrade(int pIdGrade) 
 	{
 		this.pIdGrade = pIdGrade;
+	}
+	public String getpStartTime()
+	{
+		return pStartTime;
+	}
+	public void setpStartTime(String pStartTime) 
+	{
+		this.pStartTime = pStartTime;
+	}
+	public String getpEndTime() 
+	{
+		return pEndTime;
+	}
+	public void setpEndTime(String pEndTime) 
+	{
+		this.pEndTime = pEndTime;
 	}	
 }

@@ -78,14 +78,71 @@ public class WorkExperienceImplement implements WorkExperienceInterface
 	@Override
 	public ArrayList<WorkExperienceBean> getWorkExperienceBeanByJobOpening(JobOpeningBean jobOpeningBean) 
 	{
-		// TODO Auto-generated method stub
-		return null;
+		pConnection = pDatabase.connectToDatabase();
+		pJobOpeningBean = jobOpeningBean;
+		
+		ArrayList<WorkExperienceBean> arrWorkBean = new ArrayList<WorkExperienceBean>();
+		
+		String query = "SELECT workexperience.startingDate, workexperience.yearEffective, workexperience.agentSalary FROM workexperience INNER JOIN jobOpening ON workexperience.idJobOpening = jobopening.idJobOpening and jobopening.idJobOpening = ?";
+		
+		try {
+			pStatement = pConnection.prepareStatement(query);
+			pStatement.setInt(1, pJobOpeningBean.getpIdJobOpening());
+			pResult = pStatement.executeQuery();
+			
+			while(pResult.next())
+			{
+				WorkExperienceBean workExperienceBean = new WorkExperienceBean();
+				
+				workExperienceBean.setpStartingDate(pResult.getDate("startingDate"));
+				workExperienceBean.setpYearsEffective(pResult.getInt("yearEffective"));
+				workExperienceBean.setpAgentSalary(pResult.getFloat("agentSalary"));
+				
+				arrWorkBean.add(workExperienceBean);
+			}
+			
+			pDatabase.closeAllConnection(pConnection, pStatement, pResult);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return arrWorkBean;
 	}
 
 	@Override
 	public ArrayList<WorkExperienceBean> getWorkExperienceBeanByAgent(AgentBean agentBean) 
 	{
-		// TODO Auto-generated method stub
-		return null;
+		pConnection = pDatabase.connectToDatabase();
+		pAgentBean = agentBean;
+		ArrayList<WorkExperienceBean> arrWorkBean = new ArrayList<WorkExperienceBean>();
+		
+		String query = "SELECT workexperience.startingDate, workexperience.yearEffective, workexperience.agentSalary FROM workexperience INNER JOIN agent ON agent.idAgent = workexperience.idAgent and agent.idAgent = ?";
+		
+		try 
+		{
+			pStatement = pConnection.prepareStatement(query);
+			pStatement.setInt(1, pAgentBean.getpIdAgent());
+			pResult = pStatement.executeQuery();
+			
+			while(pResult.next())
+			{
+				WorkExperienceBean workExperienceBean = new WorkExperienceBean();
+				
+				workExperienceBean.setpStartingDate(pResult.getDate("startingDate"));
+				workExperienceBean.setpYearsEffective(pResult.getInt("yearEffective"));
+				workExperienceBean.setpAgentSalary(pResult.getFloat("agentSalary"));
+				
+				arrWorkBean.add(workExperienceBean);
+			}
+			
+			pDatabase.closeAllConnection(pConnection, pStatement, pResult);
+		}
+		catch (SQLException e) 
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return arrWorkBean;
 	}
 }

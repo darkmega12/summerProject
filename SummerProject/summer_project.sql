@@ -42,7 +42,7 @@ CREATE TABLE `agent` (
   PRIMARY KEY (`idAgent`),
   KEY `fk_Agent_User1` (`idUser`),
   CONSTRAINT `fk_Agent_User1` FOREIGN KEY (`idUser`) REFERENCES `user` (`idUser`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -64,13 +64,15 @@ DROP TABLE IF EXISTS `class`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `class` (
   `idClass` int(11) NOT NULL AUTO_INCREMENT,
+  `idCourse` int(11) NOT NULL,
   `agentCount` int(11) NOT NULL,
   `startingDate` date NOT NULL,
   `endingDate` date NOT NULL,
+  `startTime` varchar(45) NOT NULL,
+  `endTime` varchar(45) NOT NULL,
   `schedule` varchar(45) NOT NULL,
   `venue` varchar(45) NOT NULL,
   `classStatus` varchar(45) NOT NULL,
-  `idCourse` int(11) NOT NULL,
   PRIMARY KEY (`idClass`),
   KEY `fk_Class_Course1` (`idCourse`),
   CONSTRAINT `fk_Class_Course1` FOREIGN KEY (`idCourse`) REFERENCES `course` (`idCourse`) ON DELETE NO ACTION ON UPDATE NO ACTION
@@ -83,7 +85,7 @@ CREATE TABLE `class` (
 
 LOCK TABLES `class` WRITE;
 /*!40000 ALTER TABLE `class` DISABLE KEYS */;
-INSERT INTO `class` VALUES (1,20,'2014-01-08','2014-04-17','MWF','A1007','Full',2),(2,5,'2014-01-09','2014-04-18','TH','A903','Dissolved',2),(3,15,'2014-01-10','2014-04-19','MWF','A905','Free',2),(4,20,'2014-01-08','2014-04-17','MWF','G201','Full',3),(5,10,'2014-01-09','2014-04-18','TH','G202','Dissolved',3),(6,9,'2014-01-10','2014-04-19','MWF','G203','Dissolved',4),(7,6,'2014-01-08','2014-04-17','MWF','G204','Dissolved',5),(8,19,'2014-01-09','2014-04-18','TH','G205','Free',5),(9,17,'2014-01-10','2014-04-19','MWF','G206','Free',5),(10,12,'2014-01-08','2014-04-17','MWF','G207','Free',5),(11,11,'2014-01-09','2014-04-18','TH','G208','Free',5),(12,10,'2014-01-10','2014-04-19','MWF','G209','Free',5),(13,13,'2014-01-09','2014-04-18','TH','G210','Free',5),(14,16,'2014-01-10','2014-04-19','MWF','G211','Free',5);
+INSERT INTO `class` VALUES (1,2,20,'2014-01-08','2014-04-17','09:40','12:40','MWF','A1007','Full'),(2,2,5,'2014-01-09','2014-04-18','08:00','11:00','TH','A903','Dissolved'),(3,2,15,'2014-01-10','2014-04-19','13:30','16:30','MWF','A905','Free'),(4,3,20,'2014-01-08','2014-04-17','14:00','17:00','MWF','G201','Full'),(5,3,10,'2014-01-09','2014-04-18','15:00','18:00','TH','G202','Dissolved'),(6,4,9,'2014-01-10','2014-04-19','08:00','13:00','MWF','G203','Dissolved'),(7,5,6,'2014-01-08','2014-04-17','13:15','20:15','MWF','G204','Dissolved'),(8,5,19,'2014-01-09','2014-04-18','13:10','20:10','TH','G205','Free'),(9,5,17,'2014-01-10','2014-04-19','13:05','20:05','MWF','G206','Free'),(10,5,12,'2014-01-08','2014-04-17','13:20','20:20','MWF','G207','Free'),(11,5,11,'2014-01-09','2014-04-18','08:10','15:10','TH','G208','Free'),(12,5,10,'2014-01-10','2014-04-19','08:00','15:00','MWF','G209','Free'),(13,5,13,'2014-01-09','2014-04-18','08:15','15:15','TH','G210','Free'),(14,5,16,'2014-01-10','2014-04-19','08:20','15:20','MWF','G211','Free');
 /*!40000 ALTER TABLE `class` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -345,7 +347,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'bao.fang','password','Registrar'),(2,'yolanda.basilio','password','Registrar'),(3,'leogildo.garcia','password','Registrar'),(4,'chiara.de.la.paz','password','Admin'),(5,'mayrein.bernales','password','Agent'),(6,'vanessa.agrigar','password','Agent'),(7,'erlinda.liberato','password','Agent'),(8,'donabel.morales','password','Agent'),(9,'karina.reyes','password','Agent'),(10,'shery.ann.perez','password','Registrar'),(11,'martin.uytengsu','password','Agent'),(12,'teletech','password','Company'),(13,'telus','password','Company'),(14,'convergys','password','Company'),(15,'sitel','password','Company'),(16,'startek','password','Company'),(17,'teleperformance','password','Company'),(18,'sykes','password','Company');
+INSERT INTO `user` VALUES (1,'bao.fang','password','Registrar'),(2,'yolanda.basilio','password','Registrar'),(3,'leogildo.garcia','password','Registrar'),(4,'chiara.delapaz','password','Admin'),(5,'mayrein.bernales','password','Agent'),(6,'vanessa.agrigar','password','Agent'),(7,'erlinda.liberato','password','Agent'),(8,'donabel.morales','password','Agent'),(9,'karina.reyes','password','Agent'),(10,'shery.perez','password','Registrar'),(11,'martin.uytengsu','password','Agent'),(12,'teletech_1113','password','Company'),(13,'telus_1101','password','Company'),(14,'convergys_1100','password','Company'),(15,'sitel_1102','password','Company'),(16,'startek_1103','password','Company'),(17,'teleperformance_1104','password','Company'),(18,'sykes_1112','password','Company');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -368,7 +370,7 @@ CREATE TABLE `workexperience` (
   KEY `fk_workexperience_agent1_idx` (`idAgent`),
   CONSTRAINT `fk_workexperience_agent1` FOREIGN KEY (`idAgent`) REFERENCES `agent` (`idAgent`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_WorkExperience_JobOpening1` FOREIGN KEY (`idJobOpening`) REFERENCES `jobopening` (`idJobOpening`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -377,7 +379,7 @@ CREATE TABLE `workexperience` (
 
 LOCK TABLES `workexperience` WRITE;
 /*!40000 ALTER TABLE `workexperience` DISABLE KEYS */;
-INSERT INTO `workexperience` VALUES (1,'2014-01-10',2,20000,1,1),(2,'2012-04-16',2,15000,5,2);
+INSERT INTO `workexperience` VALUES (1,'2014-01-10',2,20000,1,1),(2,'2012-04-16',2,15000,5,2),(3,'2012-04-16',1,10000,5,1);
 /*!40000 ALTER TABLE `workexperience` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -390,4 +392,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-05-17 17:37:58
+-- Dump completed on 2014-05-18  4:05:23

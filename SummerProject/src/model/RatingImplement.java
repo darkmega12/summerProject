@@ -65,7 +65,32 @@ public class RatingImplement implements RatingInterface
 	@Override
 	public ArrayList<RatingBean> getAllRatingByWorkExperience(WorkExperienceBean workExperienceBean) 
 	{
-		// TODO Auto-generated method stub
-		return null;
+		pConnection = pDatabase.connectToDatabase();
+		pWorkExperienceBean = workExperienceBean;
+		
+		ArrayList<RatingBean> arrRating = new ArrayList<RatingBean>();
+		
+		String query = "SELECT rating.rating FROM workexperience INNER JOIN rating ON rating.idWorkExperience = workexperience.idWorkExperience and workexperience.idWorkExperience = ?";
+		try {
+			pStatement = pConnection.prepareStatement(query);
+			pStatement.setInt(1, pWorkExperienceBean.getpIdWorkExperienceBean());
+			pResult = pStatement.executeQuery();
+			
+			while(pResult.next())
+			{
+				RatingBean ratingBean = new RatingBean();
+				
+				ratingBean.setpRating(pResult.getFloat("rating"));
+				
+				arrRating.add(ratingBean);
+			}
+			
+			pDatabase.closeAllConnection(pConnection, pStatement, pResult);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return arrRating;
 	}
 }

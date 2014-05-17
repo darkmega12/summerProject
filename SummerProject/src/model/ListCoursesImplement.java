@@ -66,7 +66,35 @@ public class ListCoursesImplement implements ListCoursesInterface{
 	@Override
 	public ArrayList<CourseBean> getAllListCoursesByAgent(AgentBean agentBean) 
 	{
-		// TODO Auto-generated method stub
-		return null;
+		pConnection = pDatabase.connectToDatabase();
+		pAgentBean = agentBean;
+		
+		ArrayList<CourseBean> arrCourse = new ArrayList<CourseBean>();
+		
+		String query = "SELECT course.courseCode FROM course INNER JOIN listcourses ON listcourses.idAgent = ? and listcourses.idCourse=course.idCourse;";
+		
+		try 
+		{
+			pStatement = pConnection.prepareStatement(query);
+			pStatement.setInt(1, pAgentBean.getpIdAgent());
+			pResult = pStatement.executeQuery();
+			
+			while(pResult.next())
+			{
+				CourseBean courseBean = new CourseBean();
+				
+				courseBean.setpCourseCode(pResult.getString("courseCode"));
+				
+				arrCourse.add(courseBean);
+			}
+			
+			pDatabase.closeAllConnection(pConnection, pStatement, pResult);
+		} 
+		catch (SQLException e) 
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return arrCourse;
 	}
 }

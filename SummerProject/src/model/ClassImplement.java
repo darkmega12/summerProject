@@ -38,18 +38,21 @@ public class ClassImplement implements ClassInterface{
 		pClassBean = classBean;
 		pCourseBean = courseBean;
 		
-		String query = "INSERT IGNORE into class (agentCount, startingDate, endingDate, schedule, venue, classStatus, idCourse) VALUES(?,?,?,?,?,?,?)";
+		String query = "INSERT IGNORE into class (idCourse, agentCount, startingDate, endingDate, startTime, endTime, schedule, venue, classStatus) VALUES(?,?,?,?,?,?,?,?,?)";
 		
 		try
 		{
 			pStatement = pConnection.prepareStatement(query);
-			pStatement.setInt(1, pClassBean.getpAgentCount());
-			pStatement.setDate(2, pClassBean.getpStartingDate());
-			pStatement.setDate(3, pClassBean.getpEndingDate());
-			pStatement.setString(4, pClassBean.getpSchedule());
-			pStatement.setString(5, pClassBean.getpVenue());
-			pStatement.setString(6, pClassBean.getpClassStatus());
-			pStatement.setInt(7, pCourseBean.getpIdCourse());
+			pStatement.setInt(1, pCourseBean.getpIdCourse());
+			pStatement.setInt(2, pClassBean.getpAgentCount());
+			pStatement.setDate(3, pClassBean.getpStartingDate());
+			pStatement.setDate(4, pClassBean.getpEndingDate());
+			pStatement.setString(5, pClassBean.getpStartTime());
+			pStatement.setString(6, pClassBean.getpEndTime());
+			pStatement.setString(7, pClassBean.getpSchedule());
+			pStatement.setString(8, pClassBean.getpVenue());
+			pStatement.setString(9, pClassBean.getpClassStatus());
+			
 			
 			pStatement.executeUpdate();
 			pDatabase.closeConnection(pConnection, pStatement);
@@ -85,13 +88,15 @@ public class ClassImplement implements ClassInterface{
 				ClassBean classBean = new ClassBean();
 				
 				classBean.setpIdClass(pResult.getInt("idClass"));
+				classBean.setpIdCourse(pResult.getInt("idCourse"));
 				classBean.setpAgentCount(pResult.getInt("agentCount"));
 				classBean.setpStartingDate(pResult.getDate("startingDate"));
 				classBean.setpEndingDate(pResult.getDate("endingDate"));
+				classBean.setpStartTime(pResult.getString("startTime"));
+				classBean.setpEndTime(pResult.getString("endTime"));
 				classBean.setpSchedule(pResult.getString("schedule"));
 				classBean.setpVenue(pResult.getString("venue"));
 				classBean.setpClassStatus(pResult.getString("classStatus"));
-				classBean.setpIdCourse(pResult.getInt("idCourse"));
 				
 				arrClass.add(classBean);
 			}
