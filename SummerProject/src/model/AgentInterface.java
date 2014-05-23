@@ -20,4 +20,5 @@ public interface AgentInterface
 	public ArrayList<AgentBean> searchAgentByApplicationDate(AgentBean agentBean);
 	public ArrayList<AgentBean> searchAgentByApplicationStatus(AgentBean agentBean);
 	public ArrayList<AgentBean> searchAgentByCity(AgentBean agentBean);
+	public int getAgentID()
 }

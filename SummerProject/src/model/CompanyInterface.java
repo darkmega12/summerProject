@@ -20,4 +20,6 @@ public interface CompanyInterface
 	public ArrayList<CompanyBean> searchCompanyByRegistrationDate(CompanyBean companyBean);
 	public ArrayList<CompanyBean> searchCompanyByCompanyStatus(CompanyBean companyBean);
 	public ArrayList<CompanyBean> searchCompanyByCity(CompanyBean companyBean);
+	public int getCompanyID(CompanyBean companyBean); // get companyID by companyName
+	public int getCompanyID(UserBean userBean); // get companyID by userID
 }

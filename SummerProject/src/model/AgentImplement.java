@@ -69,6 +69,7 @@ public class AgentImplement implements AgentInterface
 
 	/************
 	 * Disclaimer: It assumes the old ids are in oldBean instead of newBean since the ids can't be edited anyway
+	 * All fields are editable except for idAgent.
 	 ************/
 	@Override
 	public boolean updateAgent(AgentBean newAgentBean, AgentBean oldAgentBean) 

@@ -23,4 +23,5 @@ public interface JobOpeningInterface
 	public ArrayList<JobOpeningBean> searchGradesByGender(JobOpeningBean jobOpeningBean);
 	public ArrayList<JobOpeningBean> searchGradesByQuantity(JobOpeningBean jobOpeningBean);
 	public ArrayList<JobOpeningBean> searchGradesByCompany(CompanyBean companyBean);
+	public int getIdJobOpening(CompanyBean companyBean);
 }

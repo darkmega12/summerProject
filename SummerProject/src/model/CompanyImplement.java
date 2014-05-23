@@ -63,7 +63,8 @@ public class CompanyImplement implements CompanyInterface
 	}
 	
 	/************
-	 * Disclaimer: It assumes the old ids are in oldBean instead of newBean since the ids can't be edited anyway
+	 * Disclaimer: It assumes the old ids are in oldBean instead of newBean since the ids can't be edited anyway.
+	 * All fields are editable except for idCompany.
 	 ************/
 	@Override
 	public boolean updateCompany(CompanyBean oldCompanyBean, CompanyBean newCompanyBean) 

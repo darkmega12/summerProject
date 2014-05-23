@@ -13,7 +13,7 @@ import view.Driver;
  * 
 *****/
 
-public class UserImplement 
+public class UserImplement implements UserInterface
 {
 	private UserBean pUserBean;
 	private ArrayList<UserBean> pUserList;
@@ -112,5 +112,13 @@ public class UserImplement
 				return pUserBean;
 		}
 		return uBean;
+	}
+
+
+	@Override
+	public boolean updateUser(UserBean newUserBean, UserBean oldUserBean) 
+	{
+		// TODO Auto-generated method stub
+		return false;
 	}
 }

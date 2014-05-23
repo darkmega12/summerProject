@@ -61,11 +61,42 @@ public class WorkExperienceImplement implements WorkExperienceInterface
 		}
 	}
 
+	/************
+	 * Disclaimer: All fields are editable except for idAgent, idJobOpening and idWorkExperience 
+	 * Thus, all ids should be on the oldWorkExperienceBean.
+	 ************/
 	@Override
-	public void updateWorkExperience(WorkExperienceBean newWorkExperienceBean, WorkExperienceBean oldWorkExperienceBean) 
+	public boolean updateWorkExperience(WorkExperienceBean newWorkExperienceBean, WorkExperienceBean oldWorkExperienceBean) 
 	{
-		// TODO Auto-generated method stub
+		pConnection = pDatabase.connectToDatabase();
+		pWorkExperienceBean = newWorkExperienceBean;
+		boolean isSuccessful = true;
 		
+		String query = "UPDATE workexperience set startingDate = ? "
+				+ "yearEffective = ?, agentSalary  = ? "
+				+ "where  idJobOpening = ? and idAgent = ? and idWorkExperience = ?"; 
+		
+		try
+		{
+			pStatement = pConnection.prepareStatement(query);
+			
+			pStatement.setDate(1, pWorkExperienceBean.getpStartingDate());
+			pStatement.setInt(2, pWorkExperienceBean.getpYearsEffective());
+			pStatement.setFloat(3, pWorkExperienceBean.getpAgentSalary());
+			pStatement.setInt(4, oldWorkExperienceBean.getpIdJobOpening());
+			pStatement.setInt(5, oldWorkExperienceBean.getpIdAgent());
+			pStatement.setInt(6, oldWorkExperienceBean.getpIdWorkExperienceBean());
+			
+			pStatement.executeUpdate();
+			pDatabase.closeConnection(pConnection, pStatement);
+		} 
+		catch (SQLException e) 
+		{
+			isSuccessful = false;
+			e.printStackTrace();
+		}
+		
+		return isSuccessful;
 	}
 
 	@Override

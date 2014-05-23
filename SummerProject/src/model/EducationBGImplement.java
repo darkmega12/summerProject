@@ -58,6 +58,7 @@ public class EducationBGImplement implements EducationBGInterface
 
 	/************
 	 * Disclaimer: It assumes the old ids are in oldBean instead of newBean since the ids can't be edited anyway
+	 * All fields are editable except for idEducationBG.
 	 ************/
 	@Override
 	public boolean updateEducationBG(EducationBGBean oldEducationBGBean, EducationBGBean newEducationBGBean) 

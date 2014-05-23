@@ -59,7 +59,8 @@ public class ListCoursesImplement implements ListCoursesInterface{
 	}
 	
 	/************
-	 * Disclaimer: It only changes the idCourse. Thus, all other ids are assumed to be on the oldBean. 
+	 * Disclaimer: It only changes the idCourse. Thus, all other ids are assumed to be on the oldBean.
+	 * idCourse is the only field editable. 
 	 ************/
 	@Override
 	public boolean updateListCourses(ListCoursesBean newListCoursesBean, ListCoursesBean oldListCoursesBean) 

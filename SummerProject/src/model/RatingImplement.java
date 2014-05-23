@@ -56,7 +56,8 @@ public class RatingImplement implements RatingInterface
 	}
 
 	/************
-	 * Disclaimer: It only changes the rating. Thus, all other ids are assumed to be on the oldBean. 
+	 * Disclaimer: It only changes the rating. Thus, all other ids are assumed to be on the oldBean.
+	 * Rating is the only field editable. 
 	 ************/
 	@Override
 	public boolean updateRating(RatingBean newRatingBean, RatingBean oldRatingBean) 
@@ -111,7 +112,9 @@ public class RatingImplement implements RatingInterface
 			}
 			
 			pDatabase.closeAllConnection(pConnection, pStatement, pResult);
-		} catch (SQLException e) {
+		}
+		catch (SQLException e) 
+		{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

@@ -15,7 +15,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class RegistrarImplement 
+public class RegistrarImplement implements RegistrarInterface
 {
 	private DatabaseConnector pDatabase;
 	private Connection pConnection;
@@ -57,7 +57,6 @@ public class RegistrarImplement
 		} 
 		catch (SQLException e) 
 		{
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -117,5 +116,25 @@ public class RegistrarImplement
 			e.printStackTrace();
 		}
 		return duplicate;
+	}
+
+	@Override
+	public boolean updateRegistrar(RegistrarBean newRegistrarBean, RegistrarBean oldRegistrarBean) 
+	{
+		return false;
+	}
+
+	@Override
+	public int searchIdUserByName(RegistrarBean registrarBean) 
+	{
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int searchIdRegistrarByName(RegistrarBean registrarBean) 
+	{
+		// TODO Auto-generated method stub
+		return 0;
 	}
 }

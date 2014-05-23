@@ -66,6 +66,7 @@ public class ClassImplement implements ClassInterface{
 	/************
 	 * Disclaimer: It assumes the old ids are in oldBean instead of newBean since the ids can't be edited anyway.
 	 * Except for idCourse since it can be changed anyway.
+	 * All fields are editable except for idClass.
 	 ************/
 	@Override
 	public boolean updateClass(ClassBean oldClassBean, ClassBean newClassBean) 

@@ -63,6 +63,7 @@ public class JobOpeningImplement implements JobOpeningInterface
 	/************
 	 * Disclaimer: It assumes the old ids are in oldBean instead of newBean since the ids can't be edited anyway.
 	 * Except for idCompany since it can be changed anyway.
+	 * All fields are editable except for idJobOpening.
 	 ************/
 	@Override
 	public boolean updateJobOpening(JobOpeningBean oldJobOpeningBean, JobOpeningBean newJobOpeningBean) 
