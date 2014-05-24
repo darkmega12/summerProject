@@ -13,7 +13,7 @@ public interface WorkExperienceInterface
 {
 	public void insertWorkExperience(WorkExperienceBean workExperienceBean, JobOpeningBean jobOpeningBean, AgentBean agentBean);
 	public boolean updateWorkExperience(WorkExperienceBean newWorkExperienceBean, WorkExperienceBean oldWorkExperienceBean);
-	public WorkExperienceBean searchWorkExperienceBean(JobOpeningBean jobOpeningBean, AgentBean agentBean);
+	public WorkExperienceBean searchWorkExperienceBean(JobOpeningBean jobOpeningBean, AgentBean agentBean); // search work experience by agent and job opening details
 	public ArrayList<WorkExperienceBean> getWorkExperienceBeanByJobOpening(JobOpeningBean jobOpeningBean);
 	public ArrayList<WorkExperienceBean> getWorkExperienceBeanByAgent(AgentBean agentBean);
 }

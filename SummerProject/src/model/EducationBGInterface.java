@@ -15,8 +15,6 @@ public interface EducationBGInterface
 	public void insertEducationBG(AgentBean agentBean, EducationBGBean educationBG);
 	public boolean updateEducationBG(EducationBGBean newEducationBGBean, EducationBGBean oldEducationBGBean);
 	public ArrayList<EducationBGBean> getAllEducationBG();
-	public ArrayList<EducationBGBean> searchEducationBGByAgent(AgentBean agentBean);
-	public ArrayList<EducationBGBean> searchEducationBGByDegree(EducationBGBean educationBGBean);
-	public ArrayList<EducationBGBean> searchEducationBGByYearCompletion(EducationBGBean educationBGBean);
-	public ArrayList<EducationBGBean> searchEducationBGByUniversity(EducationBGBean educationBGBean);
+	public ArrayList<EducationBGBean> searchEducationBGByAgent(AgentBean agentBean); // get education by agent name
+	public ArrayList<EducationBGBean> searchEducationBGByEducationBG(EducationBGBean educationBGBean); // get education by educationBG details 
 }

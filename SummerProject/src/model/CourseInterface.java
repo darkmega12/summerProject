@@ -15,7 +15,5 @@ public interface CourseInterface
 	public void insertCourse(CourseBean courseBean);
 	public boolean updateCourse(CourseBean newCourseBean, CourseBean oldCourseBean);
 	public ArrayList<CourseBean> getAllCourse();
-	public int searchCourseId(CourseBean courseBean);
-	public ArrayList<CourseBean> searchCourseByCourseCode(CourseBean courseBean);
-	public ArrayList<CourseBean> searchCourseByCourseName(CourseBean courseBean);
+	public ArrayList<CourseBean> searchCourseByCourse(CourseBean courseBean); // get course by course details
 }

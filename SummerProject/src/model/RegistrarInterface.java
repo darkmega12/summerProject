@@ -12,9 +12,8 @@ import java.util.ArrayList;
 public interface RegistrarInterface 
 {
 	public void insertRegistrar(UserBean userBean, RegistrarBean registrarBean);
-	public ArrayList<UserBean> getAllUsers();
+	public ArrayList<UserBean> getAllRegistrar();
+	public ArrayList<UserBean> searchRegistrarByUser(UserBean userBean); // gets registrar by user details
 	public boolean searchDuplicate(RegistrarBean registrarBean);
 	public boolean updateRegistrar(RegistrarBean newRegistrarBean, RegistrarBean oldRegistrarBean);
-	public int searchIdUserByName(RegistrarBean registrarBean);
-	public int searchIdRegistrarByName(RegistrarBean registrarBean);
 }

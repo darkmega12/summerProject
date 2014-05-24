@@ -15,5 +15,5 @@ public interface UserInterface
 	public void addUser(UserBean newUser);
 	public UserBean getUser(UserBean uBean);
 	public boolean updateUser(UserBean newUserBean, UserBean oldUserBean);
-	public int getIdUser(UserBean userBean); // get userID by userName
+	public ArrayList<UserBean> searchUserByUser(UserBean userBean); // get user by user details
 }

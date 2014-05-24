@@ -92,7 +92,7 @@ public class ListCoursesImplement implements ListCoursesInterface{
 	}
 
 	@Override
-	public ArrayList<CourseBean> getAllListCoursesByAgent(AgentBean agentBean) 
+	public ArrayList<CourseBean> searchListCoursesByAgent(AgentBean agentBean) 
 	{
 		pConnection = pDatabase.connectToDatabase();
 		pAgentBean = agentBean;

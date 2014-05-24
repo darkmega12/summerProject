@@ -95,13 +95,6 @@ public class GradeImplement implements GradeInterface
 	}
 
 	@Override
-	public int searchGradeId(ClassBean classBean, AgentBean agentBean) 
-	{
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
 	public ArrayList<GradeBean> getAllGrades() 
 	{
 		pConnection = pDatabase.connectToDatabase();

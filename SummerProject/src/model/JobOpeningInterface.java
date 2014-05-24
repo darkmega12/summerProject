@@ -15,13 +15,6 @@ public interface JobOpeningInterface
 	public void insertJobOpening(CompanyBean companyBean, JobOpeningBean jobOpeningBean);
 	public boolean updateJobOpening(JobOpeningBean oldJobOpeningBean, JobOpeningBean newJobOpeningBean);
 	public ArrayList<JobOpeningBean> getAllJobOpening();
-	public int searchJobOpeningId(JobOpeningBean jobOpeningBean);
-	public ArrayList<JobOpeningBean> searchGradesByRequestDate(JobOpeningBean jobOpeningBean);
-	public ArrayList<JobOpeningBean> searchGradesByDueDate(JobOpeningBean jobOpeningBean);
-	public ArrayList<JobOpeningBean> searchGradesByCompleteDate(JobOpeningBean jobOpeningBean);
-	public ArrayList<JobOpeningBean> searchGradesByOpeningStatus(JobOpeningBean jobOpeningBean);
-	public ArrayList<JobOpeningBean> searchGradesByGender(JobOpeningBean jobOpeningBean);
-	public ArrayList<JobOpeningBean> searchGradesByQuantity(JobOpeningBean jobOpeningBean);
-	public ArrayList<JobOpeningBean> searchGradesByCompany(CompanyBean companyBean);
-	public int getIdJobOpening(CompanyBean companyBean);
+	public ArrayList<JobOpeningBean> searchJobOpeningByJobOpening(JobOpeningBean jobOpeningBean); // get job opening by job opening details
+	public ArrayList<JobOpeningBean> searchGradesByCompany(CompanyBean companyBean); // get job opening by company name 
 }

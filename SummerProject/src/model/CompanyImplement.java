@@ -142,41 +142,6 @@ public class CompanyImplement implements CompanyInterface
 		}
 		return arrCompany;
 	}
-
-	@Override
-	public ArrayList<CompanyBean> searchCompanyByName(CompanyBean companyBean) 
-	{
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public int searchCompanyId(CompanyBean companyBean) 
-	{
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public ArrayList<CompanyBean> searchCompanyByRegistrationDate(CompanyBean companyBean) 
-	{
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ArrayList<CompanyBean> searchCompanyByCompanyStatus(CompanyBean companyBean) 
-	{
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ArrayList<CompanyBean> searchCompanyByCity(CompanyBean companyBean)
-	{
-		// TODO Auto-generated method stub
-		return null;
-	}
 	
 	public boolean searchDuplicate(CompanyBean companyBean)
 	{
@@ -204,5 +169,19 @@ public class CompanyImplement implements CompanyInterface
 			e.printStackTrace();
 		}
 		return duplicate;
+	}
+
+	@Override
+	public ArrayList<CompanyBean> searchCompanyByCompany(CompanyBean companyBean)
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<CompanyBean> searchCompanyByUser(UserBean userBean) 
+	{
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

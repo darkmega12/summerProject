@@ -121,4 +121,11 @@ public class UserImplement implements UserInterface
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+
+	@Override
+	public ArrayList<UserBean> searchUserByUser(UserBean userBean) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

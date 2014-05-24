@@ -139,57 +139,15 @@ public class JobOpeningImplement implements JobOpeningInterface
 	}
 
 	@Override
-	public int searchJobOpeningId(JobOpeningBean jobOpeningBean) 
-	{
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public ArrayList<JobOpeningBean> searchGradesByRequestDate(JobOpeningBean jobOpeningBean) 
-	{
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ArrayList<JobOpeningBean> searchGradesByDueDate(JobOpeningBean jobOpeningBean) 
-	{
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ArrayList<JobOpeningBean> searchGradesByCompleteDate(JobOpeningBean jobOpeningBean) 
-	{
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ArrayList<JobOpeningBean> searchGradesByOpeningStatus(JobOpeningBean jobOpeningBean)
-	{
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ArrayList<JobOpeningBean> searchGradesByGender(JobOpeningBean jobOpeningBean) 
-	{
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ArrayList<JobOpeningBean> searchGradesByQuantity(JobOpeningBean jobOpeningBean) 
-	{
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public ArrayList<JobOpeningBean> searchGradesByCompany(CompanyBean companyBean) 
 	{
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<JobOpeningBean> searchJobOpeningByJobOpening(
+			JobOpeningBean jobOpeningBean) {
 		// TODO Auto-generated method stub
 		return null;
 	}

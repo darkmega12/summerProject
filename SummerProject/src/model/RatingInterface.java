@@ -14,5 +14,5 @@ public interface RatingInterface
 {
 	public void insertRating(RatingBean ratingBean, WorkExperienceBean workExperience);
 	public boolean updateRating(RatingBean newRatingBean, RatingBean oldRatingBean);
-	public ArrayList<RatingBean> getAllRatingByWorkExperience(WorkExperienceBean workExperienceBean);
+	public ArrayList<RatingBean> searchRatingByWorkExperience(WorkExperienceBean workExperienceBean); // gets rating by work experience details
 }

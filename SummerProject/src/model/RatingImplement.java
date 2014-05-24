@@ -89,7 +89,7 @@ public class RatingImplement implements RatingInterface
 	}
 
 	@Override
-	public ArrayList<RatingBean> getAllRatingByWorkExperience(WorkExperienceBean workExperienceBean) 
+	public ArrayList<RatingBean> searchRatingByWorkExperience(WorkExperienceBean workExperienceBean) 
 	{
 		pConnection = pDatabase.connectToDatabase();
 		pWorkExperienceBean = workExperienceBean;
@@ -121,4 +121,5 @@ public class RatingImplement implements RatingInterface
 		
 		return arrRating;
 	}
+
 }

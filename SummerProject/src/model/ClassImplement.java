@@ -144,42 +144,14 @@ public class ClassImplement implements ClassInterface{
 	}
 
 	@Override
-	public ArrayList<ClassBean> searchClassByCourseCode(CourseBean courseBean) 
+	public ArrayList<ClassBean> searchClassByCourse(CourseBean courseBean) 
 	{
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ArrayList<ClassBean> searchClassByStartDate(ClassBean classBean) 
-	{
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ArrayList<ClassBean> searchClassByEndDate(ClassBean classBean) 
-	{
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ArrayList<ClassBean> searchClassByClassStatus(ClassBean classBean) 
-	{
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ArrayList<ClassBean> searchClassByClassVenue(ClassBean classBean) 
-	{
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ArrayList<ClassBean> searchClassByClassSchedule(ClassBean classBean) 
+	public ArrayList<ClassBean> searchClassByClass(ClassBean classBean) 
 	{
 		// TODO Auto-generated method stub
 		return null;

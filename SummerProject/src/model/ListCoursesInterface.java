@@ -13,5 +13,5 @@ import java.util.ArrayList;
 public interface ListCoursesInterface {
 	public void insertListCourses(AgentBean agentBean, CourseBean courseBean);
 	public boolean updateListCourses(ListCoursesBean newListCoursesBean, ListCoursesBean oldListCoursesBean);
-	public ArrayList<CourseBean> getAllListCoursesByAgent(AgentBean agentBean);
+	public ArrayList<CourseBean> searchListCoursesByAgent(AgentBean agentBean); // gets all list courses by agent details
 }

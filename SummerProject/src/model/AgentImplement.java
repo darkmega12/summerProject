@@ -155,40 +155,16 @@ public class AgentImplement implements AgentInterface
 	}
 
 	@Override
-	public ArrayList<AgentBean> searchAgentByName(AgentBean agentBean) 
+	public ArrayList<AgentBean> searchAgentByAgent(AgentBean agentBean)
 	{
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ArrayList<AgentBean> searchAgentByApplicationDate(AgentBean agentBean) 
+	public ArrayList<AgentBean> searchAgentByUser(UserBean userBean) 
 	{
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-	@Override
-	public ArrayList<AgentBean> searchAgentByApplicationStatus(AgentBean agentBean)
-	{
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ArrayList<AgentBean> searchAgentByCity(AgentBean agentBean) 
-	{
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public int searchAgentId(AgentBean agentBean)
-	{
-		// TODO Auto-generated method stub
-		return 0;
-	}
-	
-	
-	
 }

@@ -14,11 +14,7 @@ public interface AgentInterface
 	// methods to be called for add, view all, update, view specific agent
 	public void insertAgent(AgentBean agentBean, UserBean userBean);
 	public boolean updateAgent(AgentBean newAgentBean, AgentBean oldAgentBean);
-	public int searchAgentId(AgentBean agentBean);
-	public ArrayList<AgentBean> getAllAgents();
-	public ArrayList<AgentBean> searchAgentByName(AgentBean agentBean);
-	public ArrayList<AgentBean> searchAgentByApplicationDate(AgentBean agentBean);
-	public ArrayList<AgentBean> searchAgentByApplicationStatus(AgentBean agentBean);
-	public ArrayList<AgentBean> searchAgentByCity(AgentBean agentBean);
-	public int getAgentID()
+	public ArrayList<AgentBean> getAllAgents(); // gets all agents
+	public ArrayList<AgentBean> searchAgentByAgent(AgentBean agentBean); // gets all agent by agent bean details
+	public ArrayList<AgentBean> searchAgentByUser(UserBean userBean); // gets all applicants by username
 }

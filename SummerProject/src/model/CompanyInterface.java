@@ -15,11 +15,6 @@ public interface CompanyInterface
 	public void insertCompany(CompanyBean companyBean, UserBean userBean);
 	public boolean updateCompany(CompanyBean newCompanyBean, CompanyBean oldCompanyBean);
 	public ArrayList<CompanyBean> getAllCompany();
-	public int searchCompanyId(CompanyBean companyBean);
-	public ArrayList<CompanyBean> searchCompanyByName(CompanyBean companyBean);
-	public ArrayList<CompanyBean> searchCompanyByRegistrationDate(CompanyBean companyBean);
-	public ArrayList<CompanyBean> searchCompanyByCompanyStatus(CompanyBean companyBean);
-	public ArrayList<CompanyBean> searchCompanyByCity(CompanyBean companyBean);
-	public int getCompanyID(CompanyBean companyBean); // get companyID by companyName
-	public int getCompanyID(UserBean userBean); // get companyID by userID
+	public ArrayList<CompanyBean> searchCompanyByCompany(CompanyBean companyBean); // get company by company details
+	public ArrayList<CompanyBean> searchCompanyByUser(UserBean userBean); // get company by username
 }

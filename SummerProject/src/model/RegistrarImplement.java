@@ -124,17 +124,20 @@ public class RegistrarImplement implements RegistrarInterface
 		return false;
 	}
 
+	
 	@Override
-	public int searchIdUserByName(RegistrarBean registrarBean) 
+	public ArrayList<UserBean> getAllRegistrar() 
 	{
 		// TODO Auto-generated method stub
-		return 0;
+		return null;
 	}
 
+	
 	@Override
-	public int searchIdRegistrarByName(RegistrarBean registrarBean) 
+	public ArrayList<UserBean> searchRegistrarByUser(UserBean userBean) 
 	{
 		// TODO Auto-generated method stub
-		return 0;
+		return null;
 	}
+
 }

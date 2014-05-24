@@ -127,30 +127,16 @@ public class EducationBGImplement implements EducationBGInterface
 		
 		return arrEduc;
 	}
-
 	@Override
-	public ArrayList<EducationBGBean> searchEducationBGByAgent(AgentBean agentBean)
+	
+	public ArrayList<EducationBGBean> searchEducationBGByEducationBG(EducationBGBean educationBGBean) 
 	{
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ArrayList<EducationBGBean> searchEducationBGByDegree(EducationBGBean educationBGBean) 
-	{
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ArrayList<EducationBGBean> searchEducationBGByYearCompletion(EducationBGBean educationBGBean) 
-	{
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ArrayList<EducationBGBean> searchEducationBGByUniversity(EducationBGBean educationBGBean) 
+	public ArrayList<EducationBGBean> searchEducationBGByAgent(AgentBean agentBean) 
 	{
 		// TODO Auto-generated method stub
 		return null;
